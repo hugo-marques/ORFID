@@ -1,4 +1,4 @@
-#' @title Summarizing tag-specific info of \code{\link{mport_ORFID}}.
+#' @title Summarizing tag-specific info of \code{\link{import_ORFID}}.
 #'
 #' @description Function for getting info about the tags recorded in a PIT_data data frame from \code{\link{mport_ORFID}} function (number of unique tags, tags type and records per tag). 
 #' @param x PIT_data data frame to analyzed.
