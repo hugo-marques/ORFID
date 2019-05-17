@@ -15,3 +15,4 @@ License: MIT + file LICENSE
 URL: https://github.com/hugo-marques/ORFID
 BugReports: https://github.com/hugo-marques/ORFID/issues
 LazyData: true
+RoxygenNote: 6.1.1
