@@ -14,5 +14,6 @@ Depends:
 License: MIT + file LICENSE
 URL: https://github.com/hugo-marques/ORFID
 BugReports: https://github.com/hugo-marques/ORFID/issues
-LazyData: true
+LazyData: TRUE
+Encoding: UTF-8
 RoxygenNote: 6.1.1
