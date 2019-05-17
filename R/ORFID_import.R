@@ -5,6 +5,10 @@
 
 ORFID_import <- function(file, delim = "\t", skip = 3){
     
+    if (!(delim %in% c("\t", ","))) {
+        stop("The column separator must be either tab '\' or ','")
+    }
+        
     raw_data <- read_delim(file, delim = delim, skip = skip)
     
     PIT_data <<- raw_data %>%
