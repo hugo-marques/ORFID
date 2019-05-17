@@ -10,7 +10,7 @@ TAG_info(x)
 \item{x}{PIT_data data frame to analyzed.}
 }
 \description{
-Function for getting info about the tags recorded in a PIT_data data frame from \code{\link{mport_ORFID}} function (number of unique tags, tags type and records per tag).
+Function for getting info about the tags recorded in a PIT_data data frame from \code{\link{import_ORFID}} function (number of unique tags, tags type and records per tag).
 }
 \details{
 DAta frame is created in the user environment.
