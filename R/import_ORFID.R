@@ -6,7 +6,7 @@
 #' @details Data frame is created in the user environment.
 #' @examples
 #' #save data frame to a working directory
-#' \dontrun{} ORFID_import("~/Desktop/SCD_BRA.txt")
+#' \dontrun{} import_ORFID("~/Desktop/SCD_BRA.txt")
 #' @export
 
 ###############################################################################
