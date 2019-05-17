@@ -5,6 +5,15 @@
 
 # It is necessary to create a list with all data frames to be joined       
 
+#' @title Summarizing tag-specific info of \code{\link{mport_ORFID}}.
+#'
+#' @description Function allows users to combine unique readers into an array, using the data obtained from \code{\link{mport_ORFID}} function. It is necessary to create a list with all data frames to be joined. If the data frames have diferent variables,   
+#' @param x list: containing data frames created from the \code{\link{mport_ORFID}} function to combine.
+#' @details Data frame is created in the user environment. The output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of data frames combined.
+#' @examples
+#' #Analyzing tag-specific information in a PIT_data.
+#' \dontrun{} TAG_info(PIT_data)
+#' @export
 
 join_multireader_data <- function(x) {
     if (class(x) != "list") {
