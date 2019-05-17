@@ -2,7 +2,7 @@
 % Please edit documentation in R/TAG_info.R
 \name{TAG_info}
 \alias{TAG_info}
-\title{Summarizing tag-specific info of \code{\link{mport_ORFID}}.}
+\title{Summarizing tag-specific info of \code{\link{import_ORFID}}.}
 \usage{
 TAG_info(x)
 }
