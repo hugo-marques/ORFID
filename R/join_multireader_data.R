@@ -8,8 +8,6 @@
 #' \dontrun{} TAG_info(PIT_data)
 #' @export
 
-###############################################################################
-
 join_multireader_data <- function(x) {
     if (class(x) != "list") {
         

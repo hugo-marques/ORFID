@@ -9,8 +9,6 @@
 #' \dontrun{} import_ORFID("~/Desktop/SCD_BRA.txt")
 #' @export
 
-###############################################################################
-
 import_ORFID <- function(file, delim){
     
     if (!(delim %in% c("\t", ","))) {
