@@ -9,4 +9,5 @@ Description: An implementation of functions that allows to import, process, and 
     recorded by the new generation of Oregon RFID readers. Also implements basic data summarizing,
     and fast graphical analysis prior to the statistical analysis.
 License: MIT + file LICENSE
+URL: https://github.com/hugo-marques/ORFID
 BugReports: https://github.com/hugo-marques/ORFID/issues
