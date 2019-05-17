@@ -1,8 +1,3 @@
-###############################################################################
-
-# Creating a function to export the data frame to excel
-# require(openxlsx)
-
 #' @title Export the data frames created with the \code{\link{mport_ORFID}} as a xlsx file
 #'
 #' @description Function to export PIT_data data frames as a xlsx file to user working directory  
@@ -13,6 +8,7 @@
 #' \dontrun{} export_excel_ORFID(PIT_data)
 #' @export
 
+###############################################################################
 
 export_excel_ORFID <- function(x){
     
