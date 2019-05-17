@@ -2,15 +2,15 @@
 % Please edit documentation in R/join_multireader_data.R
 \name{join_multireader_data}
 \alias{join_multireader_data}
-\title{Summarizing tag-specific info of \code{\link{mport_ORFID}}.}
+\title{Summarizing tag-specific info of \code{\link{import_ORFID}}.}
 \usage{
 join_multireader_data(x)
 }
 \arguments{
-\item{x}{list: containing data frames created from the \code{\link{mport_ORFID}} function to combine.}
+\item{x}{list: containing data frames created from the \code{\link{import_ORFID}} function to combine.}
 }
 \description{
-Function allows users to combine unique readers into an array, using the data obtained from \code{\link{mport_ORFID}} function. It is necessary to create a list with all data frames to be joined. If the data frames have diferent variables,
+Function allows users to combine unique readers into an array, using the data obtained from \code{\link{import_ORFID}} function. It is necessary to create a list with all data frames to be joined. If the data frames have diferent variables,
 }
 \details{
 Data frame is created in the user environment. The output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of data frames combined.
