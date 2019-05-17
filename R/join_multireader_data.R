@@ -6,18 +6,18 @@
 # It is necessary to create a list with all data frames to be joined       
 
 
-join_multireader_data <- function(list) {
-    if (class(list) != "list") {
+join_multireader_data <- function(x) {
+    if (class(x) != "list") {
         
         stop("The data frames should be in a list")
         
-    } else if (any(names(list[[i]])!="SCD")) {
+    } else if (any(names(x[[i]])!="SCD")) {
         
         stop("Missing site code (SCD) in at least one data frame")
     } else {
         
-        df <- list
-        %>% bind_rows()
+        df <- x %>%
+            bind_rows()
     } 
     
     if (anyNA(df$ANT) == T) {
