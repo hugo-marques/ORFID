@@ -2,7 +2,7 @@
 % Please edit documentation in R/export_excel.R
 \name{export_excel_ORFID}
 \alias{export_excel_ORFID}
-\title{Export the data frames created with the \code{\link{mport_ORFID}} as a xlsx file}
+\title{Export the data frames created with the \code{\link{import_ORFID}} as a xlsx file}
 \usage{
 export_excel_ORFID(x)
 }
