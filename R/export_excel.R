@@ -1,4 +1,4 @@
-#' @title Export the data frames created with the \code{\link{mport_ORFID}} as a xlsx file
+#' @title Export the data frames created with the \code{\link{import_ORFID}} as a xlsx file
 #'
 #' @description Function to export PIT_data data frames as a xlsx file to user working directory  
 #' @param x PIT_data data frame to be exported.
