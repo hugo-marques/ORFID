@@ -1,8 +1,8 @@
 #' @title Summarizing tag-specific info of \code{\link{import_ORFID}}.
 #'
 #' @description Function allows users to combine unique readers into an array, using the data obtained from \code{\link{import_ORFID}} function. It is necessary to create a list with all data frames to be joined. If the data frames have diferent variables,   
-#' @param x list: containing data frames created from the \code{\link{import_ORFID}} function to combine.
-#' @details Data frame is created in the user environment. The output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of data frames combined.
+#' @param x list: A list containing data frames created with the \code{\link{import_ORFID}} function to be combined.
+#' @details Data frame is created in the user environment. The output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of data frames combined. A factor class variable called LOC (from locus) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further statistical analysis once it is the individual detection spot.
 #' @return Returns a tibble object.
 #' @author Hugo Marques
 #' @examples
@@ -15,9 +15,9 @@
 #' 
 #' @export
 
+###############################################################################
+
 join_multireader_data <- function(x){
-    
-    message("Variable LOC (local) is the combination between SCD (Site Code) and ANT (Antenna)")
     
     if (class(x) != "list") {
         stop("The data frames should be in a list")
@@ -39,17 +39,19 @@ join_multireader_data <- function(x){
         warning("NA values in ANT were replaced by 1")
     }
     
+    message("A factor class variable called LOC (from locus) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further statistical analysis once it is the individual detection spot.")
+    
     PIT_data_array <- y %>%
         mutate(ANT = replace_na(ANT, 1)) %>%
-        mutate(ANT = as.factor(ANT)) %>%
         mutate(LOC = paste0(SCD,ANT)) %>%
+        mutate(SCD = as.factor(SCD)) %>%
+        mutate(ANT = as.factor(ANT)) %>%
         mutate(LOC = as.factor(LOC))
     
-    Sys.sleep(1)
+    Sys.sleep(2)
     
     return(glimpse(PIT_data_array))
         
 }
-
 
 ###############################################################################
