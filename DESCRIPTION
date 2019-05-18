@@ -1,5 +1,5 @@
 Package: ORFID
-Version: 0.0.2
+Version: 0.0.3
 Title: Functions to manage, and summarize PIT data from Oregon RFID ORSR and ORMR readers
 Description: An implementation of functions that allows to import, process, and tidy the data 
     recorded by the new generation of Oregon RFID readers. Also implements basic data summarizing,
@@ -7,7 +7,8 @@ Description: An implementation of functions that allows to import, process, and 
 Date: 2019-05-17
 Authors@R: person("Hugo", "Marques", email = "biohmarques@gmail.com",
                   role = c("aut", "cre"))
-Depends: 
+Depends:
+    R (>= 3.5.0),
     tidyverse, 
     openxlsx
 License: MIT + file LICENSE
