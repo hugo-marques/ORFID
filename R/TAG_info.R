@@ -2,17 +2,17 @@
 #'
 #' @description Function for getting info about the tags recorded in a PIT_data data frame from \code{\link{import_ORFID}} function (number of unique tags, tags type and records per tag). 
 #' @param x PIT_data data frame to analyzed.
-#' @details DAta frame is created in the user environment.
+#' @details A data frame is created in the user environment with the data grouped by TAG IDs.
 #' @return Returns a tibble object.
-#' @author Hugo Marques
+#' @author Hugo Marques <biohmarques@@gmail.com>
 #' @examples
 #' 
 #' #Analyzing tag-specific information in a PIT_data.#' 
 #' \dontrun{} tags <- TAG_info(PIT_data)
 #' 
-#' # How many tags detected:#' 
+#' # How many tags were detected? 
 #' \dontrun{} lenght(tags$TAG)
-#' 
+#'  
 #' @export
 
 ###############################################################################
