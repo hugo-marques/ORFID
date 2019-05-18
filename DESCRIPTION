@@ -1,9 +1,14 @@
 Package: ORFID
 Version: 0.0.6
 Title: Functions to manage, and summarize PIT data from Oregon RFID ORSR and ORMR readers
-Description: An implementation of functions that allows to import, process, and tidy the data 
-    recorded by the new generation of Oregon RFID readers. Also implements basic data summarizing,
-    and fast graphical analysis prior to the statistical analysis.
+Description: Biotelemetry produces a large amount of data, especially PIT telemetry. Thus, 
+    it is important to consider how to process the continual flow of data produced by 
+    the PIT readers. The ORFID package is designed to automate and standardize the import 
+    process of raw data recorded by the new generation of the Oregon RFID readers and 
+    implements functions to gather data from multiple readers in one database, managing and 
+    summarizing data. This helps to process and tidy the data tidy for posterior statistical 
+    analysis. Future versions will implement functions for querying and automating fast 
+    graphical analysis.
 Date: 2019-05-17
 Authors@R: person("Hugo", "Marques", email = "biohmarques@gmail.com",
                   role = c("aut", "cre"))
