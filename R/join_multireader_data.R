@@ -23,28 +23,17 @@ join_multireader_data <- function(x){
         stop("The data frames should be in a list")
     } 
         
-#    for(i in length(x)){
-#        if(!exists("SCD") %in% names(x[[i]])) {
-#            stop("Missing site code (SCD) in at least one data frame")
-#       }
-#    }
-    
     y <- x %>%
         bind_rows()
 
-    
     if(!("SCD" %in% names(y))){
         stop("Missing site code (SCD) in at least one data frame")
-        } #else { message("COME ON!")}
-    
-    #Sys.sleep(1)
+        }
     
     if(!("ANT" %in% names(y))){
         y <- y %>%
             mutate(ANT = 1)
-    } #else { message("YAY")}
-    
-    #Sys.sleep(1)
+    }
     
     if(anyNA(y$ANT) == T) {
         warning("NA values in ANT were replaced by 1")

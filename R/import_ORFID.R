@@ -25,9 +25,9 @@ import_ORFID <- function(file, delim){
     
     raw_data <- raw_data %>%
         filter(DTY == "S" | DTY == "I") %>%
-        mutate(DUR=parse_time(DUR, '%H:%M:%OS')) %>%
-        mutate(TTY=as.factor(TTY)) %>%
-        mutate(SCD=as.factor(SCD))
+        mutate(DUR = parse_time(DUR, '%H:%M:%OS')) %>%
+        mutate(TTY = as.factor(TTY)) %>%
+        mutate(SCD = as.factor(SCD))
     
     return(glimpse(raw_data))
     

@@ -21,7 +21,7 @@ TAG_info <- function(x){
         add_count(TAG) %>%
         distinct(TAG, .keep_all = T) %>%
         select(TAG,TTY, n) %>%
-        rename(REC=n)
+        rename(REC = n)
     
     message("TAG: tag ID
 TTY: tag type (A = Animal (ICAR), R = Read-only, W = Writable, P = Phantom)
