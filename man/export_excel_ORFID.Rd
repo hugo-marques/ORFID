@@ -16,14 +16,24 @@ Returns an .xlsx file.
 Function to export PIT_data data frames as a xlsx file to user working directory
 }
 \details{
-File is saved in the user-specified working directory.
+The file will be saved in the user-specified working directory.
 }
 \examples{
-#export a PIT_data data frame to the working directory.
+#  Exporting a PIT_data data frame to the working directory.
 
+#  Import the ORFID reader data to the user working directory
+\dontrun{} data_BRA <- import_ORFID("~/Desktop/SCD_BRA.txt")
+
+#  Create the list containing the imported files:
+\dontrun{} readers list(data_USA, data_BRA)
+
+#  Combine the files:
+\dontrun{} data <- join_multireader_data(readers)
+
+#  Export the multi reader data as a .xlsx file:
 \dontrun{} export_excel_ORFID(PIT_data)
 
 }
 \author{
-Hugo Marques
+Hugo Marques <biohmarques@gmail.com>
 }

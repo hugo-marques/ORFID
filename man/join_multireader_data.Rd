@@ -28,5 +28,5 @@ Data frame is created in the user environment. The output of \code{\link{join_mu
 
 }
 \author{
-Hugo Marques
+Hugo Marques <biohmarques@gmail.com>
 }

@@ -16,17 +16,17 @@ Returns a tibble object.
 Function for getting info about the tags recorded in a PIT_data data frame from \code{\link{import_ORFID}} function (number of unique tags, tags type and records per tag).
 }
 \details{
-DAta frame is created in the user environment.
+A data frame is created in the user environment with the data grouped by TAG IDs.
 }
 \examples{
 
 #Analyzing tag-specific information in a PIT_data.#' 
 \dontrun{} tags <- TAG_info(PIT_data)
 
-# How many tags detected:#' 
+# How many tags were detected? 
 \dontrun{} lenght(tags$TAG)
-
+ 
 }
 \author{
-Hugo Marques
+Hugo Marques <biohmarques@gmail.com>
 }
