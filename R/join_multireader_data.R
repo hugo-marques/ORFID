@@ -8,29 +8,51 @@
 #' \dontrun{} TAG_info(PIT_data)
 #' @export
 
-join_multireader_data <- function(x) {
-    if (class(x) != "list") {
-        
-        stop("The data frames should be in a list")
-        
-    } else if (any(names(x[[i]])!="SCD")) {
-        
-        stop("Missing site code (SCD) in at least one data frame")
-    } else {
-        
-        df <- x %>%
-            bind_rows()
-    } 
+join_multireader_data <- function(x){
     
-    if (anyNA(df$ANT) == T) {
+    message("Variable LOC (local) is the combination between SCD (Site Code) and ANT (Antenna)")
+    
+    if (class(x) != "list") {
+        stop("The data frames should be in a list")
+    } 
+        
+#    for(i in length(x)){
+#        if(!exists("SCD") %in% names(x[[i]])) {
+#            stop("Missing site code (SCD) in at least one data frame")
+#       }
+#    }
+    
+    y <- x %>%
+        bind_rows()
+
+    
+    if(!("SCD" %in% names(y))){
+        stop("Missing site code (SCD) in at least one data frame")
+        } #else { message("COME ON!")}
+    
+    #Sys.sleep(1)
+    
+    if(!("ANT" %in% names(y))){
+        y <- y %>%
+            mutate(ANT = 1)
+    } #else { message("YAY")}
+    
+    #Sys.sleep(1)
+    
+    if(anyNA(y$ANT) == T) {
         warning("NA values in ANT were replaced by 1")
     }
     
-    PIT_data_array <<- df %>%
+    PIT_data_array <- y %>%
         mutate(ANT = replace_na(ANT, 1)) %>%
-        mutate(NAM = mutate(paste0(SCD,ANT)))
+        mutate(ANT = as.factor(ANT)) %>%
+        mutate(LOC = paste0(SCD,ANT)) %>%
+        mutate(LOC = as.factor(LOC))
+    
+    Sys.sleep(1)
     
     return(glimpse(PIT_data_array))
+        
 }
 
 
