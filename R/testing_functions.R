@@ -25,3 +25,5 @@ TAG_info(bla)
 TAG_info(blabla)
 
 export_excel_ORFID(bla)
+
+roxygen2::roxygenise()
