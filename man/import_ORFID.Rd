@@ -11,6 +11,9 @@ import_ORFID(file, delim)
 
 \item{delim}{the field separator character. Values on each line of the file are separated by this character.}
 }
+\value{
+Returns a tibble object.
+}
 \description{
 Function to import files recorded by the new generation of Oregon RFID readers.
 }
@@ -18,6 +21,13 @@ Function to import files recorded by the new generation of Oregon RFID readers.
 Data frame is created in the user environment.
 }
 \examples{
-#save data frame to a working directory
-\dontrun{} import_ORFID("~/Desktop/SCD_BRA.txt")
+# Save data frame to a working directory
+
+\dontrun{} data_BRA <- import_ORFID("~/Desktop/SCD_BRA.txt")
+
+\dontrun{} data_USA <- import_ORFID("~/Desktop/SCD_USA.txt")
+
+}
+\author{
+Hugo Marques
 }

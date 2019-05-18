@@ -9,6 +9,9 @@ TAG_info(x)
 \arguments{
 \item{x}{PIT_data data frame to analyzed.}
 }
+\value{
+Returns a tibble object.
+}
 \description{
 Function for getting info about the tags recorded in a PIT_data data frame from \code{\link{import_ORFID}} function (number of unique tags, tags type and records per tag).
 }
@@ -16,6 +19,14 @@ Function for getting info about the tags recorded in a PIT_data data frame from 
 DAta frame is created in the user environment.
 }
 \examples{
-#Analyzing tag-specific information in a PIT_data.
-\dontrun{} TAG_info(PIT_data)
+
+#Analyzing tag-specific information in a PIT_data.#' 
+\dontrun{} tags <- TAG_info(PIT_data)
+
+# How many tags detected:#' 
+\dontrun{} lenght(tags$TAG)
+
+}
+\author{
+Hugo Marques
 }

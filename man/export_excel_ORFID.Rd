@@ -9,6 +9,9 @@ export_excel_ORFID(x)
 \arguments{
 \item{x}{PIT_data data frame to be exported.}
 }
+\value{
+Returns an .xlsx file.
+}
 \description{
 Function to export PIT_data data frames as a xlsx file to user working directory
 }
@@ -17,5 +20,10 @@ File is saved in the user-specified working directory.
 }
 \examples{
 #export a PIT_data data frame to the working directory.
+
 \dontrun{} export_excel_ORFID(PIT_data)
+
+}
+\author{
+Hugo Marques
 }
