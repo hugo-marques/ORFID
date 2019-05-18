@@ -21,7 +21,7 @@ import_ORFID <- function(file, delim){
         stop("The column separator must be either tab '\' or ','")
     }
     
-    raw_data <- read_delim(file, delim = "\t", skip = grep("--------- Upload", readLines(file)))
+    raw_data <- read_delim(file, delim = delim, skip = grep("--------- Upload", readLines(file)))
     
     raw_data <- raw_data %>%
         filter(DTY == "S" | DTY == "I") %>%
