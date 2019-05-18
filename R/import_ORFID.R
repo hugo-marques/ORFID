@@ -17,7 +17,7 @@ import_ORFID <- function(file, delim){
     
     raw_data <- read_delim(file, delim = "\t", skip = grep("--------- Upload", readLines(file)))
     
-    PIT_data <<- raw_data %>%
+    raw_data %>%
         filter(DTY == "S" | DTY == "I") %>%
         mutate(DUR=parse_time(DUR, '%H:%M:%OS')) %>%
         mutate(TTY=as.factor(TTY)) %>%
