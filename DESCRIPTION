@@ -1,5 +1,5 @@
 Package: ORFID
-Version: 0.0.5
+Version: 0.0.6
 Title: Functions to manage, and summarize PIT data from Oregon RFID ORSR and ORMR readers
 Description: An implementation of functions that allows to import, process, and tidy the data 
     recorded by the new generation of Oregon RFID readers. Also implements basic data summarizing,
