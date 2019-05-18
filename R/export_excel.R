@@ -3,9 +3,13 @@
 #' @description Function to export PIT_data data frames as a xlsx file to user working directory  
 #' @param x PIT_data data frame to be exported.
 #' @details File is saved in the user-specified working directory.
+#' @return Returns an .xlsx file.
+#' @author Hugo Marques
 #' @examples
 #' #export a PIT_data data frame to the working directory.
+#' 
 #' \dontrun{} export_excel_ORFID(PIT_data)
+#' 
 #' @export
 
 export_excel_ORFID <- function(x){

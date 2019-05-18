@@ -3,9 +3,16 @@
 #' @description Function allows users to combine unique readers into an array, using the data obtained from \code{\link{import_ORFID}} function. It is necessary to create a list with all data frames to be joined. If the data frames have diferent variables,   
 #' @param x list: containing data frames created from the \code{\link{import_ORFID}} function to combine.
 #' @details Data frame is created in the user environment. The output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of data frames combined.
+#' @return Returns a tibble object.
+#' @author Hugo Marques
 #' @examples
-#' #Analyzing tag-specific information in a PIT_data.
-#' \dontrun{} TAG_info(PIT_data)
+#' 
+#' # Create the list containing the imported files:
+#' \dontrun{} readers list(data_USA, data_BRA)
+#' 
+#'  # Combine the files:
+#' \dontrun{} data <- join_multireader_data(readers)
+#' 
 #' @export
 
 join_multireader_data <- function(x){
