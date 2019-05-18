@@ -10,7 +10,7 @@
 
 export_excel_ORFID <- function(x){
     
-    file <- paste0(getwd(),"PIT_data_", sample(1:100,1, replace=FALSE), ".xlsx")
+    file <- paste0(getwd(),"/ORFID_data_", sample(1:100,1, replace=FALSE), ".xlsx")
     
     write.xlsx(x, file = file)
     
