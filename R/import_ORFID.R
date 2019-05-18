@@ -29,7 +29,7 @@ import_ORFID <- function(file, delim){
         mutate(TTY=as.factor(TTY)) %>%
         mutate(SCD=as.factor(SCD))
     
-    return(glimpse(PIT_data))
+    return(glimpse(raw_data))
     
 }
 
