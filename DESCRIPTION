@@ -10,8 +10,9 @@ Description: Biotelemetry produces a large amount of data, especially PIT teleme
     analysis. Future versions will implement functions for querying and automating fast 
     graphical analysis.
 Date: 2019-05-17
-Authors@R: person("Hugo", "Marques", email = "biohmarques@gmail.com",
-                  role = c("aut", "cre"))
+Authors@R: person("Hugo", "Marques", email = "biohmarques@gmail.com", role = c("aut", "cre"), 
+    comment = c(0000-0002-9361-9341))
+Maintainer: Hugo Marques <biohmarques@gmail.com>
 Depends:
     R (>= 3.5.0),
     tidyverse, 
