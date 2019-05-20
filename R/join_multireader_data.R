@@ -7,11 +7,11 @@
 #' @seealso \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
 #' @examples
 #' 
-#' # Create the list containing the imported files:
-#' \dontrun{} readers list(data_USA, data_BRA)
+#' ##  Create the list containing the imported files:
+#' \run{} readers <- list(reader_1, reader_2, reader_3)
 #' 
-#'  # Combine the files:
-#' \dontrun{} data <- join_multireader_data(readers)
+#' ##  Combine the files:
+#' \run{} array <- join_multireader_data(readers)
 #' 
 #' @export
 
@@ -27,7 +27,7 @@ join_multireader_data <- function(x){
         bind_rows()
 
     if(!("SCD" %in% names(y))){
-        stop("Missing site code (SCD) in at least one data frame")
+        stop("Missing site code (SCD). Combining data from multi readers requires a SCD variables in all reader's data")
         }
     
     if(anyNA(y$SCD) == T) {
@@ -43,7 +43,7 @@ join_multireader_data <- function(x){
         warning("NA values in ANT were replaced by 1")
     }
     
-    message("A factor class variable called LOC (from locus) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further statistical analysis once it is the individual detection spot.")
+    message("A factor class variable called LOC (from locus) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further graphical statistical analysis once it is the individual detection spot.")
     
     PIT_data_array <- y %>%
         mutate(ANT = replace_na(ANT, 1)) %>%

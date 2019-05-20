@@ -20,11 +20,11 @@ Data frame is created in the user environment. The output of \code{\link{join_mu
 }
 \examples{
 
-# Create the list containing the imported files:
-\dontrun{} readers list(data_USA, data_BRA)
+##  Create the list containing the imported files:
+\\run{} readers <- list(reader_1, reader_2, reader_3)
 
- # Combine the files:
-\dontrun{} data <- join_multireader_data(readers)
+##  Combine the files:
+\\run{} array <- join_multireader_data(readers)
 
 }
 \seealso{
