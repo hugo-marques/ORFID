@@ -10,7 +10,8 @@
 #' @return Returns a tibble object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @examples
-#' #  Importing the ORFID reader data to the user working directory
+#' 
+#' ##  Importing the ORFID reader data to the user working directory
 #' 
 #' \dontrun{} data_BRA <- import_ORFID("~/Desktop/SCD_BRA.txt")
 #' 
