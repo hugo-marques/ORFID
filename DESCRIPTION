@@ -15,7 +15,8 @@ Authors@R: person("Hugo", "Marques", email = "biohmarques@gmail.com", role = c("
 Maintainer: Hugo Marques <biohmarques@gmail.com>
 Depends:
     R (>= 3.5.0),
-    tidyverse, 
+    tidyverse
+Imports:
     openxlsx
 License: MIT + file LICENSE
 URL: https://github.com/hugo-marques/ORFID
