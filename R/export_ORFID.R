@@ -1,5 +1,5 @@
 #' @title Export the data frames created with the \code{\link{import_ORFID}} as a xlsx file
-#' @description Function to export PIT_data data frames as a xlsx file to user working directory
+#' @description Function to export PIT_data data frames as a xlsx file to user working directory 
 #' @param x PIT_data data frame to be exported.
 #' @details The file will be saved in the user-specified working directory.
 #' @return Returns an .xlsx file.
@@ -26,13 +26,27 @@
 
 ###############################################################################
 
-export_excel_ORFID <- function(x){
+
+export_ORFID <- function(x, name, extension){
     
-    #file <- paste0(getwd(),"/ORFID_data_", sample(1:100, 1, replace=FALSE), ".xlsx")
+    if (!(extension %in% c(".txt", ".csv", ".xlsx"))) {
+        stop("The extension must be '.txt', '.csv' or '.xlsx'")
+    }
     
-    file <- paste0(getwd(),"/ORFID_data_", str_replace(Sys.time(), pattern = " ", replacement = "_"), ".xlsx")
+    file <- paste0(name,extension)
     
-    write.xlsx(x, file = file)
+    if(extension == ".txt") {
+        
+        write_delim(x, file)
+    }
+    
+    if(extension == ".csv") {
+        write_csv(x, file)
+    }
+    
+    if(extension == ".xlsx") {
+        write.xlsx(x, file)
+    }
     
 }
 

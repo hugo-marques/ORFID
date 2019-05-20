@@ -2,7 +2,7 @@
 % Please edit documentation in R/join_multireader_data.R
 \name{join_multireader_data}
 \alias{join_multireader_data}
-\title{Summarizing tag-specific info of \code{\link{import_ORFID}}.}
+\title{Combine data from ORFID readers into an multi readers array}
 \usage{
 join_multireader_data(x)
 }
@@ -26,6 +26,9 @@ Data frame is created in the user environment. The output of \code{\link{join_mu
  # Combine the files:
 \dontrun{} data <- join_multireader_data(readers)
 
+}
+\seealso{
+\code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
 }
 \author{
 Hugo Marques <biohmarques@gmail.com>

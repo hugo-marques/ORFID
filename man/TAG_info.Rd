@@ -2,7 +2,7 @@
 % Please edit documentation in R/TAG_info.R
 \name{TAG_info}
 \alias{TAG_info}
-\title{Summarizing tag-specific info of \code{\link{import_ORFID}}.}
+\title{Summarizing tag-specific info of \code{\link{import_ORFID}}}
 \usage{
 TAG_info(x)
 }
@@ -20,7 +20,8 @@ A data frame is created in the user environment with the data grouped by TAG IDs
 }
 \examples{
 
-#Analyzing tag-specific information in a PIT_data.#' 
+#Analyzing tag-specific information in a PIT_data.
+ 
 \dontrun{} tags <- TAG_info(PIT_data)
 
 # How many tags were detected? 
