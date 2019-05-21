@@ -38,17 +38,13 @@
 
 export_ORFID <- function(x, name, extension){
     
-    if (!(extension %in% c(".txt", ".csv", ".xlsx"))) {
-        stop("The extension must be '.txt', '.csv' or '.xlsx'")
+    if (!(extension %in% c(".csv", ".xlsx"))) {
+        stop("The extension must be '.csv' or '.xlsx'")
     }
     
     file <- paste0(name,extension)
     
-    if(extension == ".txt") {
-        
-        readr::write_delim(x, file)
-    }
-    
+
     if(extension == ".csv") {
         readr::write_csv(x, file)
     }
