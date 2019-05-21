@@ -21,7 +21,7 @@ Data frame is created in the user environment. The output of \code{\link{join_mu
 \examples{
 
 ##  Create the list containing the imported files:
-readers <- list(reader_1, reader_2, reader_3)
+readers <- list(reader_1, reader_2)
 
 ##  Combine the files:
 array <- join_multireader_data(readers)
