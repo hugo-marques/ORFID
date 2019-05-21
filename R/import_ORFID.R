@@ -31,7 +31,11 @@ import_ORFID <- function(file, delim){
     
     raw_data <- raw_data %>%
         dplyr::filter(DTY == "S" | DTY == "I") %>%
-        dplyr::mutate(DUR = parse_time(DUR, '%H:%M:%OS')) 
+
+    if(("DUR" %in% names(raw_data))){
+        raw_data <- raw_data %>%
+            dplyr::mutate(DUR = parse_time(DUR, '%H:%M:%OS'))
+    }
     
     if(("SCD" %in% names(raw_data))){
         raw_data <- raw_data %>%
