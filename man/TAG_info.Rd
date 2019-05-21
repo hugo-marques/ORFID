@@ -33,7 +33,10 @@ A data frame is created in the user environment with the data grouped by TAG IDs
 ## Summarizing tag info
 
 \\run{} tag_info(array)
- 
+}
+\seealso{
+\code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
+\code{\link{join_multireader_data}} for Combining data from ORFID readers into an multi readers array
 }
 \author{
 Hugo Marques <biohmarques@gmail.com>

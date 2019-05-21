@@ -25,7 +25,6 @@ Data frame is created in the user environment. The output of \code{\link{join_mu
 
 ##  Combine the files:
 \\run{} array <- join_multireader_data(readers)
-
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
