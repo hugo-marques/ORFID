@@ -14,9 +14,10 @@ Authors@R: person("Hugo", "Marques", email = "biohmarques@gmail.com", role = c("
     comment = c(0000-0002-9361-9341))
 Maintainer: Hugo Marques <biohmarques@gmail.com>
 Depends:
-    R (>= 3.5.0),
-    tidyverse
+    R (>= 3.5.0)
 Imports:
+    dplyr,
+    readr,
     openxlsx
 License: MIT + file LICENSE
 URL: https://github.com/hugo-marques/ORFID
@@ -27,5 +28,6 @@ RoxygenNote: 6.1.1
 Suggests: 
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    tidyverse
 VignetteBuilder: knitr
