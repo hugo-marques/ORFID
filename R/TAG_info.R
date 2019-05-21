@@ -12,17 +12,17 @@
 #' 
 #' ## Analyzing tag-specific information in a PIT_data.
 #'  
-#' \run{} tag_info(reader_1)
+#' tag_info(reader_1)
 #' 
 #' ## Create the list containing the imported files:
-#' \run{} readers list(reader_1, reader_2, reader_3)
+#' readers list(reader_1, reader_2, reader_3)
 #' 
 #' ## Combine the files:
-#' \run{} array <- join_multireader_data(readers)
+#' array <- join_multireader_data(readers)
 #' 
 #' ## Summarizing tag info
 #' 
-#' \run{} tag_info(array)
+#' tag_info(array)
 
 
 ###############################################################################
