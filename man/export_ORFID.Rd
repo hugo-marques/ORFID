@@ -37,12 +37,13 @@ The file will be saved in the user-specified working directory.
 ##  Export the multi reader data as a .txt file:
 \dontrun{} export_excel_ORFID(x = array, name = "PIT_data", extension = ".txt")
 
-## Summarizing tag info
+##  Summarizing tag info
 
 \dontrun{} tags <- tag_info(array)
 
 ##  Export the tag info as a .txt file:
 \dontrun{} export_excel_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
+
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers

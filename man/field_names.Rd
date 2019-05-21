@@ -17,9 +17,10 @@ Returns the field names and its details from ORSR and ORMR readers data
 }
 \examples{
 
-## Creating a data frame containing the field names from ORSR and ORMR readers.
+##  Creating a data frame containing the field names from ORSR and ORMR readers.
 
 (FM <- field_names())
+
 }
 \author{
 Hugo Marques <biohmarques@gmail.com>

@@ -17,7 +17,7 @@
 #' \dontrun{} data_BRA <- import_ORFID("~/Desktop/SCD_BRA.txt")
 #' 
 #' \dontrun{} data_USA <- import_ORFID("~/Desktop/SCD_USA.txt")
-
+#' 
 
 ###############################################################################
 

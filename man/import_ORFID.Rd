@@ -31,6 +31,7 @@ The Tag number (TAG) is required for further estatistical analysis. Consider in 
 \dontrun{} data_BRA <- import_ORFID("~/Desktop/SCD_BRA.txt")
 
 \dontrun{} data_USA <- import_ORFID("~/Desktop/SCD_USA.txt")
+
 }
 \author{
 Hugo Marques <biohmarques@gmail.com>

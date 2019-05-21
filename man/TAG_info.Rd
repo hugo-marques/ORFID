@@ -20,19 +20,20 @@ A data frame is created in the user environment with the data grouped by TAG IDs
 }
 \examples{
 
-## Analyzing tag-specific information in a PIT_data.
+##  Analyzing tag-specific information in a PIT_data.
  
 tag_info(reader_1)
 
-## Create the list containing the imported files:
+##  Create the list containing the imported files:
 readers list(reader_1, reader_2, reader_3)
 
-## Combine the files:
+##  Combine the files:
 array <- join_multireader_data(readers)
 
-## Summarizing tag info
+##  Summarizing tag info
 
 tag_info(array)
+
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers

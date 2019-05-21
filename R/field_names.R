@@ -7,9 +7,10 @@
 #' @export
 #' @examples
 #' 
-#' ## Creating a data frame containing the field names from ORSR and ORMR readers.
+#' ##  Creating a data frame containing the field names from ORSR and ORMR readers.
 #' 
 #' (FM <- field_names())
+#' 
 
 
 ###############################################################################

@@ -9,10 +9,10 @@
 #' @examples
 #' 
 #' ##  Create the list containing the imported files:
-#' \run{} readers <- list(reader_1, reader_2, reader_3)
+#' readers <- list(reader_1, reader_2, reader_3)
 #' 
 #' ##  Combine the files:
-#' \run{} array <- join_multireader_data(readers)
+#' array <- join_multireader_data(readers)
 
 
 ###############################################################################

@@ -25,12 +25,13 @@
 #' ##  Export the multi reader data as a .txt file:
 #' \dontrun{} export_excel_ORFID(x = array, name = "PIT_data", extension = ".txt")
 #' 
-#' ## Summarizing tag info
+#' ##  Summarizing tag info
 #' 
 #' \dontrun{} tags <- tag_info(array)
 #' 
 #' ##  Export the tag info as a .txt file:
 #' \dontrun{} export_excel_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
+#' 
 
 ###############################################################################
 
