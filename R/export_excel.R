@@ -32,7 +32,7 @@ export_excel_ORFID <- function(x){
     
     file <- paste0(getwd(),"/ORFID_data_", str_replace(Sys.time(), pattern = " ", replacement = "_"), ".xlsx")
     
-    write.xlsx(x, file = file)
+    openxlsx::write.xlsx(x, file = file)
     
 }
 

@@ -31,21 +31,21 @@ tag_info <- function(x){
     }
     
     PIT <- x %>%
-        group_by(TAG) %>%
-        add_count(TAG) %>%
-        distinct(TAG, .keep_all = T) %>%
-        select(TAG, n) %>%
-        rename(REC = n)
+        dplyr::group_by(TAG) %>%
+        dplyr::add_count(TAG) %>%
+        dplyr::distinct(TAG, .keep_all = T) %>%
+        dplyr::select(TAG, n) %>%
+        dplyr::rename(REC = n)
     
     
     if("ARR" %in% names(PIT)){
         PIT <- PIT %>%
-            mutate(FIR = first(ARR)) %>%
-            mutate(LAS = last(ARR))
+            dplyr::mutate(FIR = first(ARR)) %>%
+            dplyr::mutate(LAS = last(ARR))
         
         if("TTY" %in% names(PIT)){
             PIT <- PIT %>%
-                select(TAG, TTY, REC, FIR, LAS)
+                dplyr::select(TAG, TTY, REC, FIR, LAS)
             message("
 TAG: tag ID
 TTY: tag type (A = Animal (ICAR), R = Read-only, W = Writable, P = Phantom)
@@ -56,7 +56,7 @@ LAS: last record
             
         } else {
             PIT <- PIT %>%
-                select(TAG, REC, FIR, LAS)
+                dplyr::select(TAG, REC, FIR, LAS)
             
             message("
 TAG: tag ID
@@ -71,7 +71,7 @@ LAS: last record
     } else {
         if("TTY" %in% names(PIT)){
             PIT <- PIT %>%
-                select(TAG, TTY, REC)
+                dplyr::select(TAG, TTY, REC)
             
             message("
 TAG: tag ID
@@ -81,7 +81,7 @@ REC: number of records
             
         } else {
             PIT <- PIT %>%
-                select(TAG, REC)
+                dplyr::select(TAG, REC)
             
             message("
 TAG: tag ID

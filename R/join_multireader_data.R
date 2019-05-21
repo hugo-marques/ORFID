@@ -24,7 +24,7 @@ join_multireader_data <- function(x){
     } 
         
     y <- x %>%
-        bind_rows()
+        dplyr::bind_rows()
 
     if(!("SCD" %in% names(y))){
         stop("Missing site code (SCD). Combining data from multi readers requires a SCD variables in all reader's data")
@@ -36,7 +36,7 @@ join_multireader_data <- function(x){
     
     if(!("ANT" %in% names(y))){
         y <- y %>%
-            mutate(ANT = 1)
+            dplyr::mutate(ANT = 1)
     }
     
     if(anyNA(y$ANT) == T) {
@@ -46,15 +46,15 @@ join_multireader_data <- function(x){
     message("A factor class variable called LOC (from locus) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further graphical statistical analysis once it is the individual detection spot.")
     
     PIT_data_array <- y %>%
-        mutate(ANT = replace_na(ANT, 1)) %>%
-        mutate(LOC = paste0(SCD,ANT)) %>%
-        mutate(SCD = as.factor(SCD)) %>%
-        mutate(ANT = as.factor(ANT)) %>%
-        mutate(LOC = as.factor(LOC))
+        dplyr::mutate(ANT = replace_na(ANT, 1)) %>%
+        dplyr::mutate(LOC = paste0(SCD,ANT)) %>%
+        dplyr::mutate(SCD = as.factor(SCD)) %>%
+        dplyr::mutate(ANT = as.factor(ANT)) %>%
+        dplyr::mutate(LOC = as.factor(LOC))
     
     Sys.sleep(2)
     
-    return(glimpse(PIT_data_array))
+    return(dplyr::glimpse(PIT_data_array))
         
 }
 

@@ -48,15 +48,15 @@ export_ORFID <- function(x, name, extension){
     
     if(extension == ".txt") {
         
-        write_delim(x, file)
+        readr::write_delim(x, file)
     }
     
     if(extension == ".csv") {
-        write_csv(x, file)
+        readr::write_csv(x, file)
     }
     
     if(extension == ".xlsx") {
-        write.xlsx(x, file)
+        openxlsx::write.xlsx(x, file)
     }
     
 }
