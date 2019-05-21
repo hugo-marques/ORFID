@@ -9,6 +9,7 @@
 #' @seealso 
 #' \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
 #' \code{\link{join_multireader_data}} for Combining data from ORFID readers into an multi readers array
+#' @export
 #' @examples
 #' ##  Exporting a PIT_data data frame to the working directory.
 #' 
@@ -24,16 +25,12 @@
 #' ##  Export the multi reader data as a .txt file:
 #' \dontrun{} export_excel_ORFID(x = array, name = "PIT_data", extension = ".txt")
 #' 
-#' 
 #' ## Summarizing tag info
 #' 
 #' \dontrun{} tags <- tag_info(array)
 #' 
 #' ##  Export the tag info as a .txt file:
 #' \dontrun{} export_excel_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
-#' 
-#' 
-#' @export
 
 ###############################################################################
 
