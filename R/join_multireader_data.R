@@ -9,7 +9,7 @@
 #' @examples
 #' 
 #' ##  Create the list containing the imported files:
-#' readers <- list(reader_1, reader_2, reader_3)
+#' readers <- list(reader_1, reader_2)
 #' 
 #' ##  Combine the files:
 #' array <- join_multireader_data(readers)
@@ -46,7 +46,7 @@ join_multireader_data <- function(x){
     message("A factor class variable called LOC (from locus) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further graphical statistical analysis once it is the individual detection spot.")
     
     PIT_data_array <- y %>%
-        dplyr::mutate(ANT = replace_na(ANT, 1)) %>%
+        dplyr::mutate(ANT = tidyr::replace_na(ANT, 1)) %>%
         dplyr::mutate(LOC = paste0(SCD,ANT)) %>%
         dplyr::mutate(SCD = as.factor(SCD)) %>%
         dplyr::mutate(ANT = as.factor(ANT)) %>%
