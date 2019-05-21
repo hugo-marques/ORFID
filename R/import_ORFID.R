@@ -27,20 +27,20 @@ import_ORFID <- function(file, delim){
         stop("The column separator must be '\t', ',' or ';'")
     }
     
-    raw_data <- read_delim(file, delim = delim, skip = grep("--------- Upload", readLines(file)))
+    raw_data <- readr::read_delim(file, delim = delim, skip = grep("* ---------$", readLines(file)))
     
     raw_data <- raw_data %>%
-        filter(DTY == "S" | DTY == "I") %>%
-        mutate(DUR = parse_time(DUR, '%H:%M:%OS')) 
+        dplyr::filter(DTY == "S" | DTY == "I") %>%
+        dplyr::mutate(DUR = parse_time(DUR, '%H:%M:%OS')) 
     
     if(("SCD" %in% names(raw_data))){
         raw_data <- raw_data %>%
-            mutate(SCD = as.factor(SCD))
+            dplyr::mutate(SCD = as.factor(SCD))
     }
     
     if(("TTY" %in% names(raw_data))){
         raw_data <- raw_data %>%
-            mutate(TTY = as.factor(TTY))
+            dplyr::mutate(TTY = as.factor(TTY))
     }
     
     if(!("TAG" %in% names(raw_data))){
@@ -48,7 +48,7 @@ import_ORFID <- function(file, delim){
         warning("The Tag number (TAG) is required for further analysis. Consider upload the data from the ORFID reader again making sure the TAG is selected in the field name")
     }
     
-    return(glimpse(raw_data))
+    return(dplyr::glimpse(raw_data))
     
 }
 
