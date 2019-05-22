@@ -39,7 +39,7 @@ export_excel_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
 ##  Export the data as a .txt file:
 export_excel_ORFID(x = array, name = "PIT_data", extension = ".txt")
 
-##  ummarizing tag info
+##  Summarizing tag info
 tags <- tag_summary(array) 
 
 ##  Export the tag info as a .xlsx file:

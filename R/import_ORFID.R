@@ -30,7 +30,7 @@ import_ORFID <- function(file, delim){
     raw_data <- readr::read_delim(file, delim = delim, skip = grep("* ---------$", readLines(file)))
     
     raw_data <- raw_data %>%
-        dplyr::filter(DTY == "S" | DTY == "I") %>%
+        dplyr::filter(DTY == "S" | DTY == "I")
 
     if(("DUR" %in% names(raw_data))){
         raw_data <- raw_data %>%
