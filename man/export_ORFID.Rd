@@ -24,15 +24,10 @@ The file will be saved in the user-specified working directory.
 }
 \examples{
 ##  Exporting a PIT_data data frame to the working directory. 
-##  Create the list containing the imported files:
 readers <- list(reader_1, reader_2)
-##  Combine the files:
 array <- join_multireader_data(readers)
-##  Export the multi reader data as a .xlsx file:
 \dontrun{} export_excel_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
-##  Export the multi reader data as a .txt file:
 \dontrun{} export_excel_ORFID(x = array, name = "PIT_data", extension = ".txt")
-##  Summarizing tag info
 tags <- tag_info(array) 
 ##  Export the tag info as a .xlsx file:
 \dontrun{} export_excel_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
