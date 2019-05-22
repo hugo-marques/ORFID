@@ -5,6 +5,7 @@
 #' @return Returns a tibble object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' 

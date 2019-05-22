@@ -10,6 +10,7 @@
 #' @seealso 
 #' \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
 #' \code{\link{join_multireader_data}} for Combining data from ORFID readers into an multi readers array
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' 

@@ -9,6 +9,7 @@
 #' The Tag number (TAG) is required for further estatistical analysis. Consider in upload the data from the ORFID reader with variable selected in the Reader field names.
 #' @return Returns a tibble object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
+#' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' 

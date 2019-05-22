@@ -16,9 +16,11 @@ Authors@R: person("Hugo", "Marques", email = "biohmarques@gmail.com",
 Depends:
     R (>= 3.5.0)
 Imports:
+    magrittr,
     dplyr,
     readr,
     tidyr,
+    ggplot2,
     openxlsx
 License: MIT + file LICENSE
 URL: https://github.com/hugo-marques/ORFID
