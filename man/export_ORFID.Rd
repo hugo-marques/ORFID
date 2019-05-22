@@ -23,23 +23,17 @@ Function to export PIT_data data frames as a xlsx file to user working directory
 The file will be saved in the user-specified working directory.
 }
 \examples{
-##  Exporting a PIT_data data frame to the working directory.
-
+##  Exporting a PIT_data data frame to the working directory. 
 ##  Create the list containing the imported files:
-\dontrun{} readers <- list(reader_1, reader_2)
-
+readers <- list(reader_1, reader_2)
 ##  Combine the files:
-\dontrun{} array <- join_multireader_data(readers)
-
+array <- join_multireader_data(readers)
 ##  Export the multi reader data as a .xlsx file:
 \dontrun{} export_excel_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
-
 ##  Export the multi reader data as a .txt file:
 \dontrun{} export_excel_ORFID(x = array, name = "PIT_data", extension = ".txt")
-
 ##  Summarizing tag info
-\dontrun{} tags <- tag_info(array)
-
+tags <- tag_info(array) 
 ##  Export the tag info as a .xlsx file:
 \dontrun{} export_excel_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
 }
