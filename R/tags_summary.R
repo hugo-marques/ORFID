@@ -13,9 +13,7 @@
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
-#' 
 #' ##  Analyzing tag-specific information in a PIT_data.
-#'  
 #' tag_info(reader_1)
 #' 
 #' ##  Create the list containing the imported files:
@@ -25,9 +23,7 @@
 #' array <- join_multireader_data(readers)
 #' 
 #' ##  Summarizing tag info
-#' 
 #' tag_info(array)
-#' 
 
 
 ###############################################################################
@@ -46,8 +42,8 @@ tags_summary <- function(x){
         dplyr::distinct(TAG, .keep_all = T) %>%
         #dplyr::select(TAG, n) %>%
         dplyr::rename(REC = n) %>%
-        dplyr::mutate(FIR = first(ARR)) %>%
-        dplyr::mutate(LAS = last(ARR))
+        dplyr::mutate(FIR = dplyr::first(ARR)) %>%
+        dplyr::mutate(LAS = dplyr::last(ARR))
     
     
     if("TTY" %in% names(PIT)){

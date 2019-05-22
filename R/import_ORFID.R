@@ -12,13 +12,8 @@
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
-#' 
-#' ##  Importing the ORFID reader data to the user working directory
-#' 
+#' ##  Importing the ORFID reader data to the user working directory#' 
 #' \dontrun{} data_BRA <- import_ORFID("~/Desktop/SCD_BRA.txt")
-#' 
-#' \dontrun{} data_USA <- import_ORFID("~/Desktop/SCD_USA.txt")
-#' 
 
 ###############################################################################
 
@@ -35,7 +30,7 @@ import_ORFID <- function(file, delim){
 
     if(("DUR" %in% names(raw_data))){
         raw_data <- raw_data %>%
-            dplyr::mutate(DUR = parse_time(DUR, '%H:%M:%OS'))
+            dplyr::mutate(DUR = readr::parse_time(DUR, '%H:%M:%OS'))
     }
     
     if(("SCD" %in% names(raw_data))){

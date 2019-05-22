@@ -8,7 +8,6 @@
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
-#' 
 #' ##  Create the list containing the imported files:
 #' readers <- list(reader_1, reader_2)
 #' 

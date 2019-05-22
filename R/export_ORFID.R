@@ -14,7 +14,7 @@
 #' ##  Exporting a PIT_data data frame to the working directory.
 #' 
 #' ##  Create the list containing the imported files:
-#' \dontrun{} readers <- list(reader_1, reader_2, reader_3)
+#' \dontrun{} readers <- list(reader_1, reader_2)
 #' 
 #' ##  Combine the files:
 #' \dontrun{} array <- join_multireader_data(readers)
@@ -26,12 +26,10 @@
 #' \dontrun{} export_excel_ORFID(x = array, name = "PIT_data", extension = ".txt")
 #' 
 #' ##  Summarizing tag info
-#' 
 #' \dontrun{} tags <- tag_info(array)
 #' 
-#' ##  Export the tag info as a .txt file:
+#' ##  Export the tag info as a .xlsx file:
 #' \dontrun{} export_excel_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
-#' 
 
 ###############################################################################
 
