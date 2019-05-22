@@ -13,6 +13,7 @@
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
+#' \dontrun{
 #' ##  Analyzing tag-specific information in a PIT_data.
 #' tag_info(reader_1)
 #' 
@@ -23,7 +24,8 @@
 #' array <- join_multireader_data(readers)
 #' 
 #' ##  Summarizing tag info
-#' tag_info(array)
+#' tag_summary(array)
+#' }
 
 
 ###############################################################################

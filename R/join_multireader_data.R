@@ -8,11 +8,15 @@
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
+#' \dontrun{
+#' 
 #' ##  Create the list containing the imported files:
 #' readers <- list(reader_1, reader_2)
 #' 
 #' ##  Combine the files:
 #' array <- join_multireader_data(readers)
+#' 
+#' }
 
 
 ###############################################################################

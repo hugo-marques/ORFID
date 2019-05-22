@@ -23,14 +23,28 @@ Function to export PIT_data data frames as a xlsx file to user working directory
 The file will be saved in the user-specified working directory.
 }
 \examples{
-##  Exporting a PIT_data data frame to the working directory. 
+\dontrun{
+
+##  Exporting a PIT_data data frame to the working directory.
+
+##  Create the list containing the imported files:  
 readers <- list(reader_1, reader_2)
+
+##  Combine the files:
 array <- join_multireader_data(readers)
-\dontrun{} export_excel_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
-\dontrun{} export_excel_ORFID(x = array, name = "PIT_data", extension = ".txt")
-tags <- tag_info(array) 
+
+##  Export the data a .xlsx file:
+export_excel_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
+
+##  Export the data as a .txt file:
+export_excel_ORFID(x = array, name = "PIT_data", extension = ".txt")
+
+##  ummarizing tag info
+tags <- tag_summary(array) 
+
 ##  Export the tag info as a .xlsx file:
-\dontrun{} export_excel_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
+export_excel_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
+}
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers

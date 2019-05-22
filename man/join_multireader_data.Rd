@@ -19,11 +19,15 @@ Function allows users to combine unique readers into an array, using the data ob
 Data frame is created in the user environment. The output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of data frames combined. A factor class variable called LOC (from locus) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further statistical analysis once it is the individual detection spot.
 }
 \examples{
+\dontrun{
+
 ##  Create the list containing the imported files:
 readers <- list(reader_1, reader_2)
 
 ##  Combine the files:
 array <- join_multireader_data(readers)
+
+}
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers

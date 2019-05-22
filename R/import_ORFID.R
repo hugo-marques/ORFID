@@ -12,8 +12,12 @@
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
-#' ##  Importing the ORFID reader data to the user working directory#' 
-#' \dontrun{} data_BRA <- import_ORFID("~/Desktop/SCD_BRA.txt")
+#' \dontrun{
+#' 
+#' ##  Importing the ORFID reader data to the user working directory
+#' data_BRA <- import_ORFID("~/Desktop/SCD_BRA.txt")
+#' 
+#' }
 
 ###############################################################################
 

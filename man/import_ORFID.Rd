@@ -25,8 +25,12 @@ the field separator character must be either tab, comma or semi-colon otherwise 
 The Tag number (TAG) is required for further estatistical analysis. Consider in upload the data from the ORFID reader with variable selected in the Reader field names.
 }
 \examples{
-##  Importing the ORFID reader data to the user working directory#' 
-\dontrun{} data_BRA <- import_ORFID("~/Desktop/SCD_BRA.txt")
+\dontrun{
+
+##  Importing the ORFID reader data to the user working directory
+data_BRA <- import_ORFID("~/Desktop/SCD_BRA.txt")
+
+}
 }
 \author{
 Hugo Marques <biohmarques@gmail.com>

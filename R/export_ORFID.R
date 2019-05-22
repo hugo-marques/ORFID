@@ -11,14 +11,28 @@
 #' \code{\link{join_multireader_data}} for Combining data from ORFID readers into an multi readers array
 #' @export
 #' @examples
-#' ##  Exporting a PIT_data data frame to the working directory. 
+#' \dontrun{
+#' 
+#' ##  Exporting a PIT_data data frame to the working directory.
+#' 
+#' ##  Create the list containing the imported files:  
 #' readers <- list(reader_1, reader_2)
+#' 
+#' ##  Combine the files:
 #' array <- join_multireader_data(readers)
-#' \dontrun{} export_excel_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
-#' \dontrun{} export_excel_ORFID(x = array, name = "PIT_data", extension = ".txt")
-#' tags <- tag_info(array) 
+#' 
+#' ##  Export the data a .xlsx file:
+#' export_excel_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
+#' 
+#' ##  Export the data as a .txt file:
+#' export_excel_ORFID(x = array, name = "PIT_data", extension = ".txt")
+#' 
+#' ##  Summarizing tag info
+#' tags <- tag_summary(array) 
+#' 
 #' ##  Export the tag info as a .xlsx file:
-#' \dontrun{} export_excel_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
+#' export_excel_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
+#' }
 
 ###############################################################################
 
