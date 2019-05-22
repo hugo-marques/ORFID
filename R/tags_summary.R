@@ -31,7 +31,7 @@
 
 ###############################################################################
 
-tag_info <- function(x){
+tags_summary <- function(x){
     #, tag = "TAG", time = "ARR", type = "TTY"
     #attach(x)
     
