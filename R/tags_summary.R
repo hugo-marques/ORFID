@@ -15,16 +15,16 @@
 #' @examples
 #' \dontrun{
 #' ##  Analyzing tag-specific information in a PIT_data.
-#' tag_info(reader_1)
+#' tags_summary(reader_1)
 #' 
 #' ##  Create the list containing the imported files:
-#' readers list(reader_1, reader_2, reader_3)
+#' readers <- list(reader_1, reader_2)
 #' 
 #' ##  Combine the files:
 #' array <- join_multireader_data(readers)
 #' 
 #' ##  Summarizing tag info
-#' tag_summary(array)
+#' tags_summary(array)
 #' }
 
 

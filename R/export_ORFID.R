@@ -22,16 +22,16 @@
 #' array <- join_multireader_data(readers)
 #' 
 #' ##  Export the data a .xlsx file:
-#' export_excel_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
+#' export_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
 #' 
 #' ##  Export the data as a .txt file:
-#' export_excel_ORFID(x = array, name = "PIT_data", extension = ".txt")
+#' export_ORFID(x = array, name = "PIT_data", extension = ".txt")
 #' 
 #' ##  Summarizing tag info
-#' tags <- tag_summary(array) 
+#' tags <- tags_summary(array) 
 #' 
 #' ##  Export the tag info as a .xlsx file:
-#' export_excel_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
+#' export_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
 #' }
 
 ###############################################################################
