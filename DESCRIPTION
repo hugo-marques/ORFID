@@ -1,6 +1,6 @@
 Type: Package
 Package: ORFID
-Version: 0.2.1
+Version: 0.2.2
 Title: Functions to manage and summarize data from Oregon RFID ORSR and ORMR readers
 Description: PIT telemetry produces a large amount of data. Thus, it is important 
     to consider how to process the continual flow of data produced by the PIT 
