@@ -1,7 +1,7 @@
 #' @title Combine data from ORFID readers into an multi readers array
 #' @description Function allows users to combine unique readers into an array, using the data obtained from \code{\link{import_ORFID}} function. It is necessary to create a list with all data frames to be joined. If the data frames have diferent variables,
 #' @param x list: A list containing data frames created with the \code{\link{import_ORFID}} function to be combined.
-#' @details Data frame is created in the user environment. The output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of data frames combined. A factor class variable called LOC (from locus) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further statistical analysis once it is the individual detection spot.
+#' @details Data frame is created in the user environment. The output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of data frames combined. A factor class variable called LOC (from location) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further statistical analysis once it is the individual detection spot.
 #' @return Returns a tibble object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
@@ -47,7 +47,7 @@ join_multireader_data <- function(x){
         warning("NA values in ANT were replaced by 1")
     }
     
-    message("A factor class variable called LOC (from locus) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further graphical statistical analysis once it is the individual detection spot.")
+    message("A factor class variable called LOC (from location) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further graphical statistical analysis once it is the individual detection spot.")
     
     PIT_data_array <- y %>%
         dplyr::mutate(ANT = tidyr::replace_na(ANT, 1)) %>%
