@@ -44,9 +44,9 @@ tags_summary <- function(x){
         dplyr::distinct(TAG, .keep_all = T) %>%
         #dplyr::select(TAG, n) %>%
         dplyr::rename(REC = n) %>%
+        #dplyr::summarize(mean_DUR = mean(DUR)) %>%
         dplyr::mutate(FIR = dplyr::first(ARR)) %>%
         dplyr::mutate(LAS = dplyr::last(ARR)) %>%
-        dplyr::summarize(mean_DUR = mean(DUR)) %>%
         dplyr::mutate(first_LOC = dplyr::first(LOC)) %>%
         dplyr::mutate(last_LOC = dplyr::last(LOC))
     
@@ -54,7 +54,7 @@ tags_summary <- function(x){
     if("TTY" %in% names(PIT)){
         
         PIT <- PIT %>%
-            dplyr::select(TAG, TTY, REC, FIR, LAS, mean_DUR, first_LOC, last_LOC)
+            dplyr::select(TAG, TTY, REC, FIR, LAS, first_LOC, last_LOC)
         
         message("
                 TAG: tag ID
@@ -62,21 +62,19 @@ tags_summary <- function(x){
                 REC: number of records
                 FIR: first record
                 LAS: last record
-                mean_DUR: mean time on the detection zone
                 first_LOC: first registered location  
                 last_LOC: last registered location 
                 ")
             
         } else {
             PIT <- PIT %>%
-                dplyr::select(TAG, REC, FIR, LAS, mean_DUR, first_LOC, last_LOC)
+                dplyr::select(TAG, REC, FIR, LAS, first_LOC, last_LOC)
             
             message("
                     TAG: tag ID
                     REC: number of records
                     FIR: first record
                     LAS: last record
-                    mean_DUR: mean time on the detection zone
                     first_LOC: first registered location  
                     last_LOC: last registered location
                     ")
