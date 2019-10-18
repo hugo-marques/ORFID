@@ -46,7 +46,7 @@ tags_summary <- function(x){
         dplyr::rename(REC = n) %>%
         dplyr::mutate(FIR = dplyr::first(ARR)) %>%
         dplyr::mutate(LAS = dplyr::last(ARR)) %>%
-        dplyr::mutate(mean_DUR = dplyr::mean(DUR)) %>%
+        dplyr::summarize(mean_DUR = mean(DUR)) %>%
         dplyr::mutate(first_LOC = dplyr::first(LOC)) %>%
         dplyr::mutate(last_LOC = dplyr::last(LOC))
     
