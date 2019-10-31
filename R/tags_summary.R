@@ -31,56 +31,81 @@
 ###############################################################################
 
 tags_summary <- function(x){
-    #, tag = "TAG", time = "ARR", type = "TTY"
-    #attach(x)
     
     if(!("TAG" %in% names(x))){
         stop("The Tag number (TAG) is required.")
     }
     
-    PIT <- x %>%
+    if("ARR" %in% names(x)){
+        PIT_arr <- x %>%
+            dplyr::group_by(TAG) %>%
+            dplyr::mutate(FIR = dplyr::first(ARR)) %>%
+            dplyr::mutate(LAS = dplyr::last(ARR)) %>%
+            dplyr::distinct(TAG, .keep_all = T) %>%
+            dplyr::select(TAG, FIR, LAS)
+    }
+    
+    if("DUR" %in% names(x)){
+        PIT_dur <- x %>%
+            dplyr::group_by(TAG) %>%
+            dplyr::summarize(mean_DUR = mean(DUR))
+    }
+    
+    if("LOC" %in% names(x)){
+        PIT_loc <- x %>%
+            dplyr::group_by(TAG) %>%
+            dplyr::mutate(first_LOC = dplyr::first(LOC)) %>%
+            dplyr::mutate(last_LOC = dplyr::last(LOC)) %>%
+            dplyr::select(TAG, first_LOC, last_LOC) %>%
+            dplyr::distinct(TAG, .keep_all = T)
+    }
+    
+    PIT_n <- x %>%
         dplyr::group_by(TAG) %>%
         dplyr::add_count(TAG) %>%
         dplyr::distinct(TAG, .keep_all = T) %>%
-        #dplyr::select(TAG, n) %>%
-        dplyr::rename(REC = n) %>%
-        #dplyr::summarize(mean_DUR = mean(DUR)) %>%
-        dplyr::mutate(FIR = dplyr::first(ARR)) %>%
-        dplyr::mutate(LAS = dplyr::last(ARR)) %>%
-        dplyr::mutate(first_LOC = dplyr::first(LOC)) %>%
-        dplyr::mutate(last_LOC = dplyr::last(LOC))
+        dplyr::rename(REC = n)
     
-    
-    if("TTY" %in% names(PIT)){
+    if("TTY" %in% names(x)){
+        PIT <- PIT_n %>%
+            dplyr::select(TAG, TTY, REC)
         
+    } else {
+        PIT <- PIT_n %>%
+            dplyr::select(TAG, REC)
+    }
+    
+    if("ARR" %in% names(x)){
         PIT <- PIT %>%
-            dplyr::select(TAG, TTY, REC, FIR, LAS, first_LOC, last_LOC)
+            left_join(PIT_arr, by = "TAG")
+    }
+    
+    if("DUR" %in% names(x)){
+        PIT <- PIT %>%
+            left_join(PIT_dur, by = "TAG")
+    }
+    
+    if("LOC" %in% names(x)){
+        PIT <- PIT %>%
+            left_join(PIT_loc, by = "TAG")
+    }
+    
+    message("
+        TAG: tag ID
+        TTY: tag type (A = Animal (ICAR), R = Read-only, W = Writable, P = Phantom)
+        REC: number of records
+        FIR: first record
+        LAS: last record
+        mean_DUR: mean detection duration
+        first_LOC: first registered location  
+        last_LOC: last registered location
         
-        message("
-                TAG: tag ID
-                TTY: tag type (A = Animal (ICAR), R = Read-only, W = Writable, P = Phantom)
-                REC: number of records
-                FIR: first record
-                LAS: last record
-                first_LOC: first registered location  
-                last_LOC: last registered location 
-                ")
-            
-        } else {
-            PIT <- PIT %>%
-                dplyr::select(TAG, REC, FIR, LAS, first_LOC, last_LOC)
-            
-            message("
-                    TAG: tag ID
-                    REC: number of records
-                    FIR: first record
-                    LAS: last record
-                    first_LOC: first registered location  
-                    last_LOC: last registered location
-                    ")
-        }
+        ")
+    
     
     return(PIT)
+    
+    
 
 } # Function ends
 
