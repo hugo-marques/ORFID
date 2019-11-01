@@ -77,17 +77,17 @@ tags_summary <- function(x){
     
     if("ARR" %in% names(x)){
         PIT <- PIT %>%
-            left_join(PIT_arr, by = "TAG")
+            dplyr::left_join(PIT_arr, by = "TAG")
     }
     
     if("DUR" %in% names(x)){
         PIT <- PIT %>%
-            left_join(PIT_dur, by = "TAG")
+            dplyr::left_join(PIT_dur, by = "TAG")
     }
     
     if("LOC" %in% names(x)){
         PIT <- PIT %>%
-            left_join(PIT_loc, by = "TAG")
+            dplyr::left_join(PIT_loc, by = "TAG")
     }
     
     message("
