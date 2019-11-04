@@ -3,6 +3,7 @@
 export(export_ORFID)
 export(field_names)
 export(import_ORFID)
+export(import_ORFID_events)
 export(join_multireader_data)
 export(tags_summary)
 importFrom(magrittr,"%>%")
