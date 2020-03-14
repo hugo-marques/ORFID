@@ -1,9 +1,6 @@
 #' @title Summarizing tag-specific info of \code{\link{import_ORFID}}
 #' @description Function for getting info about the tags recorded in a PIT_data data frame from \code{\link{import_ORFID}} function (number of unique tags, tags type and records per tag).
 #' @param x data frame to be analyzed.
-# #' @param tag variable of x with the tag ID
-# #' @param time variable of x with the detection time. For ORFID data it can be the either arrival (default = ARR) or departure (default = DEP).
-# #' @param type variable of x with the tag type (ORFID default = TTY)
 #' @details A data frame is created in the user environment with the data grouped by TAG IDs.
 #' @return Returns a tibble object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
@@ -21,10 +18,10 @@
 #' readers <- list(reader_1, reader_2)
 #' 
 #' ##  Combine the files:
-#' array <- join_multireader_data(readers)
+#' PIT_data <- join_multireader_data(readers)
 #' 
 #' ##  Summarizing tag info
-#' tags_summary(array)
+#' tags_summary(PIT_data)
 #' }
 
 

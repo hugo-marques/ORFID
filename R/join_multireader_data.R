@@ -14,7 +14,7 @@
 #' readers <- list(reader_1, reader_2)
 #' 
 #' ##  Combine the files:
-#' array <- join_multireader_data(readers)
+#' PIT_data <- join_multireader_data(readers)
 #' 
 #' }
 

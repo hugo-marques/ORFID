@@ -1,12 +1,9 @@
 #' @title Summarizing tag-specific info of \code{\link{import_ORFID}}
 #' @description Function for getting info about the tags recorded in a PIT_data data frame from \code{\link{import_ORFID}} function (number of unique tags, tags type and records per tag).
 #' @param x data frame to be analyzed.
-#' @param tag data frame to be analyzed.
-#' @param gap data frame to be analyzed.
-# #' @param tag variable of x with the tag ID
-# #' @param time variable of x with the detection time. For ORFID data it can be the either arrival (default = ARR) or departure (default = DEP).
-# #' @param type variable of x with the tag type (ORFID default = TTY)
-#' @details A data frame is created in the user environment with the data grouped by TAG IDs.
+#' @param tag marker tag number. Must be between "".
+#' @param gap Value in seconds, if you want to filter only values greater than or equal to "gap".
+#' @details A data frame is created with the data from the marker tag.
 #' @return Returns a tibble object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso 
@@ -23,10 +20,10 @@
 #' readers <- list(reader_1, reader_2)
 #' 
 #' ##  Combine the files:
-#' array <- join_multireader_data(readers)
+#' PIT_data <- join_multireader_data(readers)
 #' 
-#' ##  Summarizing tag info
-#' tags_summary(array)
+#' ##  Summarizing marker tag data
+#' mrker_tag(PIT_data)
 #' }
 
 
@@ -50,7 +47,7 @@ marker_tag <- function(x, tag, gap){
             mutate_at("arr", list(~. - lag(.))) %>%
             mutate(GAP = round(arr, digits = 1)) %>%
             select(TAG, ARR, DUR, GAP, NCD) %>%
-            filter(GAP > gap)
+            filter(GAP >= gap)
         
     }
     
