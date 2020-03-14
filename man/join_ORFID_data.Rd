@@ -7,7 +7,7 @@
 join_ORFID_data(...)
 }
 \arguments{
-\item{x}{list: A list containing data frames created with the \code{\link{import_ORFID}} function to be combined.}
+\item{...}{A list or a set of dataframes containing data frames created with the \code{\link{import_ORFID}} function to be combined.}
 }
 \value{
 Returns a tibble object.
