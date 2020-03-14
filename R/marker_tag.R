@@ -31,21 +31,21 @@ marker_tag <- function(x, tag, gap){
     
     if(missing(gap)){
         marker_tag <- x %>%
-            filter(TAG == tag) %>%
-            mutate(arr = ARR) %>%
-            mutate_at("arr", list(~. - lag(.))) %>%
-            mutate(GAP = round(arr, digits = 1)) %>%
-            select(TAG, ARR, DUR, GAP, NCD)
+            dplyr::filter(TAG == tag) %>%
+            dplyr::mutate(arr = ARR) %>%
+            dplyr::mutate_at("arr", list(~. - lag(.))) %>%
+            dplyr::mutate(GAP = round(arr, digits = 1)) %>%
+            dplyr::select(TAG, ARR, DUR, GAP, NCD)
         
     } else {
         
         marker_tag <- x %>%
-            filter(TAG == tag) %>%
-            mutate(arr = ARR) %>%
-            mutate_at("arr", list(~. - lag(.))) %>%
-            mutate(GAP = round(arr, digits = 1)) %>%
-            select(TAG, ARR, DUR, GAP, NCD) %>%
-            filter(GAP >= gap)
+            dplyr::filter(TAG == tag) %>%
+            dplyr::mutate(arr = ARR) %>%
+            dplyr::mutate_at("arr", list(~. - lag(.))) %>%
+            dplyr::mutate(GAP = round(arr, digits = 1)) %>%
+            dplyr::select(TAG, ARR, DUR, GAP, NCD) %>%
+            dplyr::filter(GAP >= gap)
         
     }
     

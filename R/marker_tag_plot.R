@@ -38,28 +38,28 @@ marker_tag_plot <- function(x, tag, gap){
             dplyr::mutate(GAP = round(arr, digits = 1)) %>%
             dplyr::select(TAG, ARR, DUR, GAP, NCD)
         
-        plot <- ggplot() +
-            geom_point(data = marker_tag, aes(x = ARR, y = TAG), size = .01) +
-            xlab("Detection time")+
-            ylab(unique(marker_tag$TAG))+
-            scale_x_datetime(date_breaks = "1 hour", date_labels = "%m/%d %H:%M") +
-            theme_bw() +
-            theme(panel.background = element_blank(), 
-                  panel.grid.major = element_blank(),
-                  panel.grid.minor = element_blank(),
-                  plot.background = element_blank(),
-                  axis.text.y=element_blank(),
-                  axis.ticks.y=element_blank(),
-                  axis.text.x = element_text(angle=90, vjust = 0.5, hjust = 1.0))
+        plot <- ggplot2::ggplot() +
+            ggplot2::geom_point(data = marker_tag, ggplot2::aes(x = ARR, y = TAG), size = .01) +
+            ggplot2::xlab("Detection time")+
+            ggplot2::ylab(unique(marker_tag$TAG))+
+            ggplot2::scale_x_datetime(date_breaks = "1 hour", date_labels = "%m/%d %H:%M") +
+            ggplot2::theme_bw() +
+            ggplot2::theme(panel.background = ggplot2::element_blank(), 
+                  panel.grid.major = ggplot2::element_blank(),
+                  panel.grid.minor = ggplot2::element_blank(),
+                  plot.background = ggplot2::element_blank(),
+                  axis.text.y= ggplot2::element_blank(),
+                  axis.ticks.y= ggplot2::element_blank(),
+                  axis.text.x = ggplot2::element_text(angle=90, vjust = 0.5, hjust = 1.0))
         
     } else {
         
         marker_tag <- x %>%
-            filter(TAG == tag) %>%
-            mutate(arr = ARR) %>%
-            mutate_at("arr", list(~. - lag(.))) %>%
-            mutate(GAP = round(arr, digits = 1)) %>%
-            select(TAG, ARR, DUR, GAP, NCD)
+            dplyr::filter(TAG == tag) %>%
+            dplyr::mutate(arr = ARR) %>%
+            dplyr::mutate_at("arr", list(~. - lag(.))) %>%
+            dplyr::mutate(GAP = round(arr, digits = 1)) %>%
+            dplyr::select(TAG, ARR, DUR, GAP, NCD)
         
         marker_tag_gap <- x %>%
             dplyr::filter(TAG == tag) %>%

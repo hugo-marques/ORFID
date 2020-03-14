@@ -1,0 +1,1 @@
+utils::globalVariables(c('DTY', 'DUR', 'SCD', 'TTY', 'TRF', 'ARR', 'ANT', 'LOC', 'TAG', 'GAP', 'arr', 'n', 'TAG_n', 'FIR', 'LAS', 'first_LOC', 'last_LOC'))
