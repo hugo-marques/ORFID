@@ -1,4 +1,4 @@
-#' @title Summarizing tag-specific info of \code{\link{import_ORFID}}
+#' @title Summarizing marker tag data of \code{\link{import_ORFID}}
 #' @description Function for getting info about the tags recorded in a PIT_data data frame from \code{\link{import_ORFID}} function (number of unique tags, tags type and records per tag).
 #' @param x data frame to be analyzed.
 #' @param tag marker tag number. Must be between "".
@@ -13,11 +13,9 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' ##  Analyzing tag-specific information in a PIT_data.
-#' tags_summary(reader_1)
 #' 
 #' ##  Create the list containing the imported files:
-#' readers <- list(reader_1, reader_2)
+#' readers <- list(reader_1, reader_2, reader_3)
 #' 
 #' ##  Combine the files:
 #' PIT_data <- join_multireader_data(readers)

@@ -11,8 +11,6 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' ##  Analyzing tag-specific information in a PIT_data.
-#' tags_summary(reader_1)
 #' 
 #' ##  Create the list containing the imported files:
 #' readers <- list(reader_1, reader_2)
@@ -20,7 +18,7 @@
 #' ##  Combine the files:
 #' PIT_data <- join_multireader_data(readers)
 #' 
-#' ##  Summarizing tag info
+#' ##  Analyzing tag-specific information in a PIT_data.
 #' tags_summary(PIT_data)
 #' }
 

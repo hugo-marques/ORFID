@@ -11,7 +11,7 @@
 #' \dontrun{
 #' 
 #' ##  Create the list containing the imported files:
-#' readers <- list(reader_1, reader_2)
+#' readers <- list(reader_1, reader_2, reader_3)
 #' 
 #' ##  Combine the files:
 #' PIT_data <- join_ORFID_data(readers)

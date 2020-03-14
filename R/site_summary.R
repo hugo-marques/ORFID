@@ -14,8 +14,6 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' ##  Analyzing site-specific information in a PIT_data.
-#' site_summary(reader_1)
 #' 
 #' ##  Create the list containing the imported files:
 #' readers <- list(reader_1, reader_2)
@@ -23,7 +21,7 @@
 #' ##  Combine the files:
 #' PIT_data <- join_multireader_data(readers)
 #' 
-#' ##  Summarizing tag info
+#' ##  Summarizing site info
 #' site_summary(PIT_data)
 #' }
 
