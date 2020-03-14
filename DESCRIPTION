@@ -14,7 +14,7 @@ Date: 2019-05-22
 Authors@R: person("Hugo", "Marques", email = "biohmarques@gmail.com", 
     role = c("aut", "cre"), comment = c(ORCID = "0000-0002-9361-9341"))
 Depends:
-    R (>= 3.5.0)
+    R (>= 3.6.0)
 Imports:
     magrittr,
     dplyr,
