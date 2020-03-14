@@ -4,7 +4,8 @@
 \name{reader_1}
 \alias{reader_1}
 \title{ORFID readers data samples}
-\format{A data frame with 8590 rows and 9 variables:
+\format{
+A data frame with 8590 rows and 9 variables:
 \describe{
   \item{DTY}{Detection type (S = summary, I = individual, E = event)}
   \item{ARR}{Arrival date and time}
@@ -15,7 +16,8 @@
   \item{SCD}{Site code}
   \item{NCD}{Number of consecutive detections}
   \item{EFA}{Effective amps}
-}}
+}
+}
 \usage{
 reader_1
 }
