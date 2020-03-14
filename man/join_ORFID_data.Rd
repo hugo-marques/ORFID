@@ -16,7 +16,7 @@ Returns a tibble object.
 Function allows users to combine unique readers into an array, using the data obtained from \code{\link{import_ORFID}} function. It is necessary to create a list with all data frames to be joined. If the data frames have diferent variables,
 }
 \details{
-Data frame is created in the user environment. The output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of data frames combined. A factor class variable called LOC (from location) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further statistical analysis once it is the individual detection spot.
+Data frame is created in the user environment. The output of \code{\link{join_ORFID_data}} will contain a column if that column appears in any of data frames combined. A factor class variable called LOC (from location) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further statistical analysis once it is the individual detection spot.
 }
 \examples{
 \dontrun{
