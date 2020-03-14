@@ -76,15 +76,15 @@ marker_tag_plot <- function(x, tag, gap){
             ggplot2::xlab("Detection time")+
             ggplot2::ylab(unique(marker_tag$TAG))+
             ggplot2::scale_x_datetime(date_breaks = "1 hour", date_labels = "%m/%d %H:%M") +
-            ggplot2::geom_linerange(data = marker_tag_gap, aes(xmin = gap_start, xmax = gap_end, y = TAG), colour = "red", size = 500, alpha = .3) +
+            ggplot2::geom_linerange(data = marker_tag_gap, ggplot2::aes(xmin = gap_start, xmax = gap_end, y = TAG), colour = "red", size = 500, alpha = .3) +
             ggplot2::theme_bw() +
-            ggplot2::theme(panel.background = element_blank(), 
-                  panel.grid.major = element_blank(),
-                  panel.grid.minor = element_blank(),
-                  plot.background = element_blank(),
-                  axis.text.y=element_blank(),
-                  axis.ticks.y=element_blank(),
-                  axis.text.x = element_text(angle=90, vjust = 0.5, hjust = 1.0))
+            ggplot2::theme(panel.background = ggplot2::element_blank(), 
+                  panel.grid.major = ggplot2::element_blank(),
+                  panel.grid.minor = ggplot2::element_blank(),
+                  plot.background = ggplot2::element_blank(),
+                  axis.text.y= ggplot2::element_blank(),
+                  axis.ticks.y= ggplot2::element_blank(),
+                  axis.text.x = ggplot2::element_text(angle=90, vjust = 0.5, hjust = 1.0))
         
     }
     
