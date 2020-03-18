@@ -37,7 +37,7 @@ site_summary <- function(x){
         dplyr::mutate(TAG_ID = dplyr::n_distinct(TAG)) %>%
         dplyr::distinct(LOC, .keep_all = T) %>%
         dplyr::mutate(LAS = dplyr::last(TAG)) %>%
-        dplyr::select(LOC, REC, TAG_n, LAS)
+        dplyr::select(LOC, REC, TAG_ID, LAS)
     
     return(site)
     
