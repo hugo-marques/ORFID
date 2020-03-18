@@ -34,7 +34,7 @@ site_summary <- function(x){
         dplyr::group_by(LOC) %>%
         dplyr::add_count(LOC) %>%
         dplyr::rename(REC = n) %>%
-        dplyr::mutate(TAG_n = dplyr::n_distinct(TAG)) %>%
+        dplyr::mutate(TAG_ID = dplyr::n_distinct(TAG)) %>%
         dplyr::distinct(LOC, .keep_all = T) %>%
         dplyr::mutate(LAS = dplyr::last(TAG)) %>%
         dplyr::select(LOC, REC, TAG_n, LAS)

@@ -43,7 +43,7 @@ tags_summary <- function(x){
     if("DUR" %in% names(x)){
         PIT_dur <- x %>%
             dplyr::group_by(TAG) %>%
-            dplyr::summarize(mean_DUR = mean(DUR))
+            dplyr::summarize(mean_DUR = round(mean(DUR), digits = 1))
     }
     
     if("LOC" %in% names(x)){
