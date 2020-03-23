@@ -38,15 +38,13 @@ tags_summary <- function(x){
             dplyr::mutate(FIR = dplyr::first(ARR)) %>%
             dplyr::mutate(LAS = dplyr::last(ARR)) %>%
             dplyr::distinct(TAG, .keep_all = T) %>%
-            dplyr::select(TAG, FIR, LAS) %>%
-            dplyr::ungroup()
+            dplyr::select(TAG, FIR, LAS)
     }
     
     if("DUR" %in% names(x)){
         PIT_dur <- x %>%
             dplyr::group_by(TAG) %>%
-            dplyr::summarize(mean_DUR = round(mean(DUR), digits = 1)) %>%
-            dplyr::ungroup()
+            dplyr::summarize(mean_DUR = round(mean(DUR), digits = 1))
     }
     
     if("LOC" %in% names(x)){
@@ -55,20 +53,17 @@ tags_summary <- function(x){
             dplyr::arrange(ARR) %>%
             dplyr::mutate(first_LOC = dplyr::first(LOC)) %>%
             dplyr::mutate(last_LOC = dplyr::last(LOC)) %>%
-            dplyr::select(TAG, first_LOC, last_LOC) %>%
             dplyr::mutate(intermediate_LOC = dplyr::nth(LOC, ceiling(length(LOC)/2))) %>%
-            dplyr::mutate(other_LOC = any(LOC != first(LOC))) %>%
+            dplyr::mutate(other_LOC = any(LOC != dplyr::first(LOC))) %>%
             dplyr::distinct(TAG, .keep_all = T) %>%
-            #summarise(fir = dplyr::first(LOC), intermediate_LOC = dplyr::nth(LOC, ceiling(length(LOC)/2)), other_LOC = any(LOC != dplyr::first(LOC)), las = last(LOC))
-            dplyr::ungroup()
+            dplyr::select(TAG, first_LOC, intermediate_LOC, other_LOC, last_LOC)
     }
     
     PIT_n <- x %>%
         dplyr::group_by(TAG) %>%
         dplyr::add_count(TAG) %>%
         dplyr::distinct(TAG, .keep_all = T) %>%
-        dplyr::rename(REC = n) %>%
-        dplyr::ungroup()
+        dplyr::rename(REC = n)
     
     if("TTY" %in% names(x)){
         PIT <- PIT_n %>%
@@ -81,7 +76,8 @@ tags_summary <- function(x){
     
     if("ARR" %in% names(x)){
         PIT <- PIT %>%
-            dplyr::left_join(PIT_arr, by = "TAG")
+            dplyr::left_join(PIT_arr, by = "TAG") %>%
+            dplyr::ungroup()
     }
     
     if("DUR" %in% names(x)){
@@ -91,7 +87,8 @@ tags_summary <- function(x){
     
     if("LOC" %in% names(x)){
         PIT <- PIT %>%
-            dplyr::left_join(PIT_loc, by = "TAG")
+            dplyr::left_join(PIT_loc, by = "TAG") %>%
+            dplyr::ungroup()
     }
     
     message("
@@ -101,7 +98,9 @@ tags_summary <- function(x){
         FIR: first record
         LAS: last record
         mean_DUR: mean detection duration
-        first_LOC: first registered location  
+        first_LOC: first registered location
+        intermediate_LOC: location of the intermediate detection
+        other_LOC: if the tag was detected in a location other than the initial one, TRUE, otherwise FALSE
         last_LOC: last registered location
         
         ")
