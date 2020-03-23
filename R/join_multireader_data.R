@@ -54,7 +54,8 @@ join_multireader_data <- function(x){
         dplyr::mutate(LOC = paste0(SCD,ANT)) %>%
         dplyr::mutate(SCD = as.factor(SCD)) %>%
         dplyr::mutate(ANT = as.factor(ANT)) %>%
-        dplyr::mutate(LOC = as.factor(LOC))
+        dplyr::mutate(LOC = as.factor(LOC)) %>%
+        dplyr::arrange(ARR)
     
     Sys.sleep(2)
     
