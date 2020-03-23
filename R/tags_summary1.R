@@ -19,13 +19,13 @@
 #' PIT_data <- join_multireader_data(readers)
 #' 
 #' ##  Analyzing tag-specific information in a PIT_data.
-#' tags_summary(PIT_data)
+#' tags_summary1(PIT_data)
 #' }
 
 
 ###############################################################################
 
-tags_summary <- function(x){
+tags_summary1 <- function(x){
     
     if(!("TAG" %in% names(x))){
         stop("The Tag number (TAG) is required.")
@@ -53,13 +53,13 @@ tags_summary <- function(x){
         PIT_loc <- x %>%
             dplyr::group_by(TAG) %>%
             dplyr::arrange(ARR) %>%
-            dplyr::mutate(first_LOC = dplyr::first(LOC)) %>%
-            dplyr::mutate(last_LOC = dplyr::last(LOC)) %>%
-            dplyr::select(TAG, first_LOC, last_LOC) %>%
-            dplyr::mutate(intermediate_LOC = dplyr::nth(LOC, ceiling(length(LOC)/2))) %>%
-            dplyr::mutate(other_LOC = any(LOC != first(LOC))) %>%
-            dplyr::distinct(TAG, .keep_all = T) %>%
-            #summarise(fir = dplyr::first(LOC), intermediate_LOC = dplyr::nth(LOC, ceiling(length(LOC)/2)), other_LOC = any(LOC != dplyr::first(LOC)), las = last(LOC))
+            #dplyr::mutate(first_LOC = dplyr::first(LOC)) %>%
+            #dplyr::mutate(last_LOC = dplyr::last(LOC)) %>%
+            #dplyr::select(TAG, first_LOC, last_LOC) %>%
+            #dplyr::mutate(intermediate_LOC = dplyr::nth(LOC, ceiling(length(LOC)/2))) %>%
+            #dplyr::mutate(other_LOC = any(LOC != first(LOC))) %>%
+            #dplyr::distinct(TAG, .keep_all = T) %>%
+            summarise(first_LOC = first(LOC), intermediate_LOC = nth(LOC, ceiling(length(LOC)/2)), other_LOC = any(LOC != first(LOC)), last_LOC = last(LOC))
             dplyr::ungroup()
     }
     
