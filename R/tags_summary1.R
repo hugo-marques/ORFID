@@ -57,7 +57,7 @@ tags_summary1 <- function(x){
             #dplyr::mutate(intermediate_LOC = dplyr::nth(LOC, ceiling(length(LOC)/2))) %>%
             #dplyr::mutate(other_LOC = any(LOC != first(LOC))) %>%
             #dplyr::distinct(TAG, .keep_all = T) %>%
-            summarise(first_LOC = dplyr::first(LOC), intermediate_LOC = dplyr::nth(LOC, ceiling(length(LOC)/2)), other_LOC = any(LOC != dplyr::first(LOC)), last_LOC = dplyr::last(LOC))
+            dplyr::summarise(first_LOC = dplyr::first(LOC), intermediate_LOC = dplyr::nth(LOC, ceiling(length(LOC)/2)), other_LOC = any(LOC != dplyr::first(LOC)), last_LOC = dplyr::last(LOC))
     }
     
     PIT_n <- x %>%
