@@ -35,10 +35,15 @@ import_old_readers <- function(file, delim){
     
     raw_data <- raw_data %>%
         dplyr::filter(DTY == "S" | DTY == "I")
+    
+    if(("ARR" %in% names(raw_data))){
+        raw_data <- raw_data %>%
+            dplyr::mutate(ARR = readr::parse_datetime(ARR, '%Y/%m/%d %H:%M:%OS'))
+    }
 
     if(("DUR" %in% names(raw_data))){
         raw_data <- raw_data %>%
-            dplyr::mutate(DUR = readr::parse_datetime(DUR, '%Y/%m/%d %H:%M:%OS'))
+            dplyr::mutate(DUR = readr::parse_time(DUR, '%H:%M:%OS'))
     }
     
     if(("SCD" %in% names(raw_data))){
