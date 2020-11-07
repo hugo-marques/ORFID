@@ -29,12 +29,12 @@ import_ORFID <- function(file, delim){
     
     raw_data <- raw_data %>%
         dplyr::unite("ARR", Date:Time, sep = " ", remove = FALSE) %>%
-        rename(DTY = Type) %>%
-        rename(DUR = Duration) %>%
-        rename(TTY = Type_1) %>%
-        rename(TAG = 'Tag ID') %>%
-        rename(NCD = Count) %>%
-        rename(EMP = Gap)
+        dplyr::rename(DTY = Type) %>%
+        dplyr::rename(DUR = Duration) %>%
+        dplyr::rename(TTY = Type_1) %>%
+        dplyr::rename(TAG = 'Tag ID') %>%
+        dplyr::rename(NCD = Count) %>%
+        dplyr::rename(EMP = Gap)
     
     raw_data <- raw_data %>%
         dplyr::filter(DTY == "S" | DTY == "I")
