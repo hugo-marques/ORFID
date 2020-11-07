@@ -24,6 +24,11 @@ the field separator character must be either tab, comma or semi-colon otherwise 
 
 The Tag number (TAG) is required for further estatistical analysis. Consider in upload the data from the ORFID reader with variable selected in the Reader field names.
 }
+\examples{
+\dontrun{
+
+}
+}
 \author{
 Hugo Marques <biohmarques@gmail.com>
 }

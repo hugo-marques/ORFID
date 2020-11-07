@@ -27,7 +27,7 @@ import_ORFID <- function(file, delim){
         stop("The column separator must be '\t', ',' or ';'")
     }
     
-    raw_data <- readr::read_delim(file, delim = delim, skip = grep("* ---------$", readLines(file)))
+    raw_data <- readr::read_delim(file, delim = delim, skip = grep("* records  ---------$", readLines(file)))
     
     raw_data <- raw_data %>%
         dplyr::filter(DTY == "S" | DTY == "I")
