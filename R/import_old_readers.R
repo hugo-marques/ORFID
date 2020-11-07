@@ -28,10 +28,10 @@ import_ORFID <- function(file, delim){
     raw_data <- readr::read_delim(file, delim = delim, skip = grep("* ---------$", readLines(file)))
     
     raw_data <- raw_data %>%
-        unite("ARR", Date:Time, sep = " ", remove = FALSE) %>%
+        dplyr::unite("ARR", Date:Time, sep = " ", remove = FALSE) %>%
         rename(DTY = Type) %>%
         rename(DUR = Duration) %>%
-        rename(TTY = Type_2) %>%
+        rename(TTY = Type_1) %>%
         rename(TAG = 'Tag ID') %>%
         rename(NCD = Count) %>%
         rename(EMP = Gap)
