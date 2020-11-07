@@ -28,7 +28,7 @@ import_ORFID <- function(file, delim){
     raw_data <- readr::read_delim(file, delim = delim, skip = grep("* ---------$", readLines(file)))
     
     raw_data <- raw_data %>%
-        dplyr::unite("ARR", Date:Time, sep = " ", remove = FALSE) %>%
+        tidyr::unite("ARR", Date:Time, sep = " ", remove = FALSE) %>%
         dplyr::rename(DTY = Type) %>%
         dplyr::rename(DUR = Duration) %>%
         dplyr::rename(TTY = Type_1) %>%
