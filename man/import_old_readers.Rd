@@ -26,7 +26,7 @@ The Tag number (TAG) is required for further estatistical analysis. Consider in 
 }
 \examples{
 \dontrun{
-
+Teste
 }
 }
 \author{
