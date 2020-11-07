@@ -12,14 +12,11 @@
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
-#' \dontrun{
-#' 
-#' 
-#' }
+
 
 ###############################################################################
 
-import_ORFID <- function(file, delim){
+import_old_readers <- function(file, delim){
     
     if (!(delim %in% c("\t", ",", ";"))) {
         stop("The column separator must be '\t', ',' or ';'")
@@ -41,7 +38,7 @@ import_ORFID <- function(file, delim){
 
     if(("DUR" %in% names(raw_data))){
         raw_data <- raw_data %>%
-            dplyr::mutate(DUR = readr::parse_time(DUR, '%H:%M:%OS'))
+            dplyr::mutate(DUR = readr::parse_datetime(DUR, '%Y/%m/%d %H:%M:%OS'))
     }
     
     if(("SCD" %in% names(raw_data))){
