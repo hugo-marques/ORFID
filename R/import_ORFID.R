@@ -34,6 +34,7 @@ import_ORFID <- function(file, delim){
 
     if(("DUR" %in% names(raw_data))){
         raw_data <- raw_data %>%
+            dplyr::mutate(DUR = as.character(DUR)) %>%
             dplyr::mutate(DUR = readr::parse_time(DUR, '%H:%M:%OS'))
     }
     
