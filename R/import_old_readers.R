@@ -43,7 +43,7 @@ import_old_readers <- function(file, delim){
     
     if(("ARR" %in% names(raw_data))){
         raw_data <- raw_data %>%
-            dplyr::mutate(ARR = readr::parse_datetime(ARR, '%Y/%m/%d %H:%M:%OS'))
+            dplyr::mutate(ARR = readr::parse_datetime(ARR, '%Y-%m-%d %H:%M:%OS'))
     }
 
     if(("DUR" %in% names(raw_data))){
