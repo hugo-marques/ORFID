@@ -40,7 +40,7 @@ join_multireader_data <- function(x){
     
     if(!("ANT" %in% names(y))){
         y <- y %>%
-            dplyr::mutate(ANT = 1)
+            dplyr::mutate(ANT = "A1")
     }
     
     if(anyNA(y$ANT) == T) {
