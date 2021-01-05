@@ -28,7 +28,7 @@ import_old_readers <- function(file, delim){
     
     site_name <- grep("^Reader*", readLines(file), value = TRUE)
     
-    site_code <- str_extract(site_name, '\\w*$')
+    site_code <- stringr::str_extract(site_name, '\\w*$')
     
     raw_data <- raw_data %>%
         tidyr::unite("ARR", Date:Time, sep = " ", remove = FALSE) %>%
