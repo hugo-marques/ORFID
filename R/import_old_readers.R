@@ -24,7 +24,7 @@ import_old_readers <- function(file, delim){
         stop("The column separator must be '\t', ',' or ';'")
     }
     
-    raw_data <- readr::read_delim(file, delim = delim, skip = grep("* start ---------$", readLines(file)))
+    raw_data <- readr::read_delim(file, delim = delim, skip = grep("^ Reader: *", readLines(file)))
     
     raw_data <- raw_data %>%
         tidyr::unite("ARR", Date:Time, sep = " ", remove = FALSE) %>%
@@ -36,7 +36,7 @@ import_old_readers <- function(file, delim){
         dplyr::rename(EMP = Gap)
     
     raw_data <- raw_data %>%
-        dplyr::filter(DTY == "E" | DTY == "D")
+        dplyr::filter(DTY == "D")
     
     raw_data <- raw_data %>%
         dplyr::select(-c(Date, Time))
