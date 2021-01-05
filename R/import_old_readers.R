@@ -24,22 +24,24 @@ import_old_readers <- function(file, delim){
         stop("The column separator must be '\t', ',' or ';'")
     }
     
-    raw_data <- readr::read_delim(file, delim = delim, skip = grep("^ Reader: *", readLines(file)))
+    raw_data <- readr::read_delim(file, delim = delim, skip = grep("^Reader: *", readLines(file)))
+    
+    site_name <- grep("^Reader*", readLines(file), value = TRUE)
+    
+    site_code <- str_extract(site_name, '\\w*$')
     
     raw_data <- raw_data %>%
         tidyr::unite("ARR", Date:Time, sep = " ", remove = FALSE) %>%
         dplyr::rename(DTY = Type) %>%
         dplyr::rename(DUR = Duration) %>%
-        dplyr::rename(TTY = Type_1) %>%
+        tidyr::separate(Type_1, sep = 1, into = c("TCH", "TTY")) %>%
         dplyr::rename(TAG = 'Tag ID') %>%
         dplyr::rename(NCD = Count) %>%
-        dplyr::rename(EMP = Gap)
-    
-    raw_data <- raw_data %>%
+        dplyr::rename(EMP = Gap) %>%
+        dplyr::mutate(SCD = as.factor(site_code)) %>%
+        dplyr::select(-c(Date, Time)) %>%
         dplyr::filter(DTY == "D")
     
-    raw_data <- raw_data %>%
-        dplyr::select(-c(Date, Time))
     
     if(("ARR" %in% names(raw_data))){
         raw_data <- raw_data %>%
@@ -51,14 +53,14 @@ import_old_readers <- function(file, delim){
             dplyr::mutate(DUR = readr::parse_time(DUR, '%H:%M:%OS'))
     }
     
-    if(("SCD" %in% names(raw_data))){
-        raw_data <- raw_data %>%
-            dplyr::mutate(SCD = as.factor(SCD))
-    }
-    
     if(("TTY" %in% names(raw_data))){
         raw_data <- raw_data %>%
             dplyr::mutate(TTY = as.factor(TTY))
+    }
+    
+    if(("EMP" %in% names(raw_data))){
+        raw_data <- raw_data %>%
+            dplyr::mutate(EMP = as.double(EMP))
     }
     
     if(!("TAG" %in% names(raw_data))){
