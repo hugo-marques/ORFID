@@ -44,14 +44,14 @@ join_multireader_data <- function(x){
     }
     
     if(anyNA(y$ANT) == T) {
-        warning("NA values in ANT were replaced by 1")
+        warning("NA values in ANT were replaced by A1")
     }
     
     message("A factor class variable called LOC (from location) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further graphical statistical analysis once it is the individual detection spot.")
     
     PIT_data_array <- y %>%
-        dplyr::mutate(ANT = tidyr::replace_na(ANT, 1)) %>%
-        dplyr::mutate(LOC = paste0(SCD,ANT)) %>%
+        dplyr::mutate(ANT = tidyr::replace_na(ANT, "A1")) %>%
+        dplyr::mutate(LOC = paste(SCD, ANT, sep = "_")) %>%
         dplyr::mutate(SCD = as.factor(SCD)) %>%
         dplyr::mutate(ANT = as.factor(ANT)) %>%
         dplyr::mutate(LOC = as.factor(LOC)) %>%
