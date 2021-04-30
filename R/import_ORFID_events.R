@@ -26,13 +26,31 @@ import_ORFID_events <- function(file, delim){
         stop("The column separator must be '\t', ',' or ';'")
     }
     
-    raw_data <- readr::read_delim(file, delim = delim, skip = grep("* ---------$", readLines(file)))
+    raw_data <- readr::read_delim(file, delim = delim, skip = grep("* records ---------$", readLines(file)))
     
-    raw_data <- raw_data %>%
-        dplyr::filter(DTY == "E") %>%
-        dplyr::mutate(message = DUR) %>%
-        dplyr::mutate(TRF = as.factor(TRF)) %>%
-        dplyr::select(DTY, ARR, TRF, message)
+    if(("SCD" %in% names(raw_data))){
+        
+        site_code <- raw_data %>%
+            dplyr::mutate(SCD = as.factor(SCD)) %>% 
+            dplyr::distinct(SCD)
+        
+        raw_data <- raw_data %>%
+            dplyr::filter(DTY == "E") %>%
+            dplyr::mutate(SCD = as.factor(site_code)) %>% 
+            dplyr::mutate(message = DUR) %>%
+            dplyr::mutate(TRF = as.factor(TRF)) %>%
+            dplyr::select(DTY, SCD, ARR, TRF, message)
+        
+    } else {
+        
+        raw_data <- raw_data %>%
+            dplyr::filter(DTY == "E") %>%
+            dplyr::mutate(SCD = as.factor(site_code)) %>% 
+            dplyr::mutate(message = DUR) %>%
+            dplyr::mutate(TRF = as.factor(TRF)) %>%
+            dplyr::select(DTY, SCD, ARR, TRF, message)
+        
+    }
     
     return(dplyr::glimpse(raw_data))
     
