@@ -16,7 +16,7 @@ Returns a tibble object.
 Function for getting info about the tsites in a PIT_data data frame from \code{\link{import_ORFID}} function (number of records, number of tags detected and last tag seen per site).
 }
 \details{
-A data frame is created in the user environment with the data grouped by TAG IDs.
+A data frame is created in the user environment with the data grouped by the site code.
 }
 \examples{
 \dontrun{
