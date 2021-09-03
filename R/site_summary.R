@@ -30,14 +30,29 @@
 
 site_summary <- function(x){
     
-    site <- x %>%
-        dplyr::group_by(LOC) %>%
-        dplyr::add_count(LOC) %>%
-        dplyr::rename(REC = n) %>%
-        dplyr::mutate(TAG_ID = dplyr::n_distinct(TAG)) %>%
-        dplyr::distinct(LOC, .keep_all = T) %>%
-        dplyr::mutate(LAS = dplyr::last(TAG)) %>%
-        dplyr::select(LOC, REC, TAG_ID, LAS)
+    if(("LOC" %in% names(x))){
+        
+        site <- x %>%
+            dplyr::group_by(LOC) %>%
+            dplyr::add_count(LOC) %>%
+            dplyr::rename(REC = n) %>%
+            dplyr::mutate(TAG_ID = dplyr::n_distinct(TAG)) %>%
+            dplyr::distinct(LOC, .keep_all = T) %>%
+            dplyr::mutate(LAS = dplyr::last(TAG)) %>%
+            dplyr::select(LOC, REC, TAG_ID, LAS)
+        
+    } else {
+        
+        site <- x %>%
+            dplyr::group_by(SCD) %>%
+            dplyr::add_count(SCD) %>%
+            dplyr::rename(REC = n) %>%
+            dplyr::mutate(TAG_ID = dplyr::n_distinct(TAG)) %>%
+            dplyr::distinct(SCD, .keep_all = T) %>%
+            dplyr::mutate(LAS = dplyr::last(TAG)) %>%
+            dplyr::select(SCD, REC, TAG_ID, LAS)
+        
+    }
     
     return(site)
     
