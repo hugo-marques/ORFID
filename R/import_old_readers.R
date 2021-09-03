@@ -19,7 +19,7 @@
 ###############################################################################
 
 
-import_old_readers <- function (file, delim, site_code){
+import_old_readers <- function (file, delim){
     
     if (!(delim %in% c("\t", ",", ";"))) {
         stop("The column separator must be '\t', ',' or ';'")
