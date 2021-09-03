@@ -1,4 +1,4 @@
-#' @title Summarizing site-specific info of \code{\link{import_ORFID}}
+#' @title Summarizing site-specific information of \code{\link{import_ORFID}}
 #' @description Function for getting info about the tsites in a PIT_data data frame from \code{\link{import_ORFID}} function (number of records, number of tags detected and last tag seen per site).
 #' @param x data frame to be analyzed.
 # #' @param tag variable of x with the tag ID
