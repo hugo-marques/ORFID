@@ -4,7 +4,7 @@
 # #' @param tag variable of x with the tag ID
 # #' @param time variable of x with the detection time. For ORFID data it can be the either arrival (default = ARR) or departure (default = DEP).
 # #' @param type variable of x with the tag type (ORFID default = TTY)
-#' @details A data frame is created in the user environment with the data grouped by TAG IDs.
+#' @details A data frame is created in the user environment with the data grouped by location.
 #' @return Returns a tibble object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso 
