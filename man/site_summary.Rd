@@ -2,7 +2,7 @@
 % Please edit documentation in R/site_summary.R
 \name{site_summary}
 \alias{site_summary}
-\title{Summarizing site-specific info of \code{\link{import_ORFID}}}
+\title{Summarizing site-specific information of \code{\link{import_ORFID}}}
 \usage{
 site_summary(x)
 }
