@@ -1,12 +1,14 @@
 #' @title Summarizing time difference between first and last directions in \code{\link{tag_direction}} 
-#' @description Function for summarizing the time between the first and last detected direction of movement of each unique tag id. Input data are created by \code{\link{tag_direction}}, which determines the direction of movement for each detection event in \code{\link{join_multireader_data}}.
+#' @description Function for summarizing the time between the first and last movement directions for each unique tag id. Input data are created by \code{\link{tag_direction}}, which determines the direction of movement for each detection event in \code{\link{join_multireader_data}}.
 #' @param dir_df output from \code{\link{tag_direction}}
 #' @details \code{direction_summary} isolates the first and last direction of movement from \code{\link{tag_direction}} and determines the time difference in seconds and days. 
 #' @return Returns a tibble object. 
 #' @author Annika Putt
 #' @seealso 
 #' \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
+#' 
 #' \code{\link{join_multireader_data}} for combining data from ORFID readers into a multi reader array
+#' 
 #' \code{\link{tag_direction}} for determining movement direction of detections in systems with a linear migration route.
 #' @importFrom magrittr %>%
 #' @export

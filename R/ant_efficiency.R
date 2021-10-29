@@ -1,15 +1,17 @@
 #' @title Determines detection efficiency for \code{\link{join_multireader_data}} 
 #' @description Function for determining detection efficiency for each antenna in systems where multiple antennas are used along a linear migration route. 
-#' @param x data frame to be analyzed.
-#' @param LOC_vec vector of antenna locations from first encountered to last encountered.
+#' @param x data frame to be analyzed
+#' @param LOC_vec vector of antenna locations from first encountered to last encountered
 #' @details \code{ant_efficiency} determines the detection efficiency of each antenna in a linear migration route. Direction is determined based on the order of locations from first encountered to last encountered, as specified in \emph{LOC_vec}. Use \code{\link{site_summary}} to identify all locations present in the multi reader data, which must be included in \emph{LOC_vec}. 
 #' 
-#' Antenna efficiency is determined by identifying which tags were detected at antenna x and which tags were detected anywhere after antenna x. The efficiency of antenna x is then the number of shared tag detections divided by the total number of detections after x. Note that efficiency and shared detections cannot be determined for the final antenna as there are no subsequent detections. Reversing the order of \emph{LOC_vec} can inform efficiency in systems with movement in multiple directions.
+#' Antenna efficiency is determined by identifying which tags were detected at antenna x and which tags were detected anywhere after/above antenna x. The efficiency of antenna x is then the number of shared tag detections divided by the total number of detections after x. Note that efficiency and shared detections cannot be determined for the final antenna as there are no subsequent detections. Reversing the order of \emph{LOC_vec} can inform efficiency in systems with movement in multiple directions.
 #' @return Returns a tibble object. 
 #' @author Annika Putt
 #' @seealso 
 #' \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
+#' 
 #' \code{\link{join_multireader_data}} for combining data from ORFID readers into a multi reader array
+#' 
 #' \code{\link{site_summary}} for identifying all locations present in a multi reader array
 #' @importFrom magrittr %>%
 #' @export

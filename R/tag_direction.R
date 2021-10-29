@@ -1,13 +1,15 @@
 #' @title Summarizing direction of movement for \code{\link{join_multireader_data}} 
 #' @description Function for determining direction of tag movement in systems where multiple antennas are used along a linear migration route. 
-#' @param x data frame to be analyzed.
+#' @param x data frame to be analyzed
 #' @param LOC_vec vector of antenna locations from first encountered to last encountered
-#' @details \code{tag_direction} determines the direction of movement for each individual tag detection event in \emph{x}. Direction is determined based on the order of locations from first encountered to last encountered, as specified in \emph{LOC_vec}. Note that direction cannot be determined until the tag has been detected at multiple locations. Use \code{\link{site_summary}} to identify all locations present in the multi reader data, which must be included in \emph{LOC_vec}. 
+#' @details \code{tag_direction} determines the direction of movement for individual detection events in \emph{x}. Direction is determined based on the order of locations from first encountered to last encountered, as specified in \emph{LOC_vec}. Note that direction cannot be determined until the tag has been detected at multiple locations. Use \code{\link{site_summary}} to identify all locations present in the multi reader data, which must be included in \emph{LOC_vec}. 
 #' @return Returns a tibble object. The column \emph{DIR} displays direction, where \emph{U} is upstream movement, \emph{D} is downstream movement, and \emph{S} is no movement, or a consecutive detection at the previous location. 
 #' @author Annika Putt
 #' @seealso 
 #' \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
+#' 
 #' \code{\link{join_multireader_data}} for combining data from ORFID readers into a multi reader array
+#' 
 #' \code{\link{site_summary}} for identifying all locations present in a multi reader array
 #' @importFrom magrittr %>%
 #' @export
