@@ -14,13 +14,5 @@ Join:
 Tag Summary:
 - Why are there two?
 
-Tag Direction:
-
 Start/Stop Function:
 - Files don't actually have "reader started" data
-
-Residence:
-- Could add beta function based on CH/CY analysis
-
-Detecction Efficiency:
-- Need to make this
