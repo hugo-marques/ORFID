@@ -5,9 +5,6 @@ Import:
 - Parsing warning is from files that start with rows with fewer columns than the detection data
 - Incomplete last line happens for every file because there isn't a blank line on the file
 
-Import Events:
--Function doesn't work without SCD and even when SCD is present it's not populating propery. I fixed this but we just need to merge it.
-
 Join:
 - This should only keep distinct rows in case there were duplicate downloads
 
@@ -16,3 +13,7 @@ Tag Summary:
 
 Start/Stop Function:
 - Files don't actually have "reader started" data
+
+Help:
+- Need to edit grammar for functions
+- Need a vignette
