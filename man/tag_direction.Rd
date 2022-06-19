@@ -7,9 +7,9 @@
 tag_direction(x, LOC_vec)
 }
 \arguments{
-\item{x}{data frame to be analyzed}
+\item{x}{data frame to be analyzed.}
 
-\item{LOC_vec}{vector of antenna locations from first encountered to last encountered}
+\item{LOC_vec}{vector of antenna locations from first encountered to last encountered.}
 }
 \value{
 Returns a tibble object. The column \emph{DIR} displays direction, where \emph{U} is upstream movement, \emph{D} is downstream movement, and \emph{S} is no movement, or a consecutive detection at the previous location.
@@ -18,28 +18,28 @@ Returns a tibble object. The column \emph{DIR} displays direction, where \emph{U
 Function for determining direction of tag movement in systems where multiple antennas are used along a linear migration route.
 }
 \details{
-\code{tag_direction} determines the direction of movement for individual detection events in \emph{x}. Direction is determined based on the order of locations from first encountered to last encountered, as specified in \emph{LOC_vec}. Note that direction cannot be determined until the tag has been detected at multiple locations. Use \code{\link{site_summary}} to identify all locations present in the multi reader data, which must be included in \emph{LOC_vec}.
+\code{tag_direction} determines the direction of movement for individual detection events in \emph{x}. Direction is determined based on the order of locations from first encountered to last encountered, as specified in \emph{LOC_vec}. Note that direction cannot be determined until the tag has been detected at multiple locations. Use \code{\link{site_summary}} to identify all locations present in the multi-reader data, which must be included in \emph{LOC_vec}.
 }
 \examples{
 \dontrun{
 
-##  Create the list containing the imported files:
+# Create a list containing compiled reader data:
 readers <- list(reader_1, reader_2)
 
-##  Combine the files:
+# Join data into a multi-reader array:
 PIT_data <- join_multireader_data(readers)
 
-##  Example of format for determining tag direction.
+# Determine tag direction:
 tag_direction(PIT_data, c("BRA", "USA"))
 }
 }
 \seealso{
-\code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
+\code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.
 
-\code{\link{join_multireader_data}} for combining data from ORFID readers into a multi reader array
+\code{\link{join_multireader_data}} for combining data from Oregon RFID ORMR and ORSR antenna readers into a multi-reader array.
 
 \code{\link{site_summary}} for identifying all locations present in a multi reader array
 }
 \author{
-Annika Putt
+Annika Putt <annika@instream.net>
 }

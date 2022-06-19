@@ -1,53 +1,50 @@
-#' @title Combine data from ORFID readers into an multi readers array
-#' @description Function allows users to combine unique readers into an array, using the data obtained from \code{\link{import_ORFID}} function. It is necessary to create a list with all data frames to be joined. If the data frames have diferent variables,
-#' @param x list: A list containing data frames created with the \code{\link{import_ORFID}} function to be combined.
-#' @details Data frame is created in the user environment. The output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of data frames combined. A factor class variable called LOC (from location) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further statistical analysis once it is the individual detection spot.
-#' @return Returns a tibble object.
+#' @title Combine data from Oregon RFID ORMR and ORSR antenna readers
+#' @description Function to combine data from unique readers into an array, using reader data compiled using \code{\link{import_ORFID}}. 
+#' @param x A list object containing data frames compiled using \code{\link{import_ORFID}}.
+#' @param verbose If TRUE, a description of the compiled data is printed to the console.
+#' @details As in \code{\link{dplyr::bind_rows}}, the output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of the data inputs. The function creates a unique factor variable, LOC (location), which is a combination of SCD (site code) and ANT (antenna). 
+#' @return Returns a tibble object of distinct detections from multiple antenna readers.
 #' @author Hugo Marques <biohmarques@@gmail.com>
-#' @seealso \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
+#' @seealso 
+#' \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
 #' 
-#' ##  Create the list containing the imported files:
+#' # Create a list containing compiled reader data:
 #' readers <- list(reader_1, reader_2)
 #' 
-#' ##  Combine the files:
+#' # Join data into a multi-reader array:
 #' PIT_data <- join_multireader_data(readers)
 #' 
 #' }
 
-
-###############################################################################
-
-join_multireader_data <- function(x){
+join_multireader_data <- function(x, verbose = TRUE) {
     
     if (class(x) != "list") {
-        stop("The data frames should be in a list")
+        stop("Input must be in list format")
     } 
-        
+    
     y <- x %>%
         dplyr::bind_rows()
-
-    if(!("SCD" %in% names(y))){
-        stop("Missing site code (SCD). Combining data from multi readers requires a SCD variables in all reader's data")
-        }
     
-    if(anyNA(y$SCD) == T) {
-        stop("Missing the site code (SCD) in at least one reader data. Combining data from multi readers requires a SCD variables in all reader's data")
+    if (!("SCD" %in% names(y))) {
+        stop("Missing site code (SCD). All input data must include SCD.")
     }
     
-    if(!("ANT" %in% names(y))){
+    if (anyNA(y$SCD) == T) {
+        stop("Missing site code (SCD) in at least one input data frame. All input data must include SCD.")
+    }
+    
+    if (!("ANT" %in% names(y))) {
         y <- y %>%
             dplyr::mutate(ANT = "A1")
     }
     
-    if(anyNA(y$ANT) == T) {
+    if (anyNA(y$ANT) == T) {
         warning("NA values in ANT were replaced by A1")
     }
-    
-    message("A factor class variable called LOC (from location) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further graphical statistical analysis once it is the individual detection spot.")
     
     PIT_data_array <- y %>%
         dplyr::mutate(ANT = tidyr::replace_na(ANT, "A1")) %>%
@@ -55,12 +52,15 @@ join_multireader_data <- function(x){
         dplyr::mutate(SCD = as.factor(SCD)) %>%
         dplyr::mutate(ANT = as.factor(ANT)) %>%
         dplyr::mutate(LOC = as.factor(LOC)) %>%
-        dplyr::arrange(ARR)
+        dplyr::arrange(ARR) %>% 
+        dplyr::distinct()
     
-    Sys.sleep(2)
     
-    return(dplyr::glimpse(PIT_data_array))
-        
+    message("A unique variable, LOC (location), was created by combining SCD (site code) and ANT (antenna).")
+    
+    if (verbose == TRUE) {
+        return(dplyr::glimpse(PIT_data_array))
+    } else {
+        return(PIT_data_array)
+    }
 }
-
-###############################################################################

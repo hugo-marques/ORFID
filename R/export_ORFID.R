@@ -1,43 +1,38 @@
-#' @title Export the data frames created with the \code{\link{import_ORFID}} as a xlsx file
-#' @description Function to export PIT_data data frames as a xlsx file to user working directory.
-#' @param x PIT_data data frame to be exported.
-#' @param name a name for the exported file. 
-#' @param extension extension to determine the file type. Should be ".txt", ".csv" or ".xlsx".
-#' @details The file will be saved in the user-specified working directory.
-#' @return Returns a ".txt", ".csv" or ".xlsx" file depending on the user option.
+#' @title Export data compiled from Oregon RFID ORMR and ORSR antenna readers 
+#' @description Data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}} are exported to the working directory as either a .txt, .csv, or .xlsx file.
+#' @param x data frame to be exported.
+#' @param name file name. 
+#' @param extension file extension (".txt", ".csv" or ".xlsx").
+#' @details The file will be saved in the current working directory. Any data frame created using functions in the \code{\link{ORFID}} package can be exported using this function.
+#' @return 
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso 
-#' \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
-#' \code{\link{join_multireader_data}} for Combining data from ORFID readers into an multi readers array
+#' \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.
+#' 
+#' \code{\link{join_multireader_data}} for combining data from Oregon RFID ORMR and ORSR antenna readers into a multi-reader array.
 #' @export
 #' @examples
 #' \dontrun{
 #' 
-#' ##  Exporting a PIT_data data frame to the working directory.
+#' # Exporting a PIT_data data frame to the working directory.
 #' 
-#' ##  Create the list containing the imported files:  
+#' # Create a list containing compiled reader data:
 #' readers <- list(reader_1, reader_2)
 #' 
-#' ##  Combine the files:
+#' # Join data into a multi-reader array:
 #' array <- join_multireader_data(readers)
 #' 
-#' ##  Export the data a .xlsx file:
+#' # Export the data a .xlsx file:
 #' export_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
 #' 
-#' ##  Export the data as a .txt file:
-#' export_ORFID(x = array, name = "PIT_data", extension = ".txt")
-#' 
-#' ##  Summarizing tag info
+#' # Summarize tag info:
 #' tags <- tags_summary(array) 
 #' 
-#' ##  Export the tag info as a .xlsx file:
+#' # Export the tag info as a .xlsx file:
 #' export_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
 #' }
 
-###############################################################################
-
-
-export_ORFID <- function(x, name, extension){
+export_ORFID <- function(x, name, extension) {
     
     if (!(extension %in% c(".csv", ".xlsx"))) {
         stop("The extension must be '.csv' or '.xlsx'")
@@ -55,5 +50,3 @@ export_ORFID <- function(x, name, extension){
     }
     
 }
-
-###############################################################################
