@@ -46,13 +46,13 @@ ant_efficiency <- function(x, LOC_vec) {
       
       # Which tags are at antenna x?
       tags_at_ant <- x2 %>% 
-        filter(LOC_NUM == i) %>% 
-        distinct(TAG)
+        dplyr::filter(LOC_NUM == i) %>% 
+        dplyr::distinct(TAG)
       
       # Which tags are above antenna x?
       tags_above <- x2 %>% 
-        filter(LOC_NUM > i) %>% 
-        distinct(TAG)
+        dplyr::filter(LOC_NUM > i) %>% 
+        dplyr::distinct(TAG)
       
       shared <- sum(tags_at_ant$TAG %in% tags_above$TAG)
       

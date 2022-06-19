@@ -36,22 +36,22 @@ direction_summary <- function(dir_df) {
   }
   
   x <- dir_df %>% 
-    filter(DIR != "S") %>% 
-    group_by(TAG) %>% 
-    filter(ARR == min(ARR) | ARR == max(ARR)) %>% 
-    arrange(ARR) %>% 
-    mutate(first_DET = min(ARR),
-           first_LOC = first(LOC),
-           first_DIR = first(DIR),
+    dplyr::filter(DIR != "S") %>% 
+    dplyr::group_by(TAG) %>% 
+    dplyr::filter(ARR == min(ARR) | ARR == max(ARR)) %>% 
+    dplyr::arrange(ARR) %>% 
+    dplyr::mutate(first_DET = min(ARR),
+           first_LOC = dplyr::first(LOC),
+           first_DIR = dplyr::first(DIR),
            last_DET = max(ARR),
-           last_LOC = last(LOC),
-           last_DIR = last(DIR),
+           last_LOC = dplyr::last(LOC),
+           last_DIR = dplyr::last(DIR),
            tdiff_sec = difftime(last_DET, first_DET),
            tdiff_day = round(as.numeric(tdiff_sec, units = "days"), 1)) %>% 
-    ungroup() %>% 
+    dplyr::ungroup() %>% 
     # Select only pertinent columns, which results in a df with 2 identical rows
     select(TAG, first_DET, first_LOC, first_DIR, last_DET, last_LOC, last_DIR, tdiff_sec, tdiff_day) %>% 
-    distinct() # Get rid of duplicate rows
+    dplyr::distinct() # Get rid of duplicate rows
   
   return(x)
   
