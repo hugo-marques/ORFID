@@ -1,36 +1,31 @@
-#' @title Summarizing site-specific information of \code{\link{import_ORFID}}
-#' @description Function for getting info about the tsites in a PIT_data data frame from \code{\link{import_ORFID}} function (number of records, number of tags detected and last tag seen per site).
-#' @param x data frame to be analyzed.
-# #' @param tag variable of x with the tag ID
-# #' @param time variable of x with the detection time. For ORFID data it can be the either arrival (default = ARR) or departure (default = DEP).
-# #' @param type variable of x with the tag type (ORFID default = TTY)
-#' @details A data frame is created in the user environment with the data grouped by the site code.
+#' @title Summarize site information from Oregon RFID ORMR and ORSR antenna reader data
+#' @description Summarizes detection information for unique antenna sites within antenna reader data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}. 
+#' @param x antenna data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}.
+#' @details Creates a tibble grouped by SCD (site code; one row per unique SCD). The data frame contains the site code (SCD), the total number of records detected (REC), the number of unique tags detected (TAG_ID), and the last tag detected (LAS).
 #' @return Returns a tibble object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso 
-#' \code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
-#' \code{\link{join_multireader_data}} for Combining data from ORFID readers into an multi readers array
+#' \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.
+#' 
+#' \code{\link{join_multireader_data}} for combining data from Oregon RFID ORMR and ORSR antenna readers into a multi-reader array.
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
 #' \dontrun{
 #' 
-#' ##  Create the list containing the imported files:
+#' # Create a list containing compiled reader data:
 #' readers <- list(reader_1, reader_2)
 #' 
-#' ##  Combine the files:
+#' # Join data into a multi-reader array:
 #' PIT_data <- join_multireader_data(readers)
 #' 
-#' ##  Summarizing site info
+#' # Summarize detection information for each unique site:
 #' site_summary(PIT_data)
 #' }
 
-
-###############################################################################
-
-site_summary <- function(x){
+site_summary <- function(x) {
     
-    if(("LOC" %in% names(x))){
+    if (("LOC" %in% names(x))) {
         
         site <- x %>%
             dplyr::group_by(LOC) %>%
@@ -57,7 +52,3 @@ site_summary <- function(x){
     return(site)
     
 }
-
-###############################################################################
-
-###############################################################################

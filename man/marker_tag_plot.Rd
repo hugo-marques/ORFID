@@ -2,43 +2,44 @@
 % Please edit documentation in R/marker_tag_plot.R
 \name{marker_tag_plot}
 \alias{marker_tag_plot}
-\title{Ploting marker tag detections of \code{\link{import_ORFID}}}
+\title{Plot detection from marker tags used with Oregon RFID ORMR and ORSR antenna readers}
 \usage{
 marker_tag_plot(x, tag, gap)
 }
 \arguments{
-\item{x}{data frame to be analyzed.}
+\item{x}{antenna data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}.}
 
-\item{tag}{marker tag number. Must be between "".}
+\item{tag}{marker tag identification (character object).}
 
-\item{gap}{Value in seconds, if you want to filter only values greater than or equal to "gap".}
+\item{gap}{minimum time gap in seconds (optional)}
 }
 \value{
-Returns a plot from the marker tag data.
+Returns a plot object.
 }
 \description{
-Function for getting info about the tags recorded in a PIT_data data frame from \code{\link{import_ORFID}} function (number of unique tags, tags type and records per tag).
+Plot detection from marker tags used with Oregon RFID ORMR and ORSR antenna readers
 }
 \details{
-A plot is created with the data from the marker tag.
+Creates a plot displaying marker tag detections.
 }
 \examples{
 \dontrun{
 
-##  Create the list containing the imported files:
+# Create a list containing compiled reader data:
 readers <- list(reader_1, reader_2, reader_3)
 
-##  Combine the files:
+# Join data into a multi-reader array:
 PIT_data <- join_multireader_data(readers)
 
-##  Ploting marker tag data
-mrker_tag_plot(PIT_data, "0000_000000004978")
-mrker_tag_plot(PIT_data, "0000_000000004978", 360)
+# Plot marker tag data:
+marker_tag_plot(PIT_data, "0000_000000004978")
+marker_tag_plot(PIT_data, "0000_000000004978", gap = 360)
 }
 }
 \seealso{
-\code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
-\code{\link{join_multireader_data}} for Combining data from ORFID readers into an multi readers array
+\code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.
+
+\code{\link{join_multireader_data}} for combining data from Oregon RFID ORMR and ORSR antenna readers into a multi-reader array.
 }
 \author{
 Hugo Marques <biohmarques@gmail.com>

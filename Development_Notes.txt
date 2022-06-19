@@ -1,19 +1,21 @@
 ORFID Development Notes:
 
-Import:
-- It would be nice if the function produced an error if you told it there would be delims but there wasn't. I ran into this function during batch imports.
-- Parsing warning is from files that start with rows with fewer columns than the detection data
-- Incomplete last line happens for every file because there isn't a blank line on the file
+Start/Stop Function that Hugo wanted to create:
+- Files don't actually have "reader started" data in the messages
 
-Join:
-- This should only keep distinct rows in case there were duplicate downloads
+export_ORFID 
+- Is this function necessary or should we delete it?
 
-Tag Summary:
-- Why are there two?
+site_summary
+- why do we care what the last tag detected was?
 
-Start/Stop Function:
-- Files don't actually have "reader started" data
+Vignette:
+- Need to create
 
-Help:
-- Need to edit grammar for functions
-- Need a vignette
+Old import function needs testing and an example
+
+Marger tag summary and plot needs testing
+
+Are the example data working? 
+- There are two data folders in the package
+- Need to change the examples that I've used to match with Hugo's example data frames, so that the user can use all the functions with the example data.

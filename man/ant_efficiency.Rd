@@ -25,23 +25,23 @@ Antenna efficiency is determined by identifying which tags were detected at ante
 \examples{
 \dontrun{
 
-##  Create the list containing the imported files:
+# Create a list containing compiled reader data:
 readers <- list(reader_1, reader_2)
 
-##  Combine the files:
+# Join data into a multi-reader array:
 PIT_data <- join_multireader_data(readers)
 
-##  Example of format for determining tag direction.
+# Determine antenna efficiency:
 ant_efficiency(PIT_data, c("BRA", "USA"))
 }
 }
 \seealso{
-\code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
+\code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.
 
-\code{\link{join_multireader_data}} for combining data from ORFID readers into a multi reader array
+\code{\link{join_multireader_data}} for combining data from Oregon RFID ORMR and ORSR antenna readers into a multi-reader array.
 
-\code{\link{site_summary}} for identifying all locations present in a multi reader array
+\code{\link{site_summary}} for identifying all locations present in a multi-reader array.
 }
 \author{
-Annika Putt
+Annika Putt <annika@instream.net>
 }

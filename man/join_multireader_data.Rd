@@ -2,35 +2,37 @@
 % Please edit documentation in R/join_multireader_data.R
 \name{join_multireader_data}
 \alias{join_multireader_data}
-\title{Combine data from ORFID readers into an multi readers array}
+\title{Combine data from Oregon RFID ORMR and ORSR antenna readers}
 \usage{
-join_multireader_data(x)
+join_multireader_data(x, verbose = TRUE)
 }
 \arguments{
-\item{x}{list: A list containing data frames created with the \code{\link{import_ORFID}} function to be combined.}
+\item{x}{A list object containing data frames compiled using \code{\link{import_ORFID}}.}
+
+\item{verbose}{If TRUE, a description of the compiled data is printed to the console.}
 }
 \value{
-Returns a tibble object.
+Returns a tibble object of distinct detections from multiple antenna readers.
 }
 \description{
-Function allows users to combine unique readers into an array, using the data obtained from \code{\link{import_ORFID}} function. It is necessary to create a list with all data frames to be joined. If the data frames have diferent variables,
+Function to combine data from unique readers into an array, using reader data compiled using \code{\link{import_ORFID}}.
 }
 \details{
-Data frame is created in the user environment. The output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of data frames combined. A factor class variable called LOC (from location) is the combination of SCD (Site Code) and ANT (Antenna) variables. It should be used as location in further statistical analysis once it is the individual detection spot.
+As in \code{\link{dplyr::bind_rows}}, the output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of the data inputs. The function creates a unique factor variable, LOC (location), which is a combination of SCD (site code) and ANT (antenna).
 }
 \examples{
 \dontrun{
 
-##  Create the list containing the imported files:
+# Create a list containing compiled reader data:
 readers <- list(reader_1, reader_2)
 
-##  Combine the files:
+# Join data into a multi-reader array:
 PIT_data <- join_multireader_data(readers)
 
 }
 }
 \seealso{
-\code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
+\code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.
 }
 \author{
 Hugo Marques <biohmarques@gmail.com>

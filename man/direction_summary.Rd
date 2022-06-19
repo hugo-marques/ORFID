@@ -21,24 +21,26 @@ Function for summarizing the time between the first and last movement directions
 \examples{
 \dontrun{
 
-##  Create the list containing the imported files:
+# Create a list containing compiled reader data:
 readers <- list(reader_1, reader_2)
 
-##  Combine the files:
+# Join data into a multi-reader array:
 PIT_data <- join_multireader_data(readers)
 
-##  Example of format for determining tag direction.
+# Determine tag direction:
 dir <- tag_direction(PIT_data, c("BRA", "USA"))
-residence <- tag_residence(dir)
+
+# Determine the time difference between first and last detections:
+dir_summary <- direction_summary(dir)
 }
 }
 \seealso{
-\code{\link{import_ORFID}} for importing data files from the new generation of Oregon RFID readers
+\code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.
 
-\code{\link{join_multireader_data}} for combining data from ORFID readers into a multi reader array
+\code{\link{join_multireader_data}} for combining data from Oregon RFID ORMR and ORSR antenna readers into a multi-reader array.
 
 \code{\link{tag_direction}} for determining movement direction of detections in systems with a linear migration route.
 }
 \author{
-Annika Putt
+Annika Putt <annika@instream.net>
 }

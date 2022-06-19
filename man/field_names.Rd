@@ -2,23 +2,23 @@
 % Please edit documentation in R/field_names.R
 \name{field_names}
 \alias{field_names}
-\title{Returns the field names from ORSR and ORMR readers}
+\title{View field names from Oregon RFID ORSR and ORMR antenna readers}
 \usage{
 field_names()
 }
 \value{
-A data frame with two variables is returned (Name and Details)
+A data frame with two variables: name and details
 }
 \description{
-Function to return the field names from ORSR and ORMR readers
+Function to return field names and descriptions from ORSR and ORMR readers.
 }
 \details{
-Returns the field names and its details from ORSR and ORMR readers data
+Returns the field/column names and its details from ORSR and ORMR readers data, which can be used to determine which field names should be included in data downloads.
 }
 \examples{
 \dontrun{
 
-##  Creating a data frame containing the field names from ORSR and ORMR readers.
+# Create a data frame containing the field names from ORSR and ORMR readers.
 (FN <- field_names())
 
 }
