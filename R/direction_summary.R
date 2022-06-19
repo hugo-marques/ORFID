@@ -50,7 +50,7 @@ direction_summary <- function(dir_df) {
            tdiff_day = round(as.numeric(tdiff_sec, units = "days"), 1)) %>% 
     dplyr::ungroup() %>% 
     # Select only pertinent columns, which results in a df with 2 identical rows
-    select(TAG, first_DET, first_LOC, first_DIR, last_DET, last_LOC, last_DIR, tdiff_sec, tdiff_day) %>% 
+    dplyr::select(TAG, first_DET, first_LOC, first_DIR, last_DET, last_LOC, last_DIR, tdiff_sec, tdiff_day) %>% 
     dplyr::distinct() # Get rid of duplicate rows
   
   return(x)

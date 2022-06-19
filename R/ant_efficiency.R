@@ -72,6 +72,6 @@ ant_efficiency <- function(x, LOC_vec) {
     
   }
   
-  return(bind_rows(out))
+  return(dplyr::bind_rows(out))
   
 }
