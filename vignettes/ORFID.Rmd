@@ -27,7 +27,7 @@ ORFID is a package for compiling and summarizing passive integrated transponder 
 ORFID is currently available as a development package on Github:
 
 ```{r install, eval = TRUE}
-# devtools::install_github("hugo-marques/ORFID")
+devtools::install_github("hugo-marques/ORFID")
 library(ORFID)
 ```
 
@@ -93,7 +93,7 @@ Marker tags are stationary tags used to constantly monitor the effectiveness of 
 marker_tag(dat_multi, "0000_000000005972")
 ```
 
-```{r marker2, eval = TRUE}
+```{r marker2, eval = TRUE, fig.width = 6, fig.heigh = 5}
 marker_tag_plot(dat_multi, "0000_000000005972")
 ```
 

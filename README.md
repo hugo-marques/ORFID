@@ -1,2 +1,2 @@
 # ORFID
-Functions to manage, and summarize PIT data from Oregon RFID readers. 
+Functions to compile and summarize PIT data from Oregon RFID ORMR and ORSR readers. 
