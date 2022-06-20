@@ -1,15 +1,22 @@
 ORFID Development Notes:
 
 Start/Stop Function that Hugo wanted to create:
-- Files don't actually have "reader started" data in the messages
+- Files don't actually have "reader started" data in the messages, so I don't think this function will work
 
 export_ORFID 
-- Is this function necessary or should we delete it?
+- Is this function necessary?
+- I don't see the utility and I think we should delete it
 
 Old import function needs testing and an example
+- I don't have a lot of old data that are delimited, so it would be great if Hugo could test this and create an example
 
 Marker_tag and marker_tag_plot
-- What is the purpose of these functions?
+- What is the purpose of these functions? 
+- Particularly the marker_tag function. 
+- I think the pupose is probably in 'gap' but I don't quite understand it, so it would be good if Hugo could update the details with a better description of gap
 
 Are the example data working? 
 - Need to add a second dataset that can be used to demonstrate the directional functions
+- Need to make sure all of the examples are working with the example data
+
+Need to test
