@@ -17,7 +17,7 @@ marker_tag_plot(x, tag, gap)
 Returns a plot object.
 }
 \description{
-Plot detection from marker tags used with Oregon RFID ORMR and ORSR antenna readers
+Creates a time series plot containing only detection data from a user-specified marker tag (unique tag number).
 }
 \details{
 Creates a plot displaying marker tag detections.

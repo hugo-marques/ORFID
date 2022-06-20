@@ -1,5 +1,5 @@
 #' @title Plot detection from marker tags used with Oregon RFID ORMR and ORSR antenna readers
-#' @description 
+#' @description Creates a time series plot containing only detection data from a user-specified marker tag (unique tag number).
 #' @param x antenna data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}.
 #' @param tag marker tag identification (character object).
 #' @param gap minimum time gap in seconds (optional) 

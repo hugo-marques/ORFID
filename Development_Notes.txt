@@ -6,16 +6,10 @@ Start/Stop Function that Hugo wanted to create:
 export_ORFID 
 - Is this function necessary or should we delete it?
 
-site_summary
-- why do we care what the last tag detected was?
-
-Vignette:
-- Need to create
-
 Old import function needs testing and an example
 
-Marger tag summary and plot needs testing
+Marker_tag and marker_tag_plot
+- What is the purpose of these functions?
 
 Are the example data working? 
-- There are two data folders in the package
-- Need to change the examples that I've used to match with Hugo's example data frames, so that the user can use all the functions with the example data.
+- Need to add a second dataset that can be used to demonstrate the directional functions

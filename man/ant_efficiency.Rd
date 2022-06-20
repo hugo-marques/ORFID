@@ -26,13 +26,13 @@ Antenna efficiency is determined by identifying which tags were detected at ante
 \dontrun{
 
 # Create a list containing compiled reader data:
-readers <- list(reader_1, reader_2)
+readers <- list(downstream_reader, upstream_reader)
 
 # Join data into a multi-reader array:
 PIT_data <- join_multireader_data(readers)
 
 # Determine antenna efficiency:
-ant_efficiency(PIT_data, c("BRA", "USA"))
+ant_efficiency(PIT_data, c("ds_A1", "us_A1"))
 }
 }
 \seealso{

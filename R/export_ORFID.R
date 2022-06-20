@@ -4,7 +4,7 @@
 #' @param name file name. 
 #' @param extension file extension (".txt", ".csv" or ".xlsx").
 #' @details The file will be saved in the current working directory. Any data frame created using functions in the \code{\link{ORFID}} package can be exported using this function.
-#' @return 
+#' @return A file is saved in the working directory. 
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso 
 #' \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.

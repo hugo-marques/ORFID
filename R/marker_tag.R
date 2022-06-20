@@ -1,5 +1,5 @@
 #' @title Summarize marker tag data from \code{\link{import_ORFID}}
-#' @description 
+#' @description Creates a filtered dataset containing only detection data from a user-specified marker tag (unique tag number).
 #' @param x antenna data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}.
 #' @param tag marker tag identification (character object).
 #' @param gap minimum time gap in seconds (optional) 

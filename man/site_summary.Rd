@@ -16,7 +16,7 @@ Returns a tibble object.
 Summarizes detection information for unique antenna sites within antenna reader data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}.
 }
 \details{
-Creates a tibble grouped by SCD (site code; one row per unique SCD). The data frame contains the site code (SCD), the total number of records detected (REC), the number of unique tags detected (TAG_ID), and the last tag detected (LAS).
+Creates a tibble grouped by SCD (site code; one row per unique SCD). The data frame contains the site code (SCD), the total number of records detected (REC), the number of unique tags detected (TAG_ID), and the time at which the first (FIR) and last (LAS) detections occurred on the array.
 }
 \examples{
 \dontrun{

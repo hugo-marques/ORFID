@@ -1,5 +1,5 @@
 #' @title Summarizing time difference between first and last directions in \code{\link{tag_direction}} 
-#' @description Function for summarizing the time between the first and last movement directions for each unique tag id. Input data are created by \code{\link{tag_direction}}, which determines the direction of movement for each detection event in \code{\link{join_multireader_data}}.
+#' @description Function for summarizing the time difference between the first and last movement directions for each unique tag id. Input data are created by \code{\link{tag_direction}}, which determines the direction of movement for each detection event in \code{\link{join_multireader_data}}.
 #' @param dir_df output from \code{\link{tag_direction}}
 #' @details \code{direction_summary} isolates the first and last direction of movement from \code{\link{tag_direction}} and determines the time difference in seconds and days. 
 #' @return Returns a tibble object. 
@@ -16,14 +16,14 @@
 #' \dontrun{
 #' 
 #' # Create a list containing compiled reader data:
-#' readers <- list(reader_1, reader_2)
+#' readers <- list(downstream_reader, upstream_reader)
 #' 
 #' # Join data into a multi-reader array:
 #' PIT_data <- join_multireader_data(readers)
 #' 
 #' # Determine tag direction:
-#' dir <- tag_direction(PIT_data, c("BRA", "USA"))
-#' 
+#' tag_direction(PIT_data, c("ds_A1", "us_A1"))
+#'  
 #' # Determine the time difference between first and last detections:
 #' dir_summary <- direction_summary(dir)
 #' }

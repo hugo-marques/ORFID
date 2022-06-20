@@ -1,7 +1,7 @@
 #' @title Summarize site information from Oregon RFID ORMR and ORSR antenna reader data
 #' @description Summarizes detection information for unique antenna sites within antenna reader data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}. 
 #' @param x antenna data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}.
-#' @details Creates a tibble grouped by SCD (site code; one row per unique SCD). The data frame contains the site code (SCD), the total number of records detected (REC), the number of unique tags detected (TAG_ID), and the last tag detected (LAS).
+#' @details Creates a tibble grouped by SCD (site code; one row per unique SCD). The data frame contains the site code (SCD), the total number of records detected (REC), the number of unique tags detected (TAG_ID), and the time at which the first (FIR) and last (LAS) detections occurred on the array. 
 #' @return Returns a tibble object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso 
@@ -32,9 +32,10 @@ site_summary <- function(x) {
             dplyr::add_count(LOC) %>%
             dplyr::rename(REC = n) %>%
             dplyr::mutate(TAG_ID = dplyr::n_distinct(TAG)) %>%
+            dplyr::mutate(FIR = min(ARR)) %>% 
+            dplyr::mutate(LAS = max(ARR)) %>%
             dplyr::distinct(LOC, .keep_all = T) %>%
-            dplyr::mutate(LAS = dplyr::last(TAG)) %>%
-            dplyr::select(LOC, REC, TAG_ID, LAS)
+            dplyr::select(LOC, REC, TAG_ID, FIR, LAS)
         
     } else {
         
@@ -43,9 +44,10 @@ site_summary <- function(x) {
             dplyr::add_count(SCD) %>%
             dplyr::rename(REC = n) %>%
             dplyr::mutate(TAG_ID = dplyr::n_distinct(TAG)) %>%
+            dplyr::mutate(FIR = min(ARR)) %>% 
+            dplyr::mutate(LAS = max(ARR)) %>%
             dplyr::distinct(SCD, .keep_all = T) %>%
-            dplyr::mutate(LAS = dplyr::last(TAG)) %>%
-            dplyr::select(SCD, REC, TAG_ID, LAS)
+            dplyr::select(SCD, REC, TAG_ID, FIR, LAS)
         
     }
     

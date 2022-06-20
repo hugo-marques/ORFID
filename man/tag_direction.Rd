@@ -24,13 +24,13 @@ Function for determining direction of tag movement in systems where multiple ant
 \dontrun{
 
 # Create a list containing compiled reader data:
-readers <- list(reader_1, reader_2)
+readers <- list(downstream_reader, upstream_reader)
 
 # Join data into a multi-reader array:
 PIT_data <- join_multireader_data(readers)
 
 # Determine tag direction:
-tag_direction(PIT_data, c("BRA", "USA"))
+tag_direction(PIT_data, c("ds_A1", "us_A1"))
 }
 }
 \seealso{

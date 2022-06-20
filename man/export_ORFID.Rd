@@ -14,7 +14,7 @@ export_ORFID(x, name, extension)
 \item{extension}{file extension (".txt", ".csv" or ".xlsx").}
 }
 \value{
-
+A file is saved in the working directory.
 }
 \description{
 Data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}} are exported to the working directory as either a .txt, .csv, or .xlsx file.

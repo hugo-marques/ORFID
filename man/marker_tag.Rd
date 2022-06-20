@@ -17,7 +17,7 @@ marker_tag(x, tag, gap)
 Returns a tibble object.
 }
 \description{
-Summarize marker tag data from \code{\link{import_ORFID}}
+Creates a filtered dataset containing only detection data from a user-specified marker tag (unique tag number).
 }
 \details{
 A data frame is created containing only information from the specified marker tag.
