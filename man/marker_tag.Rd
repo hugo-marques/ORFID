@@ -32,7 +32,7 @@ readers <- list(reader_1, reader_2, reader_3)
 PIT_data <- join_multireader_data(readers)
 
 # Summarize marker tag data
-marker_tag(PIT_data)
+marker_tag(PIT_data, "0000_000000004978")
 }
 }
 \seealso{

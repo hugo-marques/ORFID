@@ -12,6 +12,10 @@
 #' @export
 #' @examples
 #' \dontrun{
+#'
+#' # Import a single data file from an ORFID reader
+#' old_reader <- import_old_readers("~/Desktop/Old_eader_Data.txt", delim = "\t")
+#' 
 #' }
 
 import_old_readers <- function (file, delim, verbose = TRUE) {

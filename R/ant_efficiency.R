@@ -19,13 +19,19 @@
 #' \dontrun{
 #' 
 #' # Create a list containing compiled reader data:
-#' readers <- list(downstream_reader, upstream_reader)
+#' readers <- list(reader_us, reader_ds)
 #' 
 #' # Join data into a multi-reader array:
 #' PIT_data <- join_multireader_data(readers)
 #' 
-#' # Determine antenna efficiency:
-#' ant_efficiency(PIT_data, c("ds_A1", "us_A1"))
+#' # List readers:
+#' unique(PIT_data$LOC)
+#' 
+#' # Determine antenna efficiency for animals moving from downstream to upstream:
+#' ant_efficiency(PIT_data, c("downstream_A1", "upstream_A1"))
+#' 
+#' # Determine antenna efficiency for animals moving from upstream to downstream:
+#' ant_efficiency(PIT_data, c("upstream_A1", "downstream_A1"))
 #' }
 
 ant_efficiency <- function(x, LOC_vec) {

@@ -11,13 +11,13 @@ export_ORFID(x, name, extension)
 
 \item{name}{file name.}
 
-\item{extension}{file extension (".txt", ".csv" or ".xlsx").}
+\item{extension}{file extension (".csv" or ".xlsx").}
 }
 \value{
 A file is saved in the working directory.
 }
 \description{
-Data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}} are exported to the working directory as either a .txt, .csv, or .xlsx file.
+Data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}} are exported to the working directory as either a .csv or .xlsx file.
 }
 \details{
 The file will be saved in the current working directory. Any data frame created using functions in the \code{\link{ORFID}} package can be exported using this function.
@@ -37,7 +37,7 @@ array <- join_multireader_data(readers)
 export_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
 
 # Summarize tag info:
-tags <- tags_summary(array) 
+tags <- tag_summary(array) 
 
 # Export the tag info as a .xlsx file:
 export_ORFID(x = tags, name = "tags_info", extension = ".xlsx")

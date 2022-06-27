@@ -26,7 +26,7 @@ The field/column delimiter must be tab, comma or semi-colon for data compilation
 \dontrun{
 
 # Importing event records from a single ORFID reader 
-data_BRA <- import_ORFID_events("~/Desktop/SCD_BRA.txt")
+reader_1 _events <- import_ORFID_events("~/Desktop/Reader_1_Data.txt", delim = "\t")
 
 }
 }

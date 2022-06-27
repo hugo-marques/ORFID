@@ -32,7 +32,6 @@ readers <- list(reader_1, reader_2, reader_3)
 PIT_data <- join_multireader_data(readers)
 
 # Plot marker tag data:
-marker_tag_plot(PIT_data, "0000_000000004978")
 marker_tag_plot(PIT_data, "0000_000000004978", gap = 360)
 }
 }

@@ -16,3 +16,9 @@ usethis::use_data(reader_1, overwrite = TRUE)
 usethis::use_data(reader_2, overwrite = TRUE)
 usethis::use_data(reader_3, overwrite = TRUE)
 
+# Upstream/downstream data for directional function testing
+reader_us <- readr::read_delim("reader_us.txt", delim = "\t")
+reader_ds <- readr::read_delim("reader_ds.txt", delim = "\t")
+
+usethis::use_data(reader_us, overwrite = TRUE)
+usethis::use_data(reader_ds, overwrite = TRUE)

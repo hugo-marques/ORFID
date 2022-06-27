@@ -14,6 +14,9 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+library(dplyr)
+options(tibble.width = Inf)
 ```
 
 
@@ -26,7 +29,7 @@ ORFID is a package for compiling and summarizing passive integrated transponder 
 
 ORFID is currently available as a development package on Github:
 
-```{r install, eval = TRUE}
+```{r install, eval = TRUE, message = FALSE, warning = FALSE}
 devtools::install_github("hugo-marques/ORFID")
 library(ORFID)
 ```
@@ -53,13 +56,13 @@ Data are loaded using one of three import functions:
 
 ```{r load data, eval = FALSE}
 dat <- import_ORFID(file = "~/reader_1.txt", delim = "\t")
-events <- import_ORFID(file = "~reader_1.txt", delim = "\t")
+events <- import_ORFID_events(file = "~/reader_1.txt", delim = "\t")
 ```
 
 
 ## Joining data into arrays
 
-Multiple data files can be combined into an array representing all antennas within a designated study region. Individual files are combined into a list and joined using `join_multireader_data`. A new data field is created, LOC, which combines the site code (SCD) and antenna number (ANT) into a unique location variable.
+Multiple data files can be combined into an array representing all antennas within a designated study region. Individual files are combined into a list and joined using `join_multireader_data`. A new data field is created, `LOC`, which combines the site code (`SCD`) and antenna number (`ANT`) into a unique location variable.
 
 ```{r join, eval = FALSE}
 reader_1 <- import_ORFID(file = "reader_1.txt", delim = "\t")
@@ -102,21 +105,33 @@ marker_tag_plot(dat_multi, "0000_000000005972")
 
 PIT antennas are sometimes deployed along a linear migration route to monitor the directional movement of tagged individuals. ORFID has several functions that can be used to summarize directional data.
 
-`tag_direction` is used to determine the direction of movement whenever an individual is detected at a new/subsequent antenna. The function requires a vector describing the order of locations an individual encounters as it travels along a directional gradient (e.g., from downstream to upstream).
+`tag_direction` is used to determine the direction of movement whenever an individual is detected at a new/subsequent antenna. The function requires a vector describing the order of locations an individual encounters as it travels along a directional gradient (e.g., from downstream to upstream). The column, `DIR`, is created, where *U* and *D* designate upstream and downstream movements, respectively, and *S* designates a consecutive detection at the same antenna. 
 
-```{r direction, eval = FALSE}
-tag_direction(dat_multi, LOC_vec = c("loc1", "loc2", "loc3"))
+For example, a study array is composed of two antennas, *downstream_A1* and *upstream_A1*, and animals move in an upstream direction (i.e., passing over the downstream antenna, then the upstream antenna). 
+
+```{r direction, eval = TRUE}
+dat_multi <- join_multireader_data(list(reader_us, reader_ds), verbose = FALSE)
 ```
 
-`direction_summary` can then be used to summarize the time difference between the first and last detections for each unique tag within the system. For example, this function can be used to determine residence time upstream of a station.
+```{r direction2, eval = TRUE}
+tag_direction(dat_multi, LOC_vec = c("downstream_A1", "upstream_A1")) %>% 
+    filter(TAG == "900_228000369764")
+```
 
-```{r direction_summary, eval = FALSE}
-dir <- tag_direction(dat_multi, LOC_vec = c("loc1", "loc2", "loc3"))
+
+`direction_summary` can then be used to summarize the time difference between the first and last detections for each unique tag within the system. For example, this function can be used to determine residence time above or below an antenna.
+
+```{r direction_summary, eval = TRUE}
+dir <- tag_direction(dat_multi, LOC_vec = c("downstream_A1", "upstream_A1"))
+```
+
+```{r direction_summary2, eval = TRUE}
 direction_summary(dir)
 ```
 
+
 `ant_efficiency` is used to determine the efficiency for each antenna within a directional array. As with `tag_direction`, a vector is required that describes the order of locations an individual encounters along a linear migration route. Efficiency is calculated as the number of shared detections at location x and at any location after x, divided by the number of detections after location x. Efficiency cannot be calculated for the final antenna as there are no subsequent detections. Reversing the order of the location vector can inform efficiency in systems with movement in multiple directions.
 
-```{r efficiency, eval = FALSE}
-ant_efficiency(dat_multi, LOC_vec = c("loc1", "loc2", "loc3"))
+```{r efficiency, eval = TRUE}
+ant_efficiency(dat_multi, LOC_vec = c("downstream_A1", "upstream_A1"))
 ```

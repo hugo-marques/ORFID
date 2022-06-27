@@ -1,8 +1,8 @@
 #' @title Export data compiled from Oregon RFID ORMR and ORSR antenna readers 
-#' @description Data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}} are exported to the working directory as either a .txt, .csv, or .xlsx file.
+#' @description Data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}} are exported to the working directory as either a .csv or .xlsx file.
 #' @param x data frame to be exported.
 #' @param name file name. 
-#' @param extension file extension (".txt", ".csv" or ".xlsx").
+#' @param extension file extension (".csv" or ".xlsx").
 #' @details The file will be saved in the current working directory. Any data frame created using functions in the \code{\link{ORFID}} package can be exported using this function.
 #' @return A file is saved in the working directory. 
 #' @author Hugo Marques <biohmarques@@gmail.com>
@@ -26,7 +26,7 @@
 #' export_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
 #' 
 #' # Summarize tag info:
-#' tags <- tags_summary(array) 
+#' tags <- tag_summary(array) 
 #' 
 #' # Export the tag info as a .xlsx file:
 #' export_ORFID(x = tags, name = "tags_info", extension = ".xlsx")

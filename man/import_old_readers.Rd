@@ -26,6 +26,10 @@ The tag number column (TAG) is required for subsequent analyses, and the functio
 }
 \examples{
 \dontrun{
+
+# Import a single data file from an ORFID reader
+old_reader <- import_old_readers("~/Desktop/Old_eader_Data.txt", delim = "\t")
+
 }
 }
 \author{
