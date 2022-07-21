@@ -36,6 +36,7 @@ dir <- tag_direction(PIT_data, c("downstream_A1", "upstream_A1"))
 # Determine the time difference between first and last detections:
 dir_summary <- direction_summary(dir)
 }
+
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.

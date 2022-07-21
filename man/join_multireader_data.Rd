@@ -18,7 +18,7 @@ Returns a tibble object of distinct detections from multiple antenna readers.
 Function to combine data from unique readers into an array, using reader data compiled using \code{\link{import_ORFID}}.
 }
 \details{
-As in \code{\link{dplyr::bind_rows}}, the output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of the data inputs. The function creates a unique factor variable, LOC (location), which is a combination of SCD (site code) and ANT (antenna).
+As in \code{\link{bind_rows}}, the output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of the data inputs. The function creates a unique factor variable, LOC (location), which is a combination of SCD (site code) and ANT (antenna).
 }
 \examples{
 \dontrun{

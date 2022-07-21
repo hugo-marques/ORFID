@@ -1,0 +1,1 @@
+utils::globalVariables(".") # Prevents check Note from occurring when using dplyr . within pipes

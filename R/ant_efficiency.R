@@ -33,6 +33,8 @@
 #' # Determine antenna efficiency for animals moving from upstream to downstream:
 #' ant_efficiency(PIT_data, c("upstream_A1", "downstream_A1"))
 #' }
+#'  
+#' @importFrom rlang .data
 
 ant_efficiency <- function(x, LOC_vec) {
   
@@ -56,12 +58,12 @@ ant_efficiency <- function(x, LOC_vec) {
       
       # Which tags are at antenna x?
       tags_at_ant <- x2 %>% 
-        dplyr::filter(LOC_NUM == i) %>% 
+        dplyr::filter(.data$LOC_NUM == i) %>% 
         dplyr::distinct(TAG)
       
       # Which tags are above antenna x?
       tags_above <- x2 %>% 
-        dplyr::filter(LOC_NUM > i) %>% 
+        dplyr::filter(.data$LOC_NUM > i) %>% 
         dplyr::distinct(TAG)
       
       shared <- sum(tags_at_ant$TAG %in% tags_above$TAG)

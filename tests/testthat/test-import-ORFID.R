@@ -1,7 +1,6 @@
 testthat::test_that("No NA values are present in data frame created by import_ORFID", {
   test_data <- import_ORFID(testthat::test_path("testdata/tab_data.txt"), delim = "\t", verbose = FALSE)
-  res <- apply(test_data, 2, function(x) sum(is.na(x)) > 0)
-  testthat::expect_false(all(res))
+  testthat::expect_true(sum(is.na(test_data)) == 0)
 })
 
 testthat::test_that("Only S and I data are retained when compiling data using import_ORFID", {

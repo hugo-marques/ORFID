@@ -35,6 +35,7 @@ unique(PIT_data$LOC)
 # Determine tag direction for animals moving from downstream to upstream:
 tag_direction(PIT_data, c("downstream_A1", "upstream_A1"))
 }
+
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.
