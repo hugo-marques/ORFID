@@ -34,8 +34,7 @@
 direction_summary <- function(dir_df) {
   
   if(!"DIR" %in% colnames(dir_df)) {
-    warning("Input data must be output from tag_direction()")
-    stop()
+      stop("Input data must be output from tag_direction()")
   }
   
   x <- dir_df %>% 

@@ -35,6 +35,10 @@ tag_direction <- function(x, LOC_vec) {
         warning("Dataframe LOC values do not match LOC_vec values")
     }
     
+    if (all(unique(x$LOC) %in% LOC_vec != TRUE)) {
+        stop("Dataframe LOC values do not match LOC_vec values")
+    }
+    
     if (("LOC" %in% names(x))) {
         
         x2 <- data.frame(LOC = LOC_vec) %>% 

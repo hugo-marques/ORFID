@@ -36,9 +36,13 @@
 
 ant_efficiency <- function(x, LOC_vec) {
   
-  if(length(unique(x$LOC)) != length(LOC_vec)) {
-    warning("Dataframe LOC values do not match LOC_vec values")
-  }
+    if (length(unique(x$LOC)) != length(LOC_vec)) {
+        warning("Dataframe LOC values do not match LOC_vec values")
+    }
+    
+    if (all(unique(x$LOC) %in% LOC_vec != TRUE)) {
+        stop("Dataframe LOC values do not match LOC_vec values")
+    }
   
   if(("LOC" %in% names(x))) {
     
@@ -73,9 +77,7 @@ ant_efficiency <- function(x, LOC_vec) {
   }
   
   if(!("LOC" %in% names(x))) {
-    
     stop("LOC is required. Input data must be a product of join_multireader_data()")
-    
   }
   
   return(dplyr::bind_rows(out))

@@ -41,7 +41,7 @@ import_ORFID_events <- function(file, delim, verbose = TRUE) {
         
         raw_data2 <- raw_data %>%
             dplyr::filter(DTY == "E") %>%
-            dplyr::mutate(SCD = site_code) %>% 
+            dplyr::mutate(SCD = as.character(site_code)) %>% 
             dplyr::mutate(message = DUR) %>%
             dplyr::mutate(TRF = as.factor(TRF)) %>%
             dplyr::select(DTY, SCD, ARR, TRF, message)

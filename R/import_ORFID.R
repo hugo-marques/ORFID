@@ -49,6 +49,11 @@ import_ORFID <- function(file, delim, verbose = TRUE) {
             dplyr::mutate(SCD = as.factor(SCD))
     }
     
+    
+    if (!("SCD" %in% names(raw_data))) {
+        warning("Site code (SCD) is required for further analysis.")
+    }
+    
     if (("TTY" %in% names(raw_data))) {
         raw_data <- raw_data %>%
             dplyr::mutate(TTY = as.factor(TTY))

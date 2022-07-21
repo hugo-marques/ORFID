@@ -15,6 +15,3 @@ Marker_tag and marker_tag_plot
 - Particularly the marker_tag function. 
 - I think the pupose is probably in 'gap' but I don't quite understand it, so it would be good if Hugo could update the details with a better description of gap
 - Better example might be nice, showing the use of gap
-
-
-Need to create a testing protocol

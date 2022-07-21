@@ -25,6 +25,10 @@
 
 site_summary <- function(x) {
     
+    if (!("SCD" %in% names(x))) {
+        stop("Site code (SCD) is required.")
+    }
+    
     if (("LOC" %in% names(x))) {
         
         site <- x %>%
