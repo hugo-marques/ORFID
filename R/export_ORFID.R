@@ -3,7 +3,7 @@
 #' @param x data frame to be exported.
 #' @param name file name. 
 #' @param extension file extension (".csv" or ".xlsx").
-#' @details The file will be saved in the current working directory. Any data frame created using functions in the \code{\link{ORFID}} package can be exported using this function.
+#' @details The file will be saved in the current working directory. Any data frame created using functions in the ORFID package can be exported using this function.
 #' @return A file is saved in the working directory. 
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso 

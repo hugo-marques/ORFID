@@ -40,6 +40,7 @@ ant_efficiency(PIT_data, c("downstream_A1", "upstream_A1"))
 # Determine antenna efficiency for animals moving from upstream to downstream:
 ant_efficiency(PIT_data, c("upstream_A1", "downstream_A1"))
 }
+ 
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.

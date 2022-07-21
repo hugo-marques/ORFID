@@ -3,7 +3,7 @@
 \docType{data}
 \name{reader_1}
 \alias{reader_1}
-\title{ORFID readers data samples}
+\title{ORFID data samples}
 \format{
 A data frame with 8590 rows and 9 variables:
 \describe{
@@ -22,6 +22,6 @@ A data frame with 8590 rows and 9 variables:
 reader_1
 }
 \description{
-Dataset to illustrate the ORFID functions. The variables are as follows:
+Data to illustrate functions from the ORFID package. The variables are as follows:
 }
 \keyword{datasets}

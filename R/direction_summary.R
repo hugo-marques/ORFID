@@ -30,6 +30,8 @@
 #' # Determine the time difference between first and last detections:
 #' dir_summary <- direction_summary(dir)
 #' }
+#' 
+#' @importFrom rlang .data
 
 direction_summary <- function(dir_df) {
   
@@ -38,21 +40,21 @@ direction_summary <- function(dir_df) {
   }
   
   x <- dir_df %>% 
-    dplyr::filter(DIR != "S") %>% 
-    dplyr::group_by(TAG) %>% 
-    dplyr::filter(ARR == min(ARR) | ARR == max(ARR)) %>% 
+    dplyr::filter(.data$DIR != "S") %>% 
+    dplyr::group_by(.data$TAG) %>% 
+    dplyr::filter(ARR == min(.data$ARR) | ARR == max(.data$ARR)) %>% 
     dplyr::arrange(ARR) %>% 
-    dplyr::mutate(first_DET = min(ARR),
-           first_LOC = dplyr::first(LOC),
-           first_DIR = dplyr::first(DIR),
-           last_DET = max(ARR),
-           last_LOC = dplyr::last(LOC),
-           last_DIR = dplyr::last(DIR),
-           tdiff_sec = difftime(last_DET, first_DET),
-           tdiff_day = round(as.numeric(tdiff_sec, units = "days"), 1)) %>% 
+    dplyr::mutate(first_DET = min(.data$ARR),
+           first_LOC = dplyr::first(.data$LOC),
+           first_DIR = dplyr::first(.data$DIR),
+           last_DET = max(.data$ARR),
+           last_LOC = dplyr::last(.data$LOC),
+           last_DIR = dplyr::last(.data$DIR),
+           tdiff_sec = difftime(.data$last_DET, .data$first_DET),
+           tdiff_day = round(as.numeric(.data$tdiff_sec, units = "days"), 1)) %>% 
     dplyr::ungroup() %>% 
     # Select only pertinent columns, which results in a df with 2 identical rows
-    dplyr::select(TAG, first_DET, first_LOC, first_DIR, last_DET, last_LOC, last_DIR, tdiff_sec, tdiff_day) %>% 
+    dplyr::select(.data$TAG, .data$first_DET, .data$first_LOC, .data$first_DIR, .data$last_DET, .data$last_LOC, .data$last_DIR, .data$tdiff_sec, .data$tdiff_day) %>% 
     dplyr::distinct() # Get rid of duplicate rows
   
   return(x)

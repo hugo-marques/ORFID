@@ -28,6 +28,8 @@
 #' # Determine tag direction for animals moving from downstream to upstream:
 #' tag_direction(PIT_data, c("downstream_A1", "upstream_A1"))
 #' }
+#' 
+#' @importFrom rlang .data
 
 tag_direction <- function(x, LOC_vec) {
     
@@ -46,8 +48,8 @@ tag_direction <- function(x, LOC_vec) {
             dplyr::right_join(., x, by = "LOC") %>% 
             dplyr::group_by(TAG) %>% 
             dplyr::arrange(ARR) %>% 
-            dplyr::mutate(DIR = ifelse(c(0, diff(LOC_NUM)) > 0, "U",
-                                       ifelse(c(0, diff(LOC_NUM)) < 0, "D",
+            dplyr::mutate(DIR = ifelse(c(0, diff(.data$LOC_NUM)) > 0, "U",
+                                       ifelse(c(0, diff(.data$LOC_NUM)) < 0, "D",
                                               "S"))) %>% 
             dplyr::ungroup() %>% 
             dplyr::arrange(ARR, TAG)

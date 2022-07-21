@@ -20,7 +20,7 @@ A file is saved in the working directory.
 Data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}} are exported to the working directory as either a .csv or .xlsx file.
 }
 \details{
-The file will be saved in the current working directory. Any data frame created using functions in the \code{\link{ORFID}} package can be exported using this function.
+The file will be saved in the current working directory. Any data frame created using functions in the ORFID package can be exported using this function.
 }
 \examples{
 \dontrun{
