@@ -2,8 +2,8 @@
 #' @description Creates a time series plot containing only detection data from a user-specified marker tag (unique tag number).
 #' @param x antenna data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}.
 #' @param tag marker tag identification (character object).
-#' @param gap minimum time gap in seconds (optional) 
-#' @details Creates a plot displaying marker tag detections.
+#' @param gap minimum time gap in seconds between detections (optional). 
+#' @details Creates a plot displaying marker tag detections. If a minimum time gap is specified, time gaps greater than the minimum specified are highlighted in red. This allows the user to identify periods when marker tags were not being detected as frequently as expected. 
 #' @return Returns a plot object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso 
@@ -21,8 +21,8 @@
 #' # Join data into a multi-reader array:
 #' PIT_data <- join_multireader_data(readers)
 #' 
-#' # Plot marker tag data:
-#' marker_tag_plot(PIT_data, "0000_000000004978", gap = 360)
+#' # Plot marker tag data and identify when the time gap between detections was greater or equal to 10 minutes.
+#' marker_tag(PIT_data, "0000_000000004978", gap = 600)
 #' }
 
 marker_tag_plot <- function(x, tag, gap) {
@@ -39,7 +39,7 @@ marker_tag_plot <- function(x, tag, gap) {
             ggplot2::geom_point(data = marker_tag, 
                                 ggplot2::aes(x = ARR, y = TAG), 
                                 size = .01) +
-            ggplot2::xlab("Detection time")+
+            # ggplot2::xlab("Detection time")+
             ggplot2::ylab(unique(marker_tag$TAG))+
             ggplot2::scale_x_datetime(date_breaks = "1 hour", 
                                       date_labels = "%m/%d %H:%M") +
@@ -77,12 +77,14 @@ marker_tag_plot <- function(x, tag, gap) {
             ggplot2::geom_point(data = marker_tag, 
                                 ggplot2::aes(x = ARR, y = TAG), 
                                 size = .01) +
-            ggplot2::xlab("Detection time")+
-            ggplot2::ylab(unique(marker_tag$TAG))+
+            # ggplot2::xlab("Detection time")+
+            ggplot2::ylab(unique(marker_tag$TAG)) +
             ggplot2::scale_x_datetime(date_breaks = "1 hour", 
                                       date_labels = "%m/%d %H:%M") +
             ggplot2::geom_linerange(data = marker_tag_gap, 
-                                    ggplot2::aes(xmin = gap_start, xmax = gap_end, y = TAG), 
+                                    ggplot2::aes(xmin = gap_start, 
+                                                 xmax = gap_end, 
+                                                 y = TAG), 
                                     colour = "red", 
                                     size = 500, 
                                     alpha = .3) +

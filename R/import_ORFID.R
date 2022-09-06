@@ -14,7 +14,7 @@
 #' \dontrun{
 #' 
 #' # Import a single data file from an ORFID reader
-#' reader_1 <- import_ORFID("~/Desktop/Reader_1_Data.txt", delim = "\t")
+#' reader_1 <- import_ORFID("~/reader_1.txt", delim = "\t")
 #' 
 #' }
 

@@ -50,9 +50,12 @@ tag_summary <- function(x, verbose = TRUE) {
         PIT_loc <- x %>%
             dplyr::arrange(ARR) %>%
             dplyr::group_by(TAG) %>%
-            dplyr::summarise(first_LOC = dplyr::first(LOC), 
-                             other_LOC = any(!LOC %in% c(dplyr::first(LOC), dplyr::last(LOC))), 
-                             last_LOC = dplyr::last(LOC))
+            dplyr::summarise(first_LOC = dplyr::first(LOC),
+                             last_LOC = dplyr::last(LOC),
+                             count_LOC = length(unique(LOC)),
+                             all_LOC = toString(unique(LOC)))
+                             # other_LOC = any(!LOC %in% c(dplyr::first(LOC), dplyr::last(LOC))), 
+                             
     }
     
     PIT_n <- x %>%
@@ -98,7 +101,8 @@ tag_summary <- function(x, verbose = TRUE) {
         mean_DUR: mean detection duration
         first_LOC: location of first detection 
         last_LOC: location of last detection
-        other_LOC: was the tag detected at any additional locations?
+        count_LOC: number of antennas that detected the tag
+        all_LOC: character string of all antennas that detected the tag
         ")
         
     }

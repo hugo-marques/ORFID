@@ -96,8 +96,16 @@ Marker tags are stationary tags used to constantly monitor the effectiveness of 
 marker_tag(dat_multi, "0000_000000005972")
 ```
 
+If the a minimum time gap (in seconds) is specified using the gap argument, only detection periods where the time gap between detections was greater than the specified minimum are retained in the summary table.
+
+```{r marker_gap, eval = TRUE}
+marker_tag(dat_multi, "0000_000000005972", gap = 600)
+```
+
+In the marker tag plot, gaps between detections greater than the specified minimum are highlighted in red.
+
 ```{r marker2, eval = TRUE, fig.width = 6, fig.heigh = 5}
-marker_tag_plot(dat_multi, "0000_000000005972")
+marker_tag_plot(dat_multi, "0000_000000005972", gap = 600)
 ```
 
 
@@ -134,4 +142,12 @@ direction_summary(dir)
 
 ```{r efficiency, eval = TRUE}
 ant_efficiency(dat_multi, LOC_vec = c("downstream_A1", "upstream_A1"))
+```
+
+## Export data
+
+Any data frame created using ORFID functions can be exported to the working directory as a .csv or .xlsx file.
+
+```{r export, eval = FALSE}
+export_ORFID(x = dat_multi, name = "multi_data_compiled", extension = ".xlsx")
 ```

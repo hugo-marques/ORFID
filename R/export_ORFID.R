@@ -3,7 +3,7 @@
 #' @param x data frame to be exported.
 #' @param name file name. 
 #' @param extension file extension (".csv" or ".xlsx").
-#' @details The file will be saved in the current working directory. Any data frame created using functions in the ORFID package can be exported using this function.
+#' @details Any data frame created using functions in the ORFID package can be exported using this function.
 #' @return A file is saved in the working directory. 
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso 
@@ -14,22 +14,12 @@
 #' @examples
 #' \dontrun{
 #' 
-#' # Exporting a PIT_data data frame to the working directory.
+#' # Import a single data file from an ORFID reader
+#' reader_1 <- import_ORFID("~/reader_1.txt", delim = "\t")
 #' 
-#' # Create a list containing compiled reader data:
-#' readers <- list(reader_1, reader_2)
+#' # Export compiled data as a .xlsx file:
+#' export_ORFID(x = reader_1, name = "reader_1_compiled", extension = ".xlsx")
 #' 
-#' # Join data into a multi-reader array:
-#' array <- join_multireader_data(readers)
-#' 
-#' # Export the data a .xlsx file:
-#' export_ORFID(x = array, name = "PIT_data", extension = ".xlsx")
-#' 
-#' # Summarize tag info:
-#' tags <- tag_summary(array) 
-#' 
-#' # Export the tag info as a .xlsx file:
-#' export_ORFID(x = tags, name = "tags_info", extension = ".xlsx")
 #' }
 
 export_ORFID <- function(x, name, extension) {
@@ -38,14 +28,14 @@ export_ORFID <- function(x, name, extension) {
         stop("The extension must be '.csv' or '.xlsx'")
     }
     
-    file <- paste0(name,extension)
+    file <- paste0(name, extension)
     
-
-    if(extension == ".csv") {
+    
+    if (extension == ".csv") {
         readr::write_csv(x, file)
     }
     
-    if(extension == ".xlsx") {
+    if (extension == ".xlsx") {
         openxlsx::write.xlsx(x, file)
     }
     
