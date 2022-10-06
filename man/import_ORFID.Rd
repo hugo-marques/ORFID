@@ -22,13 +22,15 @@ Function to import files from Oregon RFID ORMR and ORSR antenna readers. Only de
 \details{
 The field/column delimiter must be tab, comma or semi-colon for data compilation and further analysis. The function cannot be used for space delimited data. 
 
-The tag number column (TAG) is required for subsequent analyses, and the function will return a warning if TAG is not included in the data file.
+The tag number column (TAG) is required for subsequent analyses, and the function will return a warning if TAG is not included in the data file. 
+
+Note that corruption may occur in PIT data files. Check your data files and compiled data carefully to ensure accuracy.
 }
 \examples{
 \dontrun{
 
 # Import a single data file from an ORFID reader
-reader_1 <- import_ORFID("~/Desktop/Reader_1_Data.txt", delim = "\t")
+reader_1 <- import_ORFID("~/reader_1.txt", delim = "\t")
 
 }
 }

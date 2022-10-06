@@ -11,7 +11,7 @@ marker_tag(x, tag, gap)
 
 \item{tag}{marker tag identification (character object).}
 
-\item{gap}{minimum time gap in seconds (optional)}
+\item{gap}{minimum time gap in seconds between detections (optional).}
 }
 \value{
 Returns a tibble object.
@@ -20,7 +20,7 @@ Returns a tibble object.
 Creates a filtered dataset containing only detection data from a user-specified marker tag (unique tag number).
 }
 \details{
-A data frame is created containing only information from the specified marker tag.
+A column, GAP, is created that calculates the time gap (in seconds) between subsequent detections. If the gap argument is omitted, all detection from the marker tag are retained. If a minimum time gap is specified, only detections with a larger time gap than the specified minimum are retained. This allows the user to identify periods when marker tags were not being detected as frequently as expected.
 }
 \examples{
 \dontrun{
@@ -33,6 +33,9 @@ PIT_data <- join_multireader_data(readers)
 
 # Summarize marker tag data
 marker_tag(PIT_data, "0000_000000004978")
+
+# Summarize marker tag data when the time gap between detections was greater or equal to 10 minutes.
+marker_tag(PIT_data, "0000_000000004978", gap = 600)
 }
 }
 \seealso{

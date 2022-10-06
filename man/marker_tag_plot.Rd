@@ -11,7 +11,7 @@ marker_tag_plot(x, tag, gap)
 
 \item{tag}{marker tag identification (character object).}
 
-\item{gap}{minimum time gap in seconds (optional)}
+\item{gap}{minimum time gap in seconds between detections (optional).}
 }
 \value{
 Returns a plot object.
@@ -20,7 +20,7 @@ Returns a plot object.
 Creates a time series plot containing only detection data from a user-specified marker tag (unique tag number).
 }
 \details{
-Creates a plot displaying marker tag detections.
+Creates a plot displaying marker tag detections. If a minimum time gap is specified, time gaps greater than the minimum specified are highlighted in red. This allows the user to identify periods when marker tags were not being detected as frequently as expected.
 }
 \examples{
 \dontrun{
@@ -31,8 +31,8 @@ readers <- list(reader_1, reader_2, reader_3)
 # Join data into a multi-reader array:
 PIT_data <- join_multireader_data(readers)
 
-# Plot marker tag data:
-marker_tag_plot(PIT_data, "0000_000000004978", gap = 360)
+# Plot marker tag data and highlight gaps greater than 10 minutes.
+marker_tag(PIT_data, "0000_000000004978", gap = 600)
 }
 }
 \seealso{

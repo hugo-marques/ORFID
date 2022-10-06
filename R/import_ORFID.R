@@ -6,6 +6,8 @@
 #' @details The field/column delimiter must be tab, comma or semi-colon for data compilation and further analysis. The function cannot be used for space delimited data. 
 #' 
 #' The tag number column (TAG) is required for subsequent analyses, and the function will return a warning if TAG is not included in the data file. 
+#' 
+#' Note that corruption may occur in PIT data files. Check your data files and compiled data carefully to ensure accuracy.
 #' @return Returns a tibble object of data compiled from a single ORFID data file.
 #' @author Hugo Marques <biohmarques@@gmail.com>, Annika Putt <annika@@instream.net>
 #' @importFrom magrittr %>%
@@ -62,6 +64,9 @@ import_ORFID <- function(file, delim, verbose = TRUE) {
     if (!("TAG" %in% names(raw_data))) {
         warning("Tag number (TAG) is required for further analysis.")
     }
+    
+    raw_data <- raw_data %>% 
+        dplyr::distinct()
     
     if (verbose == TRUE) {
         return(dplyr::glimpse(raw_data))

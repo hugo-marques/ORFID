@@ -5,7 +5,9 @@
 #' @param verbose If TRUE, a description of the compiled data is printed to the console.
 #' @details The field/column delimiter must be tab, comma or semi-colon for data compilation and further analysis. The function cannot be used for space delimited data. 
 #' 
-#' The tag number column (TAG) is required for subsequent analyses, and the function will return a warning if TAG is not included in the data file. 
+#' Data compiled using \code{\link{import_ORFID}} and \code{\link{import_old_readers}} can be joined together using \code{\link{join_multireader_data}}.
+#' 
+#' Note that corruption may occur in PIT data files. Check your data files and compiled data carefully to ensure accuracy.
 #' @return Returns a tibble object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @importFrom magrittr %>%
@@ -24,59 +26,35 @@ import_old_readers <- function (file, delim, verbose = TRUE) {
         stop("Column delimiter must be tab, comma, or semicolon")
     }
     
-    if (is.na(grep("Gap", readLines(file))[1]) == T) {
+    if (is.na(grep("Gap", suppressWarnings(readLines(file)))[1]) == T) {
         stop("Header is missing from input file.")
     }
     
-    if(length(grep("Gap", readLines(file))) > 1){
-        warning("More than one UP command in the same file. Only the first upload will be imported.")
-    }
-    
-    raw_data <- readr::read_delim(file, 
-                                  delim = delim, 
-                                  skip = grep("Gap", readLines(file)[1] -1))
+    raw_data <- suppressWarnings(
+        readr::read_delim(file, 
+                          delim = delim, 
+                          skip = grep("Gap", readLines(file))[1] -1))
     
     colnames(raw_data) <- c("DTY", "Date", "Time", "DUR", "Type", "TAG", "NCD", "EMP")
     
-    site_name <- grep("^Reader*", readLines(file), value = TRUE)
+    site_name <- grep("^Reader*", suppressWarnings(readLines(file)), value = TRUE)
     
     site_code <- stringr::str_extract(site_name, '\\w*$')[1]
     
-    raw_data <- raw_data %>% 
-        tidyr::unite("ARR", Date:Time, sep = " ", remove = FALSE) %>% 
+    raw_data2 <- raw_data %>% 
+        dplyr::filter(DTY == "D") %>% 
+        tidyr::unite("ARR", Date:Time, sep = " ", remove = TRUE) %>% 
+        dplyr::mutate(ARR = readr::parse_datetime(ARR, "%Y-%m-%d %H:%M:%OS")) %>% 
+        dplyr::mutate(DUR = readr::parse_time(DUR, "%H:%M:%OS")) %>%
         tidyr::separate(Type, sep = 1, into = c("TCH", "TTY")) %>% 
+        dplyr::mutate(TTY = as.factor(TTY)) %>% 
         dplyr::mutate(SCD = as.factor(site_code)) %>%
-        dplyr::select(-c(Date, Time)) %>% 
-        dplyr::filter(DTY == "D")
-    
-    
-    if (("ARR" %in% names(raw_data))) {
-        raw_data <- raw_data %>% 
-            dplyr::mutate(ARR = readr::parse_datetime(ARR, "%Y-%m-%d %H:%M:%OS"))
-    }
-    
-    if (("DUR" %in% names(raw_data))) {
-        raw_data <- raw_data %>% 
-            dplyr::mutate(DUR = readr::parse_time(DUR, "%H:%M:%OS"))
-    }
-    
-    if (("TTY" %in% names(raw_data))) {
-        raw_data <- raw_data %>% 
-            dplyr::mutate(TTY = as.factor(TTY))
-    }
-    
-    if (("EMP" %in% names(raw_data))) {
-        raw_data <- raw_data %>% 
-            dplyr::mutate(EMP = as.double(EMP))
-    }
-    
-    if (!("TAG" %in% names(raw_data))) {
-        warning("Tag number (TAG) is required for further analysis.")
-    }
+        dplyr::mutate(EMP = as.double(EMP)) %>% 
+        dplyr::distinct()
     
     if (verbose == TRUE) {
-        return(dplyr::glimpse(raw_data))
+        return(dplyr::glimpse(raw_data2))
     } else {
-        return(raw_data)
+        return(raw_data2)
     }
 }
