@@ -57,6 +57,7 @@ Data are loaded using one of three import functions:
 ```{r load data, eval = FALSE}
 dat <- import_ORFID(file = "~/reader_1.txt", delim = "\t")
 events <- import_ORFID_events(file = "~/reader_1.txt", delim = "\t")
+old_dat <- import_old_readers(file = "~/old_reader.txt", delim = "\t")
 ```
 
 
@@ -90,24 +91,19 @@ tag_summary(dat_multi)
 
 ## View marker tag data
 
-Marker tags are stationary tags used to constantly monitor the effectiveness of Oregon RFID antenna readers. Data from individual marker tags can be viewed and plotted using ORFID marker tag functions.
+Marker tags are stationary tags used to constantly monitor the effectiveness of Oregon RFID antenna readers. Marker tags are detected at regular time intervals, which are set by the user.  
+
+Data from individual marker tags can be viewed and plotted using ORFID marker tag functions. The optional `gap` argument represents the minimum time gap between detections. If `gap` is specified, only detections where the time gap was greater than `gap` are retained by `marker_tag`, and periods where the time gap was greater than `gap` are highlighted in red by `marker_tag_plot`. This allows the user to identify periods when marker tags were not detected as frequently as expected. 
 
 ```{r marker, eval = TRUE}
 marker_tag(dat_multi, "0000_000000005972")
 ```
 
-If the a minimum time gap (in seconds) is specified using the gap argument, only detection periods where the time gap between detections was greater than the specified minimum are retained in the summary table.
 
-```{r marker_gap, eval = TRUE}
-marker_tag(dat_multi, "0000_000000005972", gap = 600)
-```
-
-In the marker tag plot, gaps between detections greater than the specified minimum are highlighted in red.
 
 ```{r marker2, eval = TRUE, fig.width = 6, fig.heigh = 5}
-marker_tag_plot(dat_multi, "0000_000000005972", gap = 600)
+marker_tag_plot(dat_multi, "0000_000000005972", gap = 60*10) # Ten minute time gap
 ```
-
 
 ## Summarize directional data
 

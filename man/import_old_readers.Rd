@@ -22,7 +22,9 @@ Function to import files from previous generations of Oregon RFID antenna reader
 \details{
 The field/column delimiter must be tab, comma or semi-colon for data compilation and further analysis. The function cannot be used for space delimited data. 
 
-The tag number column (TAG) is required for subsequent analyses, and the function will return a warning if TAG is not included in the data file.
+Data compiled using \code{\link{import_ORFID}} and \code{\link{import_old_readers}} can be joined together using \code{\link{join_multireader_data}}.
+
+Note that corruption may occur in PIT data files. Check your data files and compiled data carefully to ensure accuracy.
 }
 \examples{
 \dontrun{
