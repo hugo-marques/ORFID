@@ -7,8 +7,8 @@ Description: The ORFID package automates and standardizes the import of raw data
      information and reader information, determining tag direction, and calculating antenna efficiency.
 Date: 2021-09-03
 Authors@R: c(
-    person("Hugo", "Marques", email = "biohmarques@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-9361-9341")),
-    person("Annika", "Putt", email = "annika@instream.net", role = "aut", comment = c(ORCID = "0000-0003-4164-5836")))
+    person("Hugo", "Marques", email = "biohmarques@gmail.com", role = "aut", comment = c(ORCID = "0000-0002-9361-9341")),
+    person("Annika", "Putt", email = "annika@instream.net", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-4164-5836")))
 Depends:
     R (>= 4.0.0)
 Imports:
