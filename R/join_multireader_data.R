@@ -22,9 +22,9 @@
 
 join_multireader_data <- function(x, verbose = TRUE) {
     
-    if (class(x) != "list") {
+    if (!is.list(x)) {
         stop("Input must be in list format")
-    } 
+    }
     
     y <- x %>%
         dplyr::bind_rows()

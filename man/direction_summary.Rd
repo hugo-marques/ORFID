@@ -4,10 +4,12 @@
 \alias{direction_summary}
 \title{Summarizing time difference between first and last directions in \code{\link{tag_direction}}}
 \usage{
-direction_summary(dir_df)
+direction_summary(dir_df, include_stationary = FALSE)
 }
 \arguments{
 \item{dir_df}{output from \code{\link{tag_direction}}}
+
+\item{include_stationary}{if TRUE, all detections are summarized. If FALSE, only detections with a known movement direction (up or down) are included in the summary.}
 }
 \value{
 Returns a tibble object.
@@ -16,7 +18,9 @@ Returns a tibble object.
 Function for summarizing the time difference between the first and last movement directions for each unique tag id. Input data are created by \code{\link{tag_direction}}, which determines the direction of movement for each detection event in \code{\link{join_multireader_data}}.
 }
 \details{
-\code{direction_summary} isolates the first and last direction of movement from \code{\link{tag_direction}} and determines the time difference in seconds and days.
+\code{direction_summary} isolates the first and last direction of movement from \code{\link{tag_direction}} and determines the time difference in seconds and days. Directions are U for upstream movement, D for downstream movement, and S for no movement, or consecutive detection at the same location.
+
+It is common for a tag to be detected multiple times at the same antenna, which will result in a movement direction of S, or stationary. The user is encouraged to examine direction summaries for `include_stationary = TRUE` and `include_stationary = FALSE` to become familiar with their data. When `include_stationary = FALSE`, there may be fewer tag ids in the direction summary than in the full data set.
 }
 \examples{
 \dontrun{

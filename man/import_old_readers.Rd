@@ -18,6 +18,8 @@ Returns a tibble object.
 }
 \description{
 Function to import files from previous generations of Oregon RFID antenna readers (prior to ORMR and ORSR). Only detections are retained during compilation (events are removed).
+
+This function will only work with raw data downloaded directly from Oregon RFID stationary readers. The files must be delimited (tab, comma, or semicolon) and unedited by the user.
 }
 \details{
 The field/column delimiter must be tab, comma or semi-colon for data compilation and further analysis. The function cannot be used for space delimited data. 
