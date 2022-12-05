@@ -24,7 +24,12 @@
 #' 
 #' # Customizing plot aesthetics
 #' my_plot <- marker_tag(PIT_data, "0000_000000004978", gap = 600)
+<<<<<<< HEAD
 #' my_plot + scale_x_datetime(breaks = date_breaks("1 month"))
+=======
+#' my_plot +
+#' scale_x_datetime(date_breaks = "1 month")
+>>>>>>> cc11f538ed11cc23df3cca2db0e06bdb63e0da5c
 #' }
 
 marker_tag_plot <- function(x, tag, gap) {
