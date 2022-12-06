@@ -123,7 +123,9 @@ tag_direction(dat_multi, LOC_vec = c("downstream_A1", "upstream_A1")) %>%
 ```
 
 
-`direction_summary` can then be used to summarize the time difference between the first and last detections for each unique tag within the system. For example, this function can be used to determine residence time above or below an antenna.
+`direction_summary` can then be used to summarize the time difference between the first and last detections for each unique tag within the system. For example, this function can be used to determine residence time above or below an antenna. 
+
+`direction_summary` has an optional argument `include_stationary`. If `include_stationary = TRUE`, all detections will be included in the summary. For example, if a tag is detected multiple times at the same antenna before making an upwards movement, its first direction is *stationary*. If `include_stationary = FALSE`, only detections with known direction will be included. For example, if a tag is detected multiple times at the same antenna before making an upwards movement, the stationary movements will be ignored and its first direction will be *up*. 
 
 ```{r direction_summary, eval = TRUE}
 dir <- tag_direction(dat_multi, LOC_vec = c("downstream_A1", "upstream_A1"))
