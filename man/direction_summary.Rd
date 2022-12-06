@@ -2,28 +2,27 @@
 % Please edit documentation in R/direction_summary.R
 \name{direction_summary}
 \alias{direction_summary}
-\title{Summarizing time difference between first and last directions in \code{\link{tag_direction}}}
+\title{Summary of movement direction for Oregon RFID antenna data}
 \usage{
 direction_summary(dir_df, include_stationary = FALSE)
 }
 \arguments{
-\item{dir_df}{output from \code{\link{tag_direction}}}
+\item{dir_df}{output from \code{\link{tag_direction}}.}
 
-\item{include_stationary}{if TRUE, all detections are summarized. If FALSE, only detections with a known movement direction (up or down) are included in the summary.}
+\item{include_stationary}{if \emph{TRUE}, all detections are summarized. If FALSE, only detections with a known movement direction (up or down) are included in the summary.}
 }
 \value{
 Returns a tibble object.
 }
 \description{
-Function for summarizing the time difference between the first and last movement directions for each unique tag id. Input data are created by \code{\link{tag_direction}}, which determines the direction of movement for each detection event in \code{\link{join_multireader_data}}.
+Summarizes the time difference between the first and last movement directions for each unique tag ID. Input data are created by \code{\link{tag_direction}}, which determines the direction of movement for each detection event in \code{\link{join_multireader_data}}.
 }
 \details{
 \code{direction_summary} isolates the first and last direction of movement from \code{\link{tag_direction}} and determines the time difference in seconds and days. Directions are U for upstream movement, D for downstream movement, and S for no movement, or consecutive detection at the same location.
 
-It is common for a tag to be detected multiple times at the same antenna, which will result in a movement direction of S, or stationary. The user is encouraged to examine direction summaries for `include_stationary = TRUE` and `include_stationary = FALSE` to become familiar with their data. When `include_stationary = FALSE`, there may be fewer tag ids in the direction summary than in the full data set.
+It is common for a tag to be detected multiple times at the same antenna, which will result in a movement direction of S, or stationary. The user is encouraged to examine direction summaries for \emph{include_stationary = TRUE} and \emph{include_stationary = FALSE} to become familiar with their data. When \emph{include_stationary = FALSE}, there may be fewer tag ids in the direction summary than in the full data set.
 }
 \examples{
-\dontrun{
 
 # Create a list containing compiled reader data:
 readers <- list(reader_us, reader_ds)
@@ -39,7 +38,6 @@ dir <- tag_direction(PIT_data, c("downstream_A1", "upstream_A1"))
  
 # Determine the time difference between first and last detections:
 dir_summary <- direction_summary(dir)
-}
 
 }
 \seealso{

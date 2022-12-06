@@ -2,20 +2,20 @@
 % Please edit documentation in R/ant_efficiency.R
 \name{ant_efficiency}
 \alias{ant_efficiency}
-\title{Determines detection efficiency for \code{\link{join_multireader_data}}}
+\title{Detection efficiency for directional Oregon RFID antenna data}
 \usage{
 ant_efficiency(x, LOC_vec)
 }
 \arguments{
-\item{x}{data frame to be analyzed}
+\item{x}{data frame generated using \code{\link{join_multireader_data}}.}
 
-\item{LOC_vec}{vector of antenna locations from first encountered to last encountered}
+\item{LOC_vec}{vector of antenna locations from first encountered to last encountered.}
 }
 \value{
 Returns a tibble object.
 }
 \description{
-Function for determining detection efficiency for each antenna in systems where multiple antennas are used along a linear migration route.
+Determines detection efficiency for each antenna in systems where multiple antennas are used along a linear migration route.
 }
 \details{
 \code{ant_efficiency} determines the detection efficiency of each antenna in a linear migration route. Direction is determined based on the order of locations from first encountered to last encountered, as specified in \emph{LOC_vec}. Use \code{\link{site_summary}} to identify all locations present in the multi reader data, which must be included in \emph{LOC_vec}. 
@@ -23,7 +23,6 @@ Function for determining detection efficiency for each antenna in systems where 
 Antenna efficiency is determined by identifying which tags were detected at antenna x and which tags were detected anywhere after/above antenna x. The efficiency of antenna x is then the number of shared tag detections divided by the total number of detections after x. Note that efficiency and shared detections cannot be determined for the final antenna as there are no subsequent detections. Reversing the order of \emph{LOC_vec} can inform efficiency in systems with movement in multiple directions.
 }
 \examples{
-\dontrun{
 
 # Create a list containing compiled reader data:
 readers <- list(reader_us, reader_ds)
@@ -39,7 +38,6 @@ ant_efficiency(PIT_data, c("downstream_A1", "upstream_A1"))
 
 # Determine antenna efficiency for animals moving from upstream to downstream:
 ant_efficiency(PIT_data, c("upstream_A1", "downstream_A1"))
-}
  
 }
 \seealso{

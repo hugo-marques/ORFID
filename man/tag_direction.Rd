@@ -2,12 +2,12 @@
 % Please edit documentation in R/tag_direction.R
 \name{tag_direction}
 \alias{tag_direction}
-\title{Summarizing direction of movement for \code{\link{join_multireader_data}}}
+\title{Movement direction for Oregon RFID antenna data}
 \usage{
 tag_direction(x, LOC_vec)
 }
 \arguments{
-\item{x}{data frame to be analyzed.}
+\item{x}{data frame generated using \code{\link{join_multireader_data}}.}
 
 \item{LOC_vec}{vector of antenna locations from first encountered to last encountered.}
 }
@@ -15,13 +15,12 @@ tag_direction(x, LOC_vec)
 Returns a tibble object. The column \emph{DIR} displays direction, where \emph{U} is upstream movement, \emph{D} is downstream movement, and \emph{S} is no movement, or a consecutive detection at the previous location.
 }
 \description{
-Function for determining direction of tag movement in systems where multiple antennas are used along a linear migration route.
+Determines direction of tag movement in systems where multiple antennas are used along a linear migration route.
 }
 \details{
 \code{tag_direction} determines the direction of movement for individual detection events in \emph{x}. Direction is determined based on the order of locations from first encountered to last encountered, as specified in \emph{LOC_vec}. Note that direction cannot be determined until the tag has been detected at multiple locations. Use \code{\link{site_summary}} to identify all locations present in the multi-reader data, which must be included in \emph{LOC_vec}.
 }
 \examples{
-\dontrun{
 
 # Create a list containing compiled reader data:
 readers <- list(reader_us, reader_ds)
@@ -34,7 +33,6 @@ unique(PIT_data$LOC)
 
 # Determine tag direction for animals moving from downstream to upstream:
 tag_direction(PIT_data, c("downstream_A1", "upstream_A1"))
-}
 
 }
 \seealso{

@@ -16,28 +16,23 @@ knitr::opts_chunk$set(
 )
 
 library(dplyr)
+original <- options("tibble.width")
 options(tibble.width = Inf)
 ```
 
 
 ## Overview
 
-ORFID is a package for compiling and summarizing passive integrated transponder (PIT) data collected using Oregon RFID OMRM and OSRS antenna readers. 
+ORFID is a package for compiling and summarizing passive integrated transponder (PIT) data collected using Oregon RFID (radio-frequency identification) ORMR (Oregon RFID Multi-Reader) and ORSR (Oregon RFID Single Reader) antenna readers. 
 
-
-## Installation
-
-ORFID is currently available as a development package on Github:
-
-```{r install, eval = TRUE, message = FALSE, warning = FALSE}
-devtools::install_github("hugo-marques/ORFID")
+```{r setup, include = FALSE}
 library(ORFID)
 ```
 
 
 ## View field names
 
-The output from Oregon RFID antenna readers is highly customizable. Available data fields and their descriptions can be viewed using:
+The output from Oregon RFID antenna readers is highly customizable. Available data fields and their descriptions can be viewed using `field_names()`.
 
 ```{r field names, eval = TRUE}
 field_names()
@@ -46,13 +41,13 @@ field_names()
 
 ## Loading the data
 
-ORFID requires input data in raw format downloaded directly from Oregon RFID OMRM and OSRS antenna readers. Data files must be delimited by tab, comma, or semicolon; space delimited data are not supported. 
+ORFID requires raw (unedited) data downloaded directly from Oregon RFID ORMR and ORSR antenna readers. Data files must be delimited by tab, comma, or semicolon; space delimited data are not supported. 
 
 Data are loaded using one of three import functions: 
 
-* `import_ORFID`: Imports detection records from OMRM and OSRS antenna readers 
-* `import_ORFID_events`: Imports event data from OMRM and OSRS antenna readers
-* `import_old_readers`: Imports detection data from previous generations of Oregon RFID antenna readers
+* `import_ORFID()`: Imports detection records from ORMR and ORSR antenna readers 
+* `import_ORFID_events()`: Imports event data from ORMR and ORSR antenna readers
+* `import_old_readers()`: Imports detection data from previous generations of Oregon RFID antenna readers
 
 ```{r load data, eval = FALSE}
 dat <- import_ORFID(file = "~/reader_1.txt", delim = "\t")
@@ -63,7 +58,7 @@ old_dat <- import_old_readers(file = "~/old_reader.txt", delim = "\t")
 
 ## Joining data into arrays
 
-Multiple data files can be combined into an array representing all antennas within a designated study region. Individual files are combined into a list and joined using `join_multireader_data`. A new data field is created, `LOC`, which combines the site code (`SCD`) and antenna number (`ANT`) into a unique location variable.
+Multiple data files can be combined into an array representing all antennas within a designated study region. Individual files are combined into a list and joined using `join_multireader_data()`. A new data field is created, `LOC`, which combines the site code (`SCD`) and antenna number (`ANT`) into a unique location variable.
 
 ```{r join, eval = FALSE}
 reader_1 <- import_ORFID(file = "reader_1.txt", delim = "\t")
@@ -72,13 +67,13 @@ reader_3 <- import_ORFID(file = "reader_3.txt", delim = "\t")
 ```
 
 ```{r join2, eval = TRUE}
-dat_multi <- join_multireader_data(x = list(reader_1, reader_2, reader_3))
+dat_multi <- join_multireader_data(list(reader_1, reader_2, reader_3))
 ```
 
 
 ## Summarize data
 
-Data from `import_ORFID` or `join_multireader_data` can be summarized to view site information and tag detections:
+Data from `import_ORFID()` or `join_multireader_data()` can be summarized to view site information and tag detections.
 
 ```{r summarize, eval = TRUE}
 site_summary(dat_multi)
@@ -93,23 +88,25 @@ tag_summary(dat_multi)
 
 Marker tags are stationary tags used to constantly monitor the effectiveness of Oregon RFID antenna readers. Marker tags are detected at regular time intervals, which are set by the user.  
 
-Data from individual marker tags can be viewed and plotted using ORFID marker tag functions. The optional `gap` argument represents the minimum time gap between detections. If `gap` is specified, only detections where the time gap was greater than `gap` are retained by `marker_tag`, and periods where the time gap was greater than `gap` are highlighted in red by `marker_tag_plot`. This allows the user to identify periods when marker tags were not detected as frequently as expected. 
+Data from individual marker tags can be viewed and plotted using ORFID marker tag functions. The optional `gap` argument represents the minimum time gap between detections. If `gap` is specified, only detections where the time gap was greater than `gap` are retained by `marker_tag()`, and periods where the time gap was greater than `gap` are highlighted in red by `marker_tag_plot()`. This allows the user to identify periods when marker tags were not detected as frequently as expected.
+
+The plot object produced by `marker_tag_plot()` is a `ggplot2` object, and can be edited using additional `ggplot2` functions, such as `theme()`. 
 
 ```{r marker, eval = TRUE}
-marker_tag(dat_multi, "0000_000000005972")
+marker_tag(dat_multi, tag = "0000_000000005972")
 ```
 
 
 
 ```{r marker2, eval = TRUE, fig.width = 6, fig.heigh = 5}
-marker_tag_plot(dat_multi, "0000_000000005972", gap = 60*10) # Ten minute time gap
+marker_tag_plot(dat_multi, tag = "0000_000000005972", gap = 60*10) # Ten minute time gap
 ```
 
 ## Summarize directional data
 
 PIT antennas are sometimes deployed along a linear migration route to monitor the directional movement of tagged individuals. ORFID has several functions that can be used to summarize directional data.
 
-`tag_direction` is used to determine the direction of movement whenever an individual is detected at a new/subsequent antenna. The function requires a vector describing the order of locations an individual encounters as it travels along a directional gradient (e.g., from downstream to upstream). The column, `DIR`, is created, where *U* and *D* designate upstream and downstream movements, respectively, and *S* designates a consecutive detection at the same antenna. 
+`tag_direction()` is used to determine the direction of movement whenever an individual is detected at a new/subsequent antenna. The function requires a vector describing the order of locations an individual encounters as it travels along a directional gradient (e.g., from downstream to upstream). The column, `DIR`, is created, where *U* and *D* designate upstream and downstream movements, respectively, and *S* designates a consecutive detection at the same antenna. 
 
 For example, a study array is composed of two antennas, *downstream_A1* and *upstream_A1*, and animals move in an upstream direction (i.e., passing over the downstream antenna, then the upstream antenna). 
 
@@ -123,9 +120,9 @@ tag_direction(dat_multi, LOC_vec = c("downstream_A1", "upstream_A1")) %>%
 ```
 
 
-`direction_summary` can then be used to summarize the time difference between the first and last detections for each unique tag within the system. For example, this function can be used to determine residence time above or below an antenna. 
+`direction_summary()` can then be used to summarize the time difference between the first and last detections for each unique tag within the system. For example, this function can be used to determine residence time above or below an antenna. 
 
-`direction_summary` has an optional argument `include_stationary`. If `include_stationary = TRUE`, all detections will be included in the summary. For example, if a tag is detected multiple times at the same antenna before making an upwards movement, its first direction is *stationary*. If `include_stationary = FALSE`, only detections with known direction will be included. For example, if a tag is detected multiple times at the same antenna before making an upwards movement, the stationary movements will be ignored and its first direction will be *up*. 
+`direction_summary()` has an optional argument `include_stationary`. If `include_stationary = TRUE`, all detections will be included in the summary. For example, if a tag is detected multiple times at the same antenna before making an upwards movement, its first direction is *stationary*. If `include_stationary = FALSE`, only detections with known direction will be included. For example, if a tag is detected multiple times at the same antenna before making an upwards movement, the stationary movements will be ignored and its first direction will be *up*. 
 
 ```{r direction_summary, eval = TRUE}
 dir <- tag_direction(dat_multi, LOC_vec = c("downstream_A1", "upstream_A1"))
@@ -133,10 +130,12 @@ dir <- tag_direction(dat_multi, LOC_vec = c("downstream_A1", "upstream_A1"))
 
 ```{r direction_summary2, eval = TRUE}
 direction_summary(dir)
+
+direction_summary(dir, include_stationary = TRUE)
 ```
 
 
-`ant_efficiency` is used to determine the efficiency for each antenna within a directional array. As with `tag_direction`, a vector is required that describes the order of locations an individual encounters along a linear migration route. Efficiency is calculated as the number of shared detections at location x and at any location after x, divided by the number of detections after location x. Efficiency cannot be calculated for the final antenna as there are no subsequent detections. Reversing the order of the location vector can inform efficiency in systems with movement in multiple directions.
+`ant_efficiency()` is used to determine the efficiency for each antenna within a directional array. As with `tag_direction()`, a vector is required that describes the order of locations an individual encounters along a linear migration route. Efficiency is calculated as the number of shared detections at location x and at any location after x, divided by the number of detections after location x. Efficiency cannot be calculated for the final antenna as there are no subsequent detections. Reversing the order of the location vector can inform efficiency in systems with movement in multiple directions.
 
 ```{r efficiency, eval = TRUE}
 ant_efficiency(dat_multi, LOC_vec = c("downstream_A1", "upstream_A1"))
@@ -147,5 +146,9 @@ ant_efficiency(dat_multi, LOC_vec = c("downstream_A1", "upstream_A1"))
 Any data frame created using ORFID functions can be exported to the working directory as a .csv or .xlsx file.
 
 ```{r export, eval = FALSE}
-export_ORFID(x = dat_multi, name = "multi_data_compiled", extension = ".xlsx")
+export_ORFID(dat_multi, name = "multi_data_compiled", extension = ".xlsx")
+```
+
+```{r, include = FALSE}
+options(tibble.width = original)
 ```

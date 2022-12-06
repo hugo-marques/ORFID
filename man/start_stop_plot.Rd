@@ -2,7 +2,7 @@
 % Please edit documentation in R/start_stop_plot.R
 \name{start_stop_plot}
 \alias{start_stop_plot}
-\title{Plot reader start and stop times from Oregon RFID ORMR and ORSR antenna readers}
+\title{Plot reader start and stop times from Oregon RFID antenna readers}
 \usage{
 start_stop_plot(x)
 }
@@ -13,7 +13,7 @@ start_stop_plot(x)
 Returns a plot object.
 }
 \description{
-Creates a time series plot containing start and stop times from Oregon RFID ORMR and ORSR readers.
+Creates a time series plot containing start and stop times from Oregon RFID (radio-frequency identification) ORMR (Oregon RFID multi-reader) and ORSR (Oregon RFID single reader) antenna readers.
 }
 \details{
 Creates a plot displaying reader start and stop times. Note that start and stop times can be very close together and difficult to distinguish depending on the period plotted. Filter event data to improve resolution.

@@ -22,6 +22,6 @@ A data frame with 1034 rows and 9 variables:
 reader_3
 }
 \description{
-Data to illustrate functions from the ORFID package. The variables are as follows:
+Compiled data to illustrate functions from \pkg{ORFID}. The variables are as follows:
 }
 \keyword{datasets}

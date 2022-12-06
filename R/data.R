@@ -3,7 +3,7 @@
 
 #' ORFID data samples
 #'
-#' Data to illustrate functions from the ORFID package. The variables are as follows:
+#' Compiled data to illustrate functions from \pkg{ORFID}. The variables are as follows:
 #'
 #' @format A data frame with 8590 rows and 9 variables:
 #' \describe{
@@ -23,7 +23,7 @@
 
 #' ORFID data samples
 #'
-#' Data to illustrate functions from the ORFID package. The variables are as follows:
+#' Compiled data to illustrate functions from \pkg{ORFID}. The variables are as follows:
 #'
 #' @format A data frame with 8590 rows and 9 variables:
 #' \describe{
@@ -43,7 +43,7 @@
 
 #' ORFID data samples
 #'
-#' Data to illustrate functions from the ORFID package. The variables are as follows:
+#' Compiled data to illustrate functions from \pkg{ORFID}. The variables are as follows:
 #'
 #' @format A data frame with 1034 rows and 9 variables:
 #' \describe{
@@ -65,7 +65,7 @@
 
 #' ORFID data samples
 #'
-#' Data to illustrate directional functions from the ORFID package. The variables are as follows:
+#' Compiled data to illustrate directional functions from \pkg{ORFID}. The variables are as follows:
 #'
 #' @format A data frame with 824 rows and 16 variables:
 #' \describe{
@@ -94,7 +94,7 @@
 
 #' ORFID data samples
 #'
-#' Data to illustrate directional functions from the ORFID package. The variables are as follows:
+#' Compiled data to illustrate directional functions from \pkg{ORFID}. The variables are as follows:
 #'
 #' @format A data frame with 781 rows and 16 variables:
 #' \describe{

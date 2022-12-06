@@ -1,5 +1,5 @@
-#' @title Plot reader start and stop times from Oregon RFID ORMR and ORSR antenna readers
-#' @description Creates a time series plot containing start and stop times from Oregon RFID ORMR and ORSR readers.
+#' @title Plot reader start and stop times from Oregon RFID antenna readers
+#' @description Creates a time series plot containing start and stop times from Oregon RFID (radio-frequency identification) ORMR (Oregon RFID multi-reader) and ORSR (Oregon RFID single reader) antenna readers.
 #' @param x event data compiled using \code{\link{import_ORFID_events}} 
 #' @details Creates a plot displaying reader start and stop times. Note that start and stop times can be very close together and difficult to distinguish depending on the period plotted. Filter event data to improve resolution.
 #' @return Returns a plot object.

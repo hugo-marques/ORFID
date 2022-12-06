@@ -1,7 +1,7 @@
-#' @title Summarize site information from Oregon RFID ORMR and ORSR antenna reader data
+#' @title Summarize site information from Oregon RFID antenna reader data
 #' @description Summarizes detection information for unique antenna sites within antenna reader data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}. 
 #' @param x antenna data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}.
-#' @details Creates a tibble grouped by SCD (site code; one row per unique SCD). The data frame contains the site code (SCD), the total number of records detected (REC), the number of unique tags detected (TAG_ID), and the time at which the first (FIR) and last (LAS) detections occurred on the array. 
+#' @details Creates a tibble grouped by \emph{SCD} (site code; one row per unique \emph{SCD}). The data frame contains the site code (\emph{SCD}), the total number of records detected (\emph{REC}), the number of unique tags detected (\emph{TAG_ID}), and the time at which the first (\emph{FIR}) and last (\emph{LAS}) detections occurred on the array. 
 #' @return Returns a tibble object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso 
@@ -11,7 +11,6 @@
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
-#' \dontrun{
 #' 
 #' # Create a list containing compiled reader data:
 #' readers <- list(reader_1, reader_2)
@@ -21,7 +20,6 @@
 #' 
 #' # Summarize detection information for each unique site:
 #' site_summary(PIT_data)
-#' }
 
 site_summary <- function(x) {
     

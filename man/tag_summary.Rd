@@ -2,14 +2,14 @@
 % Please edit documentation in R/tag_summary.R
 \name{tag_summary}
 \alias{tag_summary}
-\title{Summarize detections for each unique tag detected by Oregon RFID ORMR and ORSR antenna readers}
+\title{Summarize tags detected by Oregon RFID antenna readers}
 \usage{
 tag_summary(x, verbose = TRUE)
 }
 \arguments{
 \item{x}{antenna data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}.}
 
-\item{verbose}{If TRUE, a data frame describing output columns is printed to the console.}
+\item{verbose}{If \emph{TRUE}, a data frame describing output columns is printed to the console.}
 }
 \value{
 Returns a tibble object.
@@ -21,7 +21,6 @@ Summarizes detection information for unique tags within antenna reader data comp
 Creates a tibble grouped by TAG (one row per unique TAG). A data frame describing the summarized data is printed to the console.
 }
 \examples{
-\dontrun{
 
 # Create a list containing compiled reader data:
 readers <- list(reader_1, reader_2)
@@ -31,7 +30,6 @@ PIT_data <- join_multireader_data(readers)
 
 # Summarize detection information for each unique tag:
 tag_summary(PIT_data)
-}
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.

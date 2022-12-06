@@ -1,7 +1,7 @@
-#' @title Summarize detections for each unique tag detected by Oregon RFID ORMR and ORSR antenna readers
+#' @title Summarize tags detected by Oregon RFID antenna readers
 #' @description Summarizes detection information for unique tags within antenna reader data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}. 
 #' @param x antenna data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}.
-#' @param verbose If TRUE, a data frame describing output columns is printed to the console.
+#' @param verbose If \emph{TRUE}, a data frame describing output columns is printed to the console.
 #' @details Creates a tibble grouped by TAG (one row per unique TAG). A data frame describing the summarized data is printed to the console.
 #' @return Returns a tibble object.
 #' @author Hugo Marques <biohmarques@@gmail.com>
@@ -12,7 +12,6 @@
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
-#' \dontrun{
 #' 
 #' # Create a list containing compiled reader data:
 #' readers <- list(reader_1, reader_2)
@@ -22,7 +21,6 @@
 #' 
 #' # Summarize detection information for each unique tag:
 #' tag_summary(PIT_data)
-#' }
 
 tag_summary <- function(x, verbose = TRUE) {
     

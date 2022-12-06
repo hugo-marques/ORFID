@@ -1,8 +1,8 @@
-#' @title Combine data from Oregon RFID ORMR and ORSR antenna readers
+#' @title Combine data from multiple antenna readers
 #' @description Function to combine data from unique readers into an array, using reader data compiled using \code{\link{import_ORFID}}. 
 #' @param x A list object containing data frames compiled using \code{\link{import_ORFID}}.
-#' @param verbose If TRUE, a description of the compiled data is printed to the console.
-#' @details As in \code{\link{bind_rows}}, the output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of the data inputs. The function creates a unique factor variable, LOC (location), which is a combination of SCD (site code) and ANT (antenna). 
+#' @param verbose If \emph{TRUE}, a description of the compiled data is printed to the console.
+#' @details As in \code{\link{bind_rows}}, the output of \code{\link{join_multireader_data}} will contain a column if that column appears in any of the data inputs. The function creates a unique factor variable, \emph{LOC} (location), which is a combination of \emph{SCD} (site code) and \emph{ANT} (antenna). 
 #' @return Returns a tibble object of distinct detections from multiple antenna readers.
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso 
@@ -10,7 +10,6 @@
 #' @importFrom magrittr %>%
 #' @export
 #' @examples
-#' \dontrun{
 #' 
 #' # Create a list containing compiled reader data:
 #' readers <- list(reader_1, reader_2)
@@ -18,9 +17,8 @@
 #' # Join data into a multi-reader array:
 #' PIT_data <- join_multireader_data(readers)
 #' 
-#' }
 
-join_multireader_data <- function(x, verbose = TRUE) {
+join_multireader_data <- function(x, verbose = FALSE) {
     
     if (!is.list(x)) {
         stop("Input must be in list format")

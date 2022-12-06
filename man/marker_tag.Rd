@@ -2,7 +2,7 @@
 % Please edit documentation in R/marker_tag.R
 \name{marker_tag}
 \alias{marker_tag}
-\title{Summarize marker tag data from \code{\link{import_ORFID}}}
+\title{Summarize marker tag detections from Oregon RFID antenna readers}
 \usage{
 marker_tag(x, tag, gap)
 }
@@ -20,10 +20,9 @@ Returns a tibble object.
 Creates a filtered dataset containing only detection data from a user-specified marker tag (unique tag number).
 }
 \details{
-A column, GAP, is created that calculates the time gap (in seconds) between subsequent detections. If the gap argument is omitted, all detection from the marker tag are retained. If a minimum time gap is specified, only detections with a larger time gap than the specified minimum are retained. This allows the user to identify periods when marker tags were not being detected as frequently as expected.
+A column, \emph{GAP}, is created that calculates the time gap (in seconds) between subsequent detections. If \emph{GAP} is omitted, all detection from the marker tag are retained. If a minimum time gap is specified, only detections with a larger time gap than the specified minimum are retained. This allows the user to identify periods when marker tags were not being detected as frequently as expected.
 }
 \examples{
-\dontrun{
 
 # Create a list containing compiled reader data:
 readers <- list(reader_1, reader_2, reader_3)
@@ -36,7 +35,6 @@ marker_tag(PIT_data, "0000_000000004978")
 
 # Summarize marker tag data when the time gap between detections was greater or equal to 10 minutes.
 marker_tag(PIT_data, "0000_000000004978", gap = 600)
-}
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.

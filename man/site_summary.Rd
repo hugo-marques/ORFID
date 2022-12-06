@@ -2,7 +2,7 @@
 % Please edit documentation in R/site_summary.R
 \name{site_summary}
 \alias{site_summary}
-\title{Summarize site information from Oregon RFID ORMR and ORSR antenna reader data}
+\title{Summarize site information from Oregon RFID antenna reader data}
 \usage{
 site_summary(x)
 }
@@ -16,10 +16,9 @@ Returns a tibble object.
 Summarizes detection information for unique antenna sites within antenna reader data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}}.
 }
 \details{
-Creates a tibble grouped by SCD (site code; one row per unique SCD). The data frame contains the site code (SCD), the total number of records detected (REC), the number of unique tags detected (TAG_ID), and the time at which the first (FIR) and last (LAS) detections occurred on the array.
+Creates a tibble grouped by \emph{SCD} (site code; one row per unique \emph{SCD}). The data frame contains the site code (\emph{SCD}), the total number of records detected (\emph{REC}), the number of unique tags detected (\emph{TAG_ID}), and the time at which the first (\emph{FIR}) and last (\emph{LAS}) detections occurred on the array.
 }
 \examples{
-\dontrun{
 
 # Create a list containing compiled reader data:
 readers <- list(reader_1, reader_2)
@@ -29,7 +28,6 @@ PIT_data <- join_multireader_data(readers)
 
 # Summarize detection information for each unique site:
 site_summary(PIT_data)
-}
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.

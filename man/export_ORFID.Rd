@@ -2,7 +2,7 @@
 % Please edit documentation in R/export_ORFID.R
 \name{export_ORFID}
 \alias{export_ORFID}
-\title{Export data compiled from Oregon RFID ORMR and ORSR antenna readers}
+\title{Export compiled data from Oregon RFID antenna readers}
 \usage{
 export_ORFID(x, name, extension)
 }
@@ -17,16 +17,13 @@ export_ORFID(x, name, extension)
 A file is saved to the working directory.
 }
 \description{
-Data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}} are exported to the working directory as either a .csv or .xlsx file.
+Data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_data}} are exported to the working directory as either a .csv or .xlsx file
 }
 \details{
-Any data frame created using functions in the ORFID package can be exported using this function.
+Any data frame created using functions in the \pkg{ORFID} package can be exported using this function.
 }
 \examples{
 \dontrun{
-
-# Import a single data file from an ORFID reader
-reader_1 <- import_ORFID("~/reader_1.txt", delim = "\t")
 
 # Export compiled data as a .xlsx file:
 export_ORFID(x = reader_1, name = "reader_1_compiled", extension = ".xlsx")

@@ -29,6 +29,6 @@ A data frame with 824 rows and 16 variables:
 reader_ds
 }
 \description{
-Data to illustrate directional functions from the ORFID package. The variables are as follows:
+Compiled data to illustrate directional functions from \pkg{ORFID}. The variables are as follows:
 }
 \keyword{datasets}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/marker_tag_plot.R
 \name{marker_tag_plot}
 \alias{marker_tag_plot}
-\title{Plot detection from marker tags used with Oregon RFID ORMR and ORSR antenna readers}
+\title{Plot marker tag detections from Oregon RFID antenna readers}
 \usage{
 marker_tag_plot(x, tag, gap)
 }
@@ -14,16 +14,15 @@ marker_tag_plot(x, tag, gap)
 \item{gap}{minimum time gap in seconds between detections (optional).}
 }
 \value{
-Returns a ggplot2 object. If the plot is saved as a named object, ggplot2 functions, including \code{\link[ggplot2]{theme}} commands can be used to customize plot aesthetics, including axis labels, grid lines, etc (see examples).
+Returns a \pkg{ggplot2} object. If the plot is saved as a named object, \pkg{ggplot2} functions, including \code{\link[ggplot2]{theme}} commands can be used to customize plot aesthetics, including axis labels, grid lines, etc (see examples).
 }
 \description{
 Creates a time series plot containing only detection data from a user-specified marker tag (unique tag number).
 }
 \details{
-Creates a ggplot2 plot object displaying marker tag detections. If a minimum time gap is specified, time gaps greater than the minimum specified are highlighted in red. This allows the user to identify periods when marker tags were not being detected as frequently as expected.
+Creates a plot object displaying marker tag detections. If a minimum time gap is specified, time gaps greater than the minimum specified are highlighted in red. This allows the user to identify periods when marker tags were not being detected as frequently as expected.
 }
 \examples{
-\dontrun{
 # Create a list containing compiled reader data:
 readers <- list(reader_1, reader_2, reader_3)
 
@@ -31,12 +30,12 @@ readers <- list(reader_1, reader_2, reader_3)
 PIT_data <- join_multireader_data(readers)
 
 # Plot marker tag data and highlight gaps greater than 10 minutes.
-marker_tag(PIT_data, "0000_000000004978", gap = 600)
+marker_tag_plot(PIT_data, "0000_000000004978", gap = 600)
 
 # Customizing plot aesthetics
-my_plot <- marker_tag(PIT_data, "0000_000000004978", gap = 600)
-my_plot + scale_x_datetime(breaks = date_breaks("1 month"))
-}
+# library(ggplot2)
+# my_plot <- marker_tag_plot(PIT_data, "0000_000000004978", gap = 600)
+# my_plot + scale_x_datetime(breaks = date_breaks("1 month"))
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.
