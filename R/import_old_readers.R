@@ -51,8 +51,10 @@ import_old_readers <- function (file, delim, verbose = TRUE) {
         tidyr::separate(Type, sep = 1, into = c("TCH", "TTY")) %>% 
         dplyr::mutate(TTY = as.factor(TTY)) %>% 
         dplyr::mutate(SCD = as.factor(site_code)) %>%
-        dplyr::mutate(EMP = as.double(EMP)) %>% 
         dplyr::distinct()
+    
+    raw_data2 <- raw_data2 %>% 
+        suppressWarnings(dplyr::mutate(EMP = as.double(EMP)))
     
     if (verbose == TRUE) {
         return(dplyr::glimpse(raw_data2))
