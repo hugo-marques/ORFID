@@ -4,7 +4,7 @@
 #' @param tag marker tag identification (character object).
 #' @param gap minimum time gap in seconds between detections (optional). 
 #' @details Creates a plot object displaying marker tag detections. If a minimum time gap is specified, time gaps greater than the minimum specified are highlighted in red. This allows the user to identify periods when marker tags were not being detected as frequently as expected. 
-#' @return Returns a \pkg{ggplot2} object. If the plot is saved as a named object, \pkg{ggplot2} functions, including \code{\link[ggplot2]{theme}} commands can be used to customize plot aesthetics, including axis labels, grid lines, etc (see examples). 
+#' @return Returns a \pkg{ggplot2} object. If the plot is saved as a named object, \pkg{ggplot2} functions, including \code{\link[ggplot2]{theme}} commands can be used to customize plot aesthetics, including axis labels, grid lines, etc. 
 #' @author Hugo Marques <biohmarques@@gmail.com>
 #' @seealso 
 #' \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.
@@ -20,11 +20,7 @@
 #' 
 #' # Plot marker tag data and highlight gaps greater than 10 minutes.
 #' marker_tag_plot(PIT_data, "0000_000000004978", gap = 600)
-#' 
-#' # Customizing plot aesthetics
-#' # library(ggplot2)
-#' # my_plot <- marker_tag_plot(PIT_data, "0000_000000004978", gap = 600)
-#' # my_plot + scale_x_datetime(breaks = date_breaks("1 month"))
+
 
 marker_tag_plot <- function(x, tag, gap) {
     

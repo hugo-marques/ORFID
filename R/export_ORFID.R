@@ -11,13 +11,6 @@
 #' 
 #' \code{\link{join_multireader_data}} for combining data from Oregon RFID ORMR and ORSR antenna readers into a multi-reader array.
 #' @export
-#' @examples
-#' \dontrun{
-#' 
-#' # Export compiled data as a .xlsx file:
-#' export_ORFID(x = reader_1, name = "reader_1_compiled", extension = ".xlsx")
-#' 
-#' }
 
 export_ORFID <- function(x, name, extension) {
     

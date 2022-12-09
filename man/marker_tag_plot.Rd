@@ -14,7 +14,7 @@ marker_tag_plot(x, tag, gap)
 \item{gap}{minimum time gap in seconds between detections (optional).}
 }
 \value{
-Returns a \pkg{ggplot2} object. If the plot is saved as a named object, \pkg{ggplot2} functions, including \code{\link[ggplot2]{theme}} commands can be used to customize plot aesthetics, including axis labels, grid lines, etc (see examples).
+Returns a \pkg{ggplot2} object. If the plot is saved as a named object, \pkg{ggplot2} functions, including \code{\link[ggplot2]{theme}} commands can be used to customize plot aesthetics, including axis labels, grid lines, etc.
 }
 \description{
 Creates a time series plot containing only detection data from a user-specified marker tag (unique tag number).
@@ -31,11 +31,6 @@ PIT_data <- join_multireader_data(readers)
 
 # Plot marker tag data and highlight gaps greater than 10 minutes.
 marker_tag_plot(PIT_data, "0000_000000004978", gap = 600)
-
-# Customizing plot aesthetics
-# library(ggplot2)
-# my_plot <- marker_tag_plot(PIT_data, "0000_000000004978", gap = 600)
-# my_plot + scale_x_datetime(breaks = date_breaks("1 month"))
 }
 \seealso{
 \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.

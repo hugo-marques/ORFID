@@ -22,14 +22,6 @@ Data compiled using \code{\link{import_ORFID}} or \code{\link{join_multireader_d
 \details{
 Any data frame created using functions in the \pkg{ORFID} package can be exported using this function.
 }
-\examples{
-\dontrun{
-
-# Export compiled data as a .xlsx file:
-export_ORFID(x = reader_1, name = "reader_1_compiled", extension = ".xlsx")
-
-}
-}
 \seealso{
 \code{\link{import_ORFID}} for importing data files from Oregon RFID ORMR and ORSR antenna readers.
 
