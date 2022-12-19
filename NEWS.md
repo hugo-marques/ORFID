@@ -1,3 +1,3 @@
-# ORFID 1.0.1
+# ORFID 1.0.2
 
 First public release
