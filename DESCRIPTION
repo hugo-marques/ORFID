@@ -1,6 +1,6 @@
 Type: Package
 Package: ORFID
-Version: 1.0.2
+Version: 1.0.2.9000
 Title: Manage and Summarize Data from Oregon RFID ORMR and ORSR Antenna Readers
 Description: Automates and standardizes the import of raw data from Oregon RFID (radio-frequency identification) ORMR (Oregon RFID Multi-Reader) and ORSR (Oregon RFID Single Reader) antenna readers. Compiled data can then be combined within multi-reader arrays for further analysis, including summarizing tag and reader detections, determining tag direction, and calculating antenna efficiency.
 Date: 2022-12-06
