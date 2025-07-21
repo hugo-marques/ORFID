@@ -29,7 +29,9 @@ import_ORFID <- function(file, delim, verbose = FALSE) {
     raw_data <- suppressWarnings(
         readr::read_delim(file, 
                           delim = delim, 
+                          # This will throw the error "Error: Expected single integer value" if you did multiple up* commands
                           skip = grep("* records ---------$", readLines(file, warn = FALSE)),
+                          # skip = grep("* records ---------$", readLines(file, warn = FALSE))[1], # This fixes the issue and allows multiple up commands. 
                           show_col_types = FALSE)
     )
     
