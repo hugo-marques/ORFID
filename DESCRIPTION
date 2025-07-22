@@ -3,7 +3,7 @@ Package: ORFID
 Version: 1.0.3
 Title: Manage and Summarize Data from Oregon RFID ORMR and ORSR Antenna Readers
 Description: Automates and standardizes the import of raw data from Oregon RFID (radio-frequency identification) ORMR (Oregon RFID Multi-Reader) and ORSR (Oregon RFID Single Reader) antenna readers. Compiled data can then be combined within multi-reader arrays for further analysis, including summarizing tag and reader detections, determining tag direction, and calculating antenna efficiency.
-Date: 2022-12-06
+Date: 2025-07-21
 Authors@R: c(
     person("Hugo", "Marques", email = "biohmarques@gmail.com", role = "aut", comment = c(ORCID = "0000-0002-9361-9341")),
     person("Annika", "Putt", email = "annika@instream.net", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-4164-5836")))
@@ -23,7 +23,7 @@ URL: https://github.com/hugo-marques/ORFID
 BugReports: https://github.com/hugo-marques/ORFID/issues
 LazyData: TRUE
 Encoding: UTF-8
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.2
 Suggests: 
     knitr,
     rmarkdown,
